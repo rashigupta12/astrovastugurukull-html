@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Collaboration – Nirwan University | Astro Vastu Gurukull</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 16px;
+      background-color: #faf7f2;
+      color: #2d2d2d;
+      line-height: 1.5;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+    @keyframes bannerSlide { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes navReveal { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes slideInDrawer { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+    @keyframes floatCard { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
+
+    /* ===== BANNER ===== */
+    .top-banner {
+      display: block;
+      background: linear-gradient(90deg, #b85e3a, #d4724a, #b85e3a);
+      background-size: 200% auto;
+      animation: bannerSlide 0.6s ease forwards, gradientShift 4s linear infinite;
+      color: #fff; text-align: center; padding: 10px 16px;
+      font-size: 14px; cursor: pointer; width: 100%; letter-spacing: 0.2px;
+    }
+    .top-banner:hover { opacity: 0.95; }
+    .top-banner span {
+      display: inline-block; background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4); border-radius: 20px;
+      padding: 2px 10px; font-weight: 700; margin-left: 6px; font-size: 13px;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: #ffffff; border-bottom: 1.5px solid #ece7df;
+      position: sticky; top: 0; z-index: 1001;
+      height: 72px; display: flex; align-items: center; width: 100%;
+      box-shadow: 0 2px 24px rgba(75,15,7,0.07);
+      animation: navReveal 0.5s ease 0.2s both;
+    }
+    .navbar-inner {
+      width: 100%; padding: 0 clamp(16px, 4vw, 72px);
+      display: flex; align-items: center; justify-content: flex-start; gap: 0;
+    }
+    .nav-left { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .nav-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; justify-content: flex-end; margin-left: auto; }
+    .logo-img { height: 56px; width: auto; display: block; object-fit: contain; transition: opacity 0.3s; }
+    .logo-img:hover { opacity: 0.82; }
+    .logo-link { display: flex; align-items: center; margin-right: 10px; }
+    .logo { font-size: clamp(18px,1.8vw,22px); font-weight: 800; color: #1a0a06; white-space: nowrap; margin-right: 10px; }
+    .logo span { color: #b85e3a; }
+    .nav-divider { width: 1px; height: 30px; background: #ddd; margin: 0 14px 0 8px; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 4px; align-items: center; }
+    .nav-links a { font-size: 15px; color: #444; white-space: nowrap; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: color 0.3s, background 0.3s; }
+    .nav-links a:hover { color: #b85e3a; background: rgba(184,94,58,0.07); }
+    .auth-buttons { display: flex; gap: 8px; flex-shrink: 0; margin-left: 8px; }
+    .login-btn { border: 1.5px solid #d5cdc4; background: white; padding: 8px 20px; font-weight: 600; cursor: pointer; white-space: nowrap; border-radius: 8px; font-size: 15px; font-family: inherit; color: #333; transition: border-color 0.3s, color 0.3s, background 0.3s; }
+    .login-btn:hover { border-color: #b85e3a; color: #b85e3a; background: rgba(184,94,58,0.04); }
+    .dropdown { position: relative; z-index: 1002; }
+    .dropbtn { background: none; border: none; font-size: 15px; font-weight: 600; cursor: pointer; padding: 9px 14px; border-radius: 8px; color: #2a0e08; font-family: inherit; transition: background 0.3s, color 0.3s; display: flex; align-items: center; gap: 5px; }
+    .dropbtn::after { content: '▾'; font-size: 14px; color: #b85e3a; opacity: 0.8; }
+    .dropbtn:hover { background: rgba(184,94,58,0.07); color: #b85e3a; }
+    .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e0dbd1; min-width: 260px; border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.12); z-index: 1003; animation: scaleIn 0.2s ease; padding: 8px 0; }
+    .dropdown:hover .dropdown-content, .dropdown-content:hover { display: block; }
+    .dropdown-content .dropdown-link { display: block; padding: 12px 18px; color: #444; font-size: 14px; transition: background 0.3s, color 0.3s, padding-left 0.3s; }
+    .dropdown-content .dropdown-link:hover { background: #f7f4f0; color: #b85e3a; padding-left: 24px; }
+    .submenu { position: relative; z-index: 1004; }
+    .submenu-title { padding: 12px 18px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; transition: background 0.3s, color 0.3s; }
+    .submenu-title:hover { background: #f7f4f0; color: #b85e3a; }
+    .submenu-content { display: none; position: absolute; top: 0; left: 100%; background: #fff; border: 1px solid #e0dbd1; min-width: 260px; border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.12); z-index: 1005; margin-left: 1px; }
+    .submenu:hover .submenu-content, .submenu-content:hover { display: block; }
+    .submenu-content a { display: block; padding: 12px 18px; color: #444; font-size: 14px; transition: background 0.3s, color 0.3s, padding-left 0.3s; }
+    .submenu-content a:hover { background: #f7f4f0; color: #b85e3a; padding-left: 24px; }
+    #nav-toggle { display: none; }
+    .mobile-menu-btn { display: none; cursor: pointer; padding: 8px; border-radius: 8px; transition: background 0.3s; flex-direction: column; justify-content: center; align-items: center; gap: 5px; background: none; border: none; }
+    .mobile-menu-btn:hover { background: #f7f4f0; }
+    .mobile-menu-btn span { display: block; width: 22px; height: 2px; background: #333; border-radius: 2px; }
+    .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1100; }
+    #nav-toggle:checked ~ .mobile-drawer { display: block; }
+    .mobile-drawer-inner { position: absolute; top: 0; left: 0; width: min(320px,85vw); height: 100%; background: #fff; padding: 24px; overflow-y: auto; box-shadow: 4px 0 24px rgba(0,0,0,0.15); animation: slideInDrawer 0.3s ease; }
+    .drawer-logo { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e0dbd1; }
+    .drawer-logo img { height: 48px; width: auto; display: block; object-fit: contain; }
+    .drawer-close-label { position: absolute; top: 16px; right: 16px; font-size: 24px; cursor: pointer; color: #555; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; }
+    .drawer-nav-group { margin-bottom: 4px; }
+    .drawer-nav-group summary { list-style: none; padding: 14px 0; font-size: 15px; font-weight: 600; cursor: pointer; border-bottom: 1px solid #e0dbd1; display: flex; justify-content: space-between; align-items: center; }
+    .drawer-nav-group summary::after { content: '+'; color: #b85e3a; font-size: 18px; }
+    .drawer-nav-group[open] summary::after { content: '−'; }
+    .drawer-nav-group a { display: block; padding: 12px 12px; font-size: 14px; color: #555; border-radius: 8px; }
+    .drawer-nav-group a:hover { background: #f7f4f0; color: #b85e3a; }
+    .drawer-actions { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+    .drawer-actions a { width: 100%; padding: 14px; border-radius: 10px; font-size: 15px; font-weight: 600; text-align: center; display: block; }
+    .drawer-login { border: 1.5px solid #ccc; background: white; color: #333 !important; }
+    .drawer-signup { background: #b85e3a; color: white !important; }
+
+    /* ===== PAGE ===== */
+    .collab-page { background-color: #faf7f2; padding: 40px 16px 60px; width: 100%; }
+    .collab-container {
+      max-width: 1200px; margin: 0 auto;
+      background: #ffffff; border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(75,15,7,0.07);
+      overflow: hidden; animation: fadeInUp 0.6s ease both;
+    }
+
+    /* ===== HERO ===== */
+    .collab-hero {
+      background: linear-gradient(135deg, #4b0f07 0%, #7a1a0f 55%, #9c2c16 100%);
+      padding: 36px 48px 32px;
+      position: relative; overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .collab-hero::before {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 400px; height: 400px; border-radius: 50%; background: rgba(245,215,158,0.07);
+      pointer-events: none;
+    }
+    .collab-hero::after {
+      content: ''; position: absolute; bottom: -100px; left: 25%;
+      width: 500px; height: 500px; border-radius: 50%; background: rgba(245,215,158,0.04);
+      pointer-events: none;
+    }
+
+    /* Left column */
+    .hero-left {
+      flex: 1 1 0;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,215,158,0.15); border: 1px solid rgba(245,215,158,0.35);
+      color: #f5d79e; border-radius: 30px; padding: 5px 14px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .collab-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(24px, 3.2vw, 42px); font-weight: 400;
+      color: #fff; line-height: 1.15; margin-bottom: 10px;
+    }
+    .collab-hero h1 em { color: #f5d79e; font-style: italic; }
+    .collab-hero p { font-size: 15px; color: rgba(245,228,184,0.85); line-height: 1.7; max-width: 560px; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); border-radius: 24px; padding: 7px 14px;
+      font-size: 13px; font-weight: 600;
+    }
+    .hero-badge i { color: #f5d79e; font-size: 12px; }
+
+    /* Right column – stats card */
+    .hero-right {
+      flex: 0 0 240px;
+      width: 240px;
+      position: relative;
+      z-index: 1;
+      animation: floatCard 5s ease-in-out infinite;
+    }
+    .hero-stats-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(245,215,158,0.25);
+      border-radius: 16px;
+      padding: 18px 16px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-stats-card .card-top-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #f5d79e;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .hero-stats-card .card-top-label::before {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 2px;
+      background: #f5d79e;
+      border-radius: 2px;
+    }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-icon-box {
+      flex: 0 0 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(245,215,158,0.15);
+      border: 1px solid rgba(245,215,158,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stat-icon-box i { color: #f5d79e; font-size: 13px; }
+    .stat-info { flex: 1; min-width: 0; }
+    .stat-info .stat-num {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      font-family: 'DM Serif Display', serif;
+    }
+    .stat-info .stat-label {
+      font-size: 10px;
+      color: rgba(245,228,184,0.7);
+      font-weight: 500;
+      margin-top: 1px;
+    }
+    .hero-mou-chip {
+      margin-top: 12px;
+      background: rgba(245,215,158,0.12);
+      border: 1px solid rgba(245,215,158,0.3);
+      border-radius: 10px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-mou-chip .chip-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #f5d79e;
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .hero-mou-chip .chip-text {
+      font-size: 11px;
+      color: rgba(245,228,184,0.9);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .hero-mou-chip .chip-text strong {
+      color: #f5d79e;
+      display: block;
+      font-size: 12px;
+    }
+
+    /* ===== BODY ===== */
+    .collab-body { padding: 48px 56px; }
+
+    /* ===== MOU BANNER ===== */
+    .mou-banner {
+      background: #fdf8f3;
+      border: 1px solid #ede5da;
+      border-radius: 18px;
+      padding: 24px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mou-icon {
+      flex: 0 0 80px;
+      height: 80px;
+      background: white;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    }
+    .mou-icon i { font-size: 34px; color: #b85e3a; }
+    .mou-text { flex: 1; min-width: 0; }
+    .mou-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px; color: #2d2d2d; margin-bottom: 5px;
+    }
+    .mou-text .mou-date-badge {
+      display: block; font-size: 12px; color: #b85e3a;
+      font-weight: 700; letter-spacing: 0.6px; margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .mou-text p { font-size: 15px; color: #3e3530; line-height: 1.75; margin-bottom: 12px; }
+    .mou-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .mou-tag {
+      background: #fef0e6; color: #b85e3a; border: 1px solid #f5d0b8;
+      font-size: 12px; font-weight: 700; padding: 4px 12px;
+      border-radius: 20px; letter-spacing: 0.4px;
+    }
+    .mou-tag.outline {
+      background: transparent; color: #b85e3a;
+      border: 1.5px solid rgba(184,94,58,0.3);
+    }
+    .mou-apply-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #d4623e 0%, #b85e3a 100%);
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 11px 26px;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 5px 16px rgba(184,94,58,0.35);
+      transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+      white-space: nowrap;
+    }
+    .mou-apply-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(184,94,58,0.46);
+    }
+    .mou-apply-btn i { font-size: 13px; }
+
+    /* ===== SECTIONS ===== */
+    .section { margin-bottom: 48px; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #b85e3a; margin-bottom: 10px;
+    }
+    .section-label::before { content: ''; width: 20px; height: 2px; background: #b85e3a; display: inline-block; }
+    .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(26px,3.5vw,38px); color: #4b0f07; margin-bottom: 22px; line-height: 1.2; }
+    .section p { font-size: 16px; color: #3e3530; line-height: 1.8; margin-bottom: 14px; }
+    .section strong { color: #b85e3a; font-weight: 600; }
+
+    /* ===== UNIVERSITY CARD ===== */
+    .university-card {
+      display: flex; flex-wrap: wrap; gap: 22px; align-items: center;
+      background: #fdf8f3; border-radius: 18px; padding: 24px 28px; border: 1px solid #ede5da;
+    }
+    .university-logo-box {
+      flex: 0 0 80px; height: 80px; flex-shrink: 0;
+      background: white; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+      overflow: hidden;
+      padding: 6px;
+    }
+    .university-logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .university-info { flex: 1; min-width: 0; }
+    .university-info h3 { font-family: 'DM Serif Display', serif; font-size: 24px; color: #2d2d2d; margin-bottom: 5px; }
+    .university-info .est { font-size: 12px; color: #b85e3a; font-weight: 700; letter-spacing: 0.6px; margin-bottom: 10px; text-transform: uppercase; display: block; }
+    .university-info p { font-size: 15px; color: #3e3530; line-height: 1.75; }
+
+    /* ===== MENTOR CARD ===== */
+    .mentor-card {
+      display: flex; flex-wrap: wrap; gap: 32px; align-items: center;
+      background: #fdf8f3; border-radius: 20px; padding: 32px 36px; border: 1px solid #ede5da;
+    }
+    .mentor-img { flex: 0 0 150px; width: 150px; height: 150px; flex-shrink: 0; }
+    .mentor-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 4px solid #f5d79e; box-shadow: 0 10px 28px rgba(0,0,0,0.12); }
+    .mentor-text { flex: 1; min-width: 0; }
+    .mentor-text h3 { font-family: 'DM Serif Display', serif; font-size: 30px; color: #2d2d2d; margin-bottom: 6px; }
+    .mentor-text .tagline { font-size: 14px; color: #b85e3a; font-weight: 600; letter-spacing: 0.4px; margin-bottom: 14px; display: block; }
+    .mentor-text p { font-size: 15px; line-height: 1.75; color: #3e3530; margin-bottom: 14px; }
+    .mentor-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
+    .mentor-benefits li { display: flex; align-items: center; gap: 9px; font-size: 14px; color: #3e3530; list-style: none; }
+    .mentor-benefits li i { color: #b85e3a; font-size: 10px; flex-shrink: 0; }
+
+    /* ===== TABS ===== */
+    .tabs-wrapper { margin-bottom: 48px; }
+    input[name="collab-tabs"] { display: none; }
+    .tab-bar {
+      display: flex; gap: 4px; flex-wrap: wrap;
+      border-bottom: 2px solid #e0dbd1; margin-bottom: 28px;
+    }
+    .tab-lbl {
+      display: inline-block; font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 14px; font-weight: 600; color: #888;
+      padding: 10px 20px; cursor: pointer;
+      border-bottom: 3px solid transparent; margin-bottom: -2px;
+      border-radius: 8px 8px 0 0; transition: color 0.3s, border-color 0.3s, background 0.3s;
+    }
+    .tab-lbl:hover { color: #4b0f07; background: #faf7f2; }
+    #tab-r-diploma:checked ~ .tab-bar label[for="tab-r-diploma"],
+    #tab-r-certificate:checked ~ .tab-bar label[for="tab-r-certificate"],
+    #tab-r-combo:checked ~ .tab-bar label[for="tab-r-combo"] {
+      color: #b85e3a; border-bottom-color: #b85e3a;
+    }
+    .tab-pane { display: none; }
+    #tab-r-diploma:checked ~ .tab-content-diploma,
+    #tab-r-certificate:checked ~ .tab-content-certificate,
+    #tab-r-combo:checked ~ .tab-content-combo { display: block; animation: scaleIn 0.3s ease; }
+
+    /* ===== COURSE GRID ===== */
+    .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .course-card {
+      background: #fff; border: 1.5px solid #e0dbd1; border-radius: 18px; padding: 26px;
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s; cursor: default;
+    }
+    .course-card:hover { box-shadow: 0 14px 36px rgba(184,94,58,0.1); transform: translateY(-4px); border-color: #f5d79e; }
+    .course-icon {
+      width: 50px; height: 50px; border-radius: 12px;
+      background: linear-gradient(135deg, #b85e3a, #d4724a);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; box-shadow: 0 5px 14px rgba(184,94,58,0.28);
+    }
+    .course-icon i { color: white; font-size: 20px; }
+    .course-card h4 { font-family: 'DM Serif Display', serif; font-size: 20px; color: #2d2d2d; margin-bottom: 10px; }
+    .course-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+    .meta-badge { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: #fef0e6; color: #b85e3a; border: 1px solid #f5d0b8; }
+    .course-card ul { padding-left: 18px; }
+    .course-card ul li { font-size: 14px; color: #555; margin-bottom: 5px; line-height: 1.6; }
+
+    /* ===== QUOTE ===== */
+    .collab-quote {
+      background: #fdf6ef; border-left: 5px solid #b85e3a; border-radius: 16px;
+      padding: 26px 30px; margin-bottom: 48px;
+      font-style: italic; font-size: 17px; color: #4b0f07;
+      line-height: 1.8; box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    }
+    .collab-quote i { color: #b85e3a; font-size: 24px; margin-right: 8px; }
+
+    hr { border: none; border-top: 1px solid #e2d9cf; margin: 36px 0; }
+
+    /* ===== ENROLL FORM ===== */
+    .enroll-section {
+      background: #fdf8f3; border-radius: 20px;
+      padding: 40px; border: 1.5px solid #edd5bb;
+      width: 100%; overflow: hidden;
+    }
+    .enroll-section h2 { font-family: 'DM Serif Display', serif; font-size: 32px; color: #4b0f07; margin-bottom: 6px; }
+    .enroll-section .enroll-sub { font-size: 15px; color: #888; margin-bottom: 28px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; width: 100%; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; min-width: 0; width: 100%; }
+    .form-group label { font-size: 12px; font-weight: 700; color: #4b0f07; letter-spacing: 0.5px; text-transform: uppercase; }
+    .form-group input, .form-group select {
+      width: 100%; max-width: 100%; display: block;
+      padding: 13px 16px; border: 1.5px solid #e0d8ce; border-radius: 10px;
+      font-size: 15px; font-family: 'Montserrat', Arial, sans-serif; color: #333;
+      background: #fff; outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: #b85e3a; box-shadow: 0 0 0 3px rgba(184,94,58,0.1); }
+    .form-full { grid-column: 1 / -1; }
+    .enroll-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #d4623e 0%, #b85e3a 100%);
+      color: white; border: none; padding: 16px 40px;
+      font-weight: 700; cursor: pointer; border-radius: 10px;
+      font-size: 16px; font-family: 'Montserrat', Arial, sans-serif; letter-spacing: 0.3px;
+      transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 16px rgba(184,94,58,0.38); margin-top: 6px;
+    }
+    .enroll-btn:hover { opacity: 0.92; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(184,94,58,0.46); }
+
+    .om-line { text-align: center; color: #6f6b66; font-size: 15px; padding: 16px 0; }
+
+    /* ===== FOOTER ===== */
+    footer.footer, .footer { background-color: #4b0f07 !important; color: #f5e6d3 !important; width: 100%; }
+    .footer * { color: inherit; }
+    .footer-top { padding: clamp(36px,5vw,56px) clamp(20px,5vw,80px); border-bottom: 1px solid rgba(255,255,255,0.08); text-align: center; background-color: #4b0f07 !important; }
+    .footer-top h3 { font-family: 'DM Serif Display', serif; font-size: clamp(20px,2.8vw,30px); margin-bottom: 14px; color: #f5e6d3 !important; }
+    .footer-top p { margin-bottom: 8px; font-size: 15px; color: rgba(245,230,211,0.85) !important; }
+    .footer-top > a, .footer-top p > a { color: #f8c27a !important; font-weight: 600; }
+    .footer-social { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 22px; }
+    .footer-social a { width: 44px !important; height: 44px !important; border: 1.5px solid rgba(248,194,122,0.5) !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 50% !important; color: #f8c27a !important; font-size: 16px; transition: background 0.3s, border-color 0.3s, transform 0.3s; background-color: transparent !important; }
+    .footer-social a:hover { background-color: #f8c27a !important; color: #4b0f07 !important; border-color: #f8c27a !important; transform: translateY(-3px); }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: clamp(12px,3vw,28px); margin: 22px 0 10px; font-size: 14px; }
+    .footer-links a { color: #f8c27a !important; font-weight: 500; transition: color 0.3s; }
+    .footer-links a:hover { color: #ffffff !important; }
+    .footer-bottom { padding: 18px clamp(20px,5vw,60px); border-top: 1px solid rgba(255,255,255,0.07); background-color: #4b0f07 !important; }
+    .footer-bottom-inner { max-width: 1350px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-size: 14px; color: rgba(245,230,211,0.6) !important; }
+
+    /* ===== RESPONSIVE – TABLET ===== */
+    @media (max-width: 992px) {
+      .nav-links { display: none; }
+      .dropdown { display: none !important; }
+      .hero-right { flex: 0 0 240px; width: 240px; }
+    }
+
+    /* ===== RESPONSIVE – MOBILE ===== */
+    @media (max-width: 768px) {
+      .navbar { height: 64px; }
+      .navbar-inner { padding: 0 16px; }
+      .logo-img { height: 44px; }
+      .auth-buttons { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .nav-divider { display: none; }
+      .top-banner { font-size: 12px; padding: 9px 12px; }
+      .top-banner span { font-size: 11px; }
+      .collab-page { padding: 12px 10px 40px; }
+      .collab-container { border-radius: 16px; }
+
+      /* Hero mobile – stack vertically */
+      .collab-hero {
+        flex-direction: column;
+        padding: 28px 20px 26px;
+        gap: 24px;
+        min-height: unset;
+      }
+      .collab-hero::before, .collab-hero::after { display: none; }
+      .hero-left { width: 100%; }
+      .hero-right {
+        flex: none;
+        width: 100%;
+        animation: none;
+      }
+      .hero-stats-card { padding: 20px 18px; }
+      .stat-row { padding: 10px 0; }
+      .stat-icon-box { flex: 0 0 34px; height: 34px; }
+      .stat-icon-box i { font-size: 13px; }
+      .stat-info .stat-num { font-size: 18px; }
+
+      .hero-eyebrow { font-size: 10px; padding: 5px 12px; margin-bottom: 12px; }
+      .collab-hero h1 { font-size: 26px; margin-bottom: 10px; }
+      .collab-hero p { font-size: 14px; line-height: 1.65; }
+      .hero-badges { gap: 7px; margin-top: 16px; }
+      .hero-badge { font-size: 11px; padding: 5px 11px; gap: 5px; }
+      .hero-badge i { font-size: 10px; }
+      .collab-body { padding: 20px 16px 24px; }
+      .mou-banner { flex-direction: column; align-items: flex-start; padding: 18px 16px; gap: 14px; margin-bottom: 30px; }
+      .mou-icon { flex: 0 0 60px; width: 60px; height: 60px; border-radius: 12px; }
+      .mou-icon i { font-size: 26px; }
+      .mou-text h2 { font-size: 19px; line-height: 1.3; }
+      .mou-text .mou-date-badge { font-size: 11px; margin-bottom: 8px; }
+      .mou-text p { font-size: 14px; line-height: 1.7; margin-bottom: 10px; }
+      .mou-tag { font-size: 11px; padding: 3px 10px; }
+      .mou-apply-btn { font-size: 13px; padding: 10px 22px; }
+      .section { margin-bottom: 32px; }
+      .section h2 { font-size: 24px; margin-bottom: 16px; }
+      .section p { font-size: 14px; }
+      .section-label { font-size: 11px; }
+      .university-card { flex-direction: row; align-items: flex-start; padding: 16px; gap: 14px; border-radius: 14px; }
+      .university-logo-box { flex: 0 0 60px; width: 60px; height: 60px; border-radius: 12px; padding: 4px; }
+      .university-info h3 { font-size: 19px; }
+      .university-info .est { font-size: 11px; margin-bottom: 8px; }
+      .university-info p { font-size: 13px; line-height: 1.7; }
+      .mentor-card { flex-direction: column; align-items: center; text-align: center; padding: 22px 16px; gap: 18px; border-radius: 16px; }
+      .mentor-img { flex: 0 0 110px; width: 110px; height: 110px; }
+      .mentor-text h3 { font-size: 24px; }
+      .mentor-text .tagline { font-size: 13px; }
+      .mentor-text p { font-size: 13px; line-height: 1.7; }
+      .mentor-benefits { grid-template-columns: 1fr; gap: 8px; text-align: left; width: 100%; }
+      .mentor-benefits li { font-size: 13px; }
+      .tabs-wrapper { margin-bottom: 32px; }
+      .tab-bar { flex-direction: row; overflow-x: auto; flex-wrap: nowrap; gap: 0; padding-bottom: 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .tab-bar::-webkit-scrollbar { display: none; }
+      .tab-lbl { font-size: 12px; padding: 9px 14px; white-space: nowrap; flex-shrink: 0; }
+      .course-grid { grid-template-columns: 1fr; gap: 14px; }
+      .course-card { padding: 20px 16px; border-radius: 14px; }
+      .course-icon { width: 44px; height: 44px; border-radius: 10px; margin-bottom: 12px; }
+      .course-icon i { font-size: 18px; }
+      .course-card h4 { font-size: 18px; margin-bottom: 8px; }
+      .meta-badge { font-size: 11px; padding: 3px 9px; }
+      .course-card ul li { font-size: 13px; margin-bottom: 4px; }
+      .collab-quote { padding: 18px 20px; font-size: 14px; line-height: 1.75; border-radius: 12px; margin-bottom: 30px; }
+      .collab-quote i { font-size: 18px; }
+      hr { margin: 24px 0; }
+      .enroll-section { padding: 22px 16px; border-radius: 16px; }
+      .enroll-section h2 { font-size: 24px; margin-bottom: 6px; }
+      .enroll-section .enroll-sub { font-size: 13px; margin-bottom: 20px; }
+      .form-grid { grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
+      .form-full { grid-column: 1; }
+      .form-group label { font-size: 11px; }
+      .form-group input, .form-group select { padding: 12px 14px; font-size: 14px; border-radius: 9px; }
+      .enroll-btn { width: 100%; justify-content: center; padding: 15px 20px; font-size: 15px; border-radius: 10px; margin-top: 4px; }
+      .om-line { font-size: 13px; padding: 14px 0; }
+      .footer-top { padding: 28px 16px; }
+      .footer-top h3 { font-size: 20px; }
+      .footer-top p { font-size: 13px; }
+      .footer-social a { width: 40px !important; height: 40px !important; font-size: 15px; }
+      .footer-links { gap: 12px 16px; font-size: 13px; }
+      .footer-bottom { padding: 16px; }
+      .footer-bottom-inner { flex-direction: column; text-align: center; gap: 6px; }
+      .footer-copy { font-size: 12px; }
+    }
+
+    @media (max-width: 380px) {
+      .collab-hero h1 { font-size: 22px; }
+      .hero-badge { font-size: 10px; padding: 4px 9px; }
+      .mou-text h2 { font-size: 17px; }
+      .mentor-img { flex: 0 0 90px; width: 90px; height: 90px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#courses" class="top-banner">
+    <strong>Skills on sale</strong> | Courses now as low as <strong>&#8377;999</strong> through limited time.
+    <span>Enroll Now!</span>
+  </a>
+
+  <input type="checkbox" id="nav-toggle">
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="nav-left">
+        <a href="https://astrovastugurukull.com/" class="logo-link">
+          <img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg"
+            alt="AstroVastu Gurukull" class="logo-img"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <span class="logo" style="display:none;">Astro<span>Vastu</span> Gurukull</span>
+        </a>
+        <div class="nav-divider"></div>
+        <div class="nav-item dropdown">
+          <button class="dropbtn">Courses</button>
+          <div class="dropdown-content">
+            <div class="submenu">
+              <div class="submenu-title">Astrology &#9658;</div>
+              <div class="submenu-content">
+                <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a>
+                <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a>
+                <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a>
+                <a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a>
+                <a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a>
+                <a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a>
+              </div>
+            </div>
+            <div class="submenu">
+              <div class="submenu-title">Numerology &#9658;</div>
+              <div class="submenu-content">
+                <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a>
+                <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a>
+                <a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a>
+                <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a>
+              </div>
+            </div>
+            <div class="submenu">
+              <div class="submenu-title">Vastu &#9658;</div>
+              <div class="submenu-content">
+                <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a>
+                <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
+                <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
+                <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
+              </div>
+            </div>
+            <div class="submenu">
+              <div class="submenu-title">Combo Course &#9658;</div>
+              <div class="submenu-content">
+                <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course-batch-7">करोड़पति Combo {Batch-7}</a>
+                <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
+              </div>
+            </div>
+            <div class="submenu">
+              <div class="submenu-title">Rudraksha &#9658;</div>
+              <div class="submenu-content">
+                <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
+          <button class="dropbtn">Events &amp; Webinar</button>
+          <div class="dropdown-content">
+            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
+            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
+            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Live Sessions</a>
+            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Workshops</a>
+            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Free Events</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <div class="auth-buttons">
+          <a href="https://academy.astrovastugurukull.com/web/dashboard/getstarted" class="login-btn">Log in</a>
+        </div>
+        <label for="nav-toggle" class="mobile-menu-btn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-inner">
+      <label for="nav-toggle" class="drawer-close-label">&#10005;</label>
+      <div class="drawer-logo">
+        <img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg" alt="AstroVastu Gurukull">
+      </div>
+      <details class="drawer-nav-group">
+        <summary>Astrology</summary>
+        <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a>
+        <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a>
+        <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a>
+        <a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a>
+        <a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a>
+        <a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a>
+      </details>
+      <details class="drawer-nav-group">
+        <summary>Numerology</summary>
+        <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a>
+        <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a>
+        <a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a>
+        <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a>
+      </details>
+      <details class="drawer-nav-group">
+        <summary>Vastu &amp; Combo</summary>
+        <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a>
+        <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
+        <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
+        <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
+        <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course-batch-7">करोड़पति Combo {Batch-7}</a>
+        <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
+        <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
+      </details>
+      <details class="drawer-nav-group">
+        <summary>Events &amp; Webinar</summary>
+        <a href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
+        <a href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
+        <a href="https://astrovastugurukull.com/trfu">Live Sessions</a>
+        <a href="https://astrovastugurukull.com/trfu">Workshops</a>
+        <a href="https://astrovastugurukull.com/trfu">Free Events</a>
+      </details>
+      <div class="drawer-actions">
+        <a class="drawer-login" href="https://academy.astrovastugurukull.com/web/dashboard/getstarted">Log in</a>
+        <a class="drawer-signup" href="#courses">Explore Courses</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <section class="collab-page">
+    <div class="collab-container">
+
+      <div class="collab-hero">
+
+        <!-- LEFT: Text content -->
+        <div class="hero-left">
+          <div class="hero-eyebrow"><i class="fas fa-handshake"></i> Official Academic Collaboration</div>
+          <h1>Academic Collaboration<br><em>with Nirwan University</em></h1>
+          <p>Structured Diploma &amp; Certificate Programs in Occult Science — now officially university-recognized for learners across India and worldwide.</p>
+          <div class="hero-badges">
+            <div class="hero-badge"><i class="fas fa-certificate"></i> University Recognized</div>
+            <div class="hero-badge"><i class="fas fa-laptop"></i> Online / Offline / Hybrid</div>
+            <div class="hero-badge"><i class="fas fa-om"></i> Vedic Sciences</div>
+            <div class="hero-badge"><i class="fas fa-calendar-check"></i> MOU: 12 Aug 2025</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Stats card -->
+        <div class="hero-right">
+          <div class="hero-stats-card">
+            <div class="card-top-label">Program Highlights</div>
+
+            <div class="stat-row">
+              <div class="stat-icon-box"><i class="fas fa-graduation-cap"></i></div>
+              <div class="stat-info">
+                <div class="stat-num">7+</div>
+                <div class="stat-label">University Programs</div>
+              </div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat-icon-box"><i class="fas fa-clock"></i></div>
+              <div class="stat-info">
+                <div class="stat-num">3–12 Months</div>
+                <div class="stat-label">Course Duration</div>
+              </div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat-icon-box"><i class="fas fa-star"></i></div>
+              <div class="stat-info">
+                <div class="stat-num">20+ Years</div>
+                <div class="stat-label">Mentor Experience</div>
+              </div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat-icon-box"><i class="fas fa-globe"></i></div>
+              <div class="stat-info">
+                <div class="stat-num">India &amp; Global</div>
+                <div class="stat-label">Open to All Learners</div>
+              </div>
+            </div>
+
+           
+          </div>
+        </div>
+
+      </div><!-- /collab-hero -->
+
+      <div class="collab-body">
+
+        <!-- ── MOU BANNER ── -->
+        <div class="mou-banner">
+          <div class="mou-icon"><i class="fas fa-handshake"></i></div>
+          <div class="mou-text">
+            <h2>Memorandum of Understanding Signed</h2>
+            <span class="mou-date-badge">12 August 2025 · Jaipur, Rajasthan</span>
+            <p>We officially signed an M.O.U with <strong>Nirwan University</strong> to introduce structured, university-recognized education in the field of Occult Science — a milestone for authentic Vedic knowledge in academia.</p>
+            <div class="mou-tags">
+              <span class="mou-tag"><i class="fas fa-certificate" style="margin-right:5px;"></i> University Recognized Programs</span>
+              <span class="mou-tag outline">Occult Science</span>
+              <span class="mou-tag outline">Rajasthan, India</span>
+            </div>
+            <a href="https://nujadmission.nirwanuniversity.ac.in/" target="_blank" class="mou-apply-btn">
+              <i class="fas fa-arrow-right"></i> Apply Now
+            </a>
+          </div>
+        </div>
+
+        <!-- ── PARTNER INSTITUTION ── -->
+        <div class="section">
+          <div class="section-label">Partner Institution</div>
+          <h2>About Nirwan University</h2>
+          <div class="university-card">
+            <div class="university-logo-box">
+              <img
+                src="https://tagmango.com/staticassets/-108t_untitled-1-02-1472434460aebca49c529525cd5760d5.png"
+                alt="Nirwan University Logo"
+                onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-university\' style=\'font-size:34px;color:#b85e3a;\'></i>';"
+              >
+            </div>
+            <div class="university-info">
+              <h3>Nirwan University</h3>
+              <span class="est">Established 2017 · Jaipur, Rajasthan, India</span>
+              <p>Nirwan University was established in 2017 and is recognized by the relevant educational authorities. The university is committed to promoting specialized fields of knowledge and has registered our programs under the academic category of <strong>Occult Science</strong>. Through this collaboration, students gain access to a structured learning environment and credible university certification in this traditional field of study.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">Lead Educator</div>
+          <h2>Meet the Mentor</h2>
+          <div class="mentor-card">
+            <div class="mentor-img">
+              <img src="https://tagmango.com/staticassets/-1772188739911-05359e56ff9540c804b9aa73633701d9.png" alt="Acharya Lavbhushan">
+            </div>
+            <div class="mentor-text">
+              <h3>Acharya (Dr.) LavBhushan</h3>
+              <span class="tagline">Lead Mentor &amp; Curriculum Designer – Diploma &amp; Certificate Programs</span>
+              <p>Acharya Lavbhushan is an experienced practitioner with over two decades in Astrology, Numerology, and Vastu Shastra. He holds a Doctorate in Astrology from the International Astrology Federation (USA &amp; Thailand) and has helped thousands of students understand and apply ancient sciences in practical life.</p>
+              <ul class="mentor-benefits">
+                <li><i class="fas fa-circle"></i> Real case-study based learning</li>
+                <li><i class="fas fa-circle"></i> Practical predictive techniques</li>
+                <li><i class="fas fa-circle"></i> Structured academic curriculum</li>
+                <li><i class="fas fa-circle"></i> Professional consultation training</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs-wrapper" id="courses">
+          <div class="section-label">Academic Programs</div>
+          <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,3.5vw,38px);color:#4b0f07;margin-bottom:22px;">Our University Programs</h2>
+
+          <input type="radio" name="collab-tabs" id="tab-r-diploma" checked>
+          <input type="radio" name="collab-tabs" id="tab-r-certificate">
+          <input type="radio" name="collab-tabs" id="tab-r-combo">
+
+          <div class="tab-bar">
+            <label for="tab-r-diploma" class="tab-lbl">Diploma Courses</label>
+            <label for="tab-r-certificate" class="tab-lbl">Certificate Courses</label>
+            <label for="tab-r-combo" class="tab-lbl">Combo Course</label>
+          </div>
+
+          <div class="tab-pane tab-content-diploma">
+            <div class="course-grid">
+              <div class="course-card">
+                <div class="course-icon"><i class="fas fa-star-and-crescent"></i></div>
+                <h4>Diploma in Astrology</h4>
+                <div class="course-meta">
+                  <span class="meta-badge">1 Year · 2 Semesters</span>
+                  <span class="meta-badge">Online / Offline / Hybrid</span>
+                </div>
+                <ul>
+                  <li>Planets, zodiac signs &amp; 12 houses</li>
+                  <li>Planetary aspects &amp; strengths</li>
+                  <li>Yogas, doshas &amp; dasha systems</li>
+                  <li>Transit analysis &amp; horoscope prediction</li>
+                  <li>Astrological remedies</li>
+                </ul>
+              </div>
+              <div class="course-card">
+                <div class="course-icon"><i class="fas fa-hashtag"></i></div>
+                <h4>Diploma in Numerology</h4>
+                <div class="course-meta">
+                  <span class="meta-badge">1 Year · 2 Semesters</span>
+                  <span class="meta-badge">Online / Offline / Hybrid</span>
+                </div>
+                <ul>
+                  <li>Numeroscope analysis</li>
+                  <li>Mulank &amp; Bhagyank calculation</li>
+                  <li>Advanced predictive numerology</li>
+                  <li>Remedies &amp; corrections</li>
+                  <li>Integration with astrology &amp; vastu</li>
+                </ul>
+              </div>
+              <div class="course-card">
+                <div class="course-icon"><i class="fas fa-home"></i></div>
+                <h4>Diploma in Vastu Shastra</h4>
+                <div class="course-meta">
+                  <span class="meta-badge">1 Year · 2 Semesters</span>
+                  <span class="meta-badge">Online / Offline / Hybrid</span>
+                </div>
+                <ul>
+                  <li>Vastu fundamentals &amp; directions</li>
+                  <li>Land &amp; plot analysis</li>
+                  <li>Five elements &amp; energy balance</li>
+                  <li>Negative energy removal techniques</li>
+                  <li>Residential &amp; commercial vastu</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane tab-content-certificate">
+            <div class="course-grid">
+              <div class="course-card">
+                <div class="course-icon"><i class="fas fa-star-and-crescent"></i></div>
+                <h4>Certificate in Astrology</h4>
+                <div class="course-meta"><span class="meta-badge">4–6 Months · 90 Hours</span></div>
+                <ul>
+                  <li>Panchang &amp; planetary effects</li>
+                  <li>Zodiac signs &amp; houses</li>
+                  <li>Kundli preparation</li>
+                  <li>Dasha systems &amp; yogas/doshas</li>
+                  <li>Basic horoscope prediction</li>
+                </ul>
+              </div>
+              <div class="course-card">
+                <div class="course-icon"><i class="fas fa-hashtag"></i></div>
+                <h4>Certificate in Numerology</h4>
+                <div class="course-meta"><span class="meta-badge">3 Months · 60 Hours</span></div>
+                <ul>
+                  <li>Numeroscope vs Lo-Shu Grid</li>
+                  <li>Mulank &amp; Bhagyank</li>
+                  <li>Numbers 1–9 significance</li>
+                  <li>Friends &amp; enemy numbers</li>
+                  <li>Missing numbers &amp; remedies</li>
+                </ul>
+              </div>
+              <div class="course-card">
+                <div class="course-icon"><i class="fas fa-home"></i></div>
+                <h4>Certificate in Vastu Shastra</h4>
+                <div class="course-meta"><span class="meta-badge">3–4 Months · 60 Hours</span></div>
+                <ul>
+                  <li>Directions &amp; zones</li>
+                  <li>Plot analysis</li>
+                  <li>Five elements balance</li>
+                  <li>Negative energy correction</li>
+                  <li>Vastu grid drawing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane tab-content-combo">
+            <div class="course-grid" style="grid-template-columns:1fr;">
+              <div class="course-card" style="max-width:620px;">
+                <div class="course-icon"><i class="fas fa-layer-group"></i></div>
+                <h4>Combo Certificate Course – Numerology + Astrology + Vastu</h4>
+                <div class="course-meta">
+                  <span class="meta-badge">6 Months</span>
+                  <span class="meta-badge">160 Hours</span>
+                  <span class="meta-badge">All-in-One</span>
+                </div>
+                <ul>
+                  <li>Numerology fundamentals &amp; planes of expression</li>
+                  <li>Astrology basics &amp; kundli reading</li>
+                  <li>Vastu directions &amp; five elements</li>
+                  <li>Predictive techniques across all three sciences</li>
+                  <li>Integrated remedies &amp; consultation training</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="collab-quote">
+          <i class="fas fa-quote-left"></i> Through this collaboration with Nirwan University, students across India and internationally can now earn credible academic credentials while mastering the timeless sciences of Astrology, Numerology, and Vastu.
+        </div>
+
+        <hr>
+
+        <div class="enroll-section" id="enroll">
+          <div class="section-label">Join the Program</div>
+          <h2>Enrollment Form</h2>
+          <p class="enroll-sub">Start your journey into occult sciences. Fill in your details and we'll get back to you within 24 hours.</p>
+          <form action="https://script.google.com/macros/s/AKfycbzSPSdVhJc3vedcA2QR_a_vKLjn65zuoDcNhhDUpIV0j9y9qqevuFPi6bjAFcQBcwUd/exec" method="POST" target="_blank">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="f-name">Full Name *</label>
+                <input type="text" id="f-name" name="name" placeholder="Enter your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="f-phone">Phone Number *</label>
+                <input type="tel" id="f-phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+              <div class="form-group">
+                <label for="f-email">Email Address *</label>
+                <input type="email" id="f-email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="f-city">City / Location *</label>
+                <input type="text" id="f-city" name="city" placeholder="Your city" required>
+              </div>
+              <div class="form-group form-full">
+                <label for="f-course">Select Course *</label>
+                <select id="f-course" name="course" required>
+                  <option value="" disabled selected>-- Choose a program --</option>
+                  <optgroup label="Diploma Courses">
+                    <option value="Diploma in Astrology">Diploma in Astrology</option>
+                    <option value="Diploma in Numerology">Diploma in Numerology</option>
+                    <option value="Diploma in Vastu Shastra">Diploma in Vastu Shastra</option>
+                  </optgroup>
+                  <optgroup label="Certificate Courses">
+                    <option value="Certificate Course in Astrology">Certificate Course in Astrology</option>
+                    <option value="Certificate Course in Numerology">Certificate Course in Numerology</option>
+                    <option value="Certificate Course in Vastu Shastra">Certificate Course in Vastu Shastra</option>
+                  </optgroup>
+                  <optgroup label="Combo Course">
+                    <option value="Combo Certificate Course (Numerology + Astrology + Vastu)">Combo Certificate Course (Numerology + Astrology + Vastu)</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="enroll-btn">Submit</button>
+          </form>
+        </div>
+
+        <hr>
+        <div class="om-line">
+          <i class="fas fa-om" style="color:#b85e3a;margin-right:6px;"></i>
+          ज्योतिष, वास्तु और अंक ज्योतिष के माध्यम से जीवन को संवारने का प्रयास
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <h3>Got questions? We&#8217;re here to help.</h3>
+      <p>Email us at: <a href="mailto:support@astrovastugurukull.com">support@astrovastugurukull.com</a></p>
+      <p>Follow us on social media for updates, tips &amp; free knowledge from Acharya ji</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/Astro-Vastu-Gurukul-61574634191304/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/ALavbhushan" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/astrovastugurukull/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="http://www.youtube.com/@AstroVastuGurukull-01" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="https://astrovastugurukull.com/about-us">About Us</a>
+        <a href="https://astrovastugurukull.com/terms-and-conditions">Terms &amp; Conditions</a>
+        <a href="https://astrovastugurukull.com/privacy-policy">Privacy Policy</a>
+        <a href="https://astrovastugurukull.com/refund-and-cancellation-policy">Refund Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span class="footer-brand">Astro Vastu Gurukull</span>
+        <span class="footer-copy">© 2025 AstroVastu Gurukull. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astrovastu Gurukull – Official Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 18px;
+      background-color: #faf7f2;
+      color: #2d2d2d;
+      line-height: 1.5;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --primary: #b85e3a;
+      --primary-dark: #8a3f22;
+      --dark-red: #4b0f07;
+      --gold: #f5d79e;
+      --cream: #faf7f2;
+      --bg-light: #f7f4f0;
+      --border: #e0dbd1;
+      --text-muted: #6f6b66;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.10);
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+      --radius: 14px;
+      --radius-lg: 20px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== KEYFRAME ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes bannerSlide {
+      from { opacity: 0; transform: translateY(-100%); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes navReveal {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroText {
+      from { opacity: 0; transform: translateY(40px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes faqOpen {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes slideInDrawer {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    /* ===== ANNOUNCEMENT BANNER ===== */
+    .top-banner {
+      display: block;
+      background: linear-gradient(90deg, #b85e3a, #d4724a, #b85e3a);
+      background-size: 200% auto;
+      animation: bannerSlide 0.6s ease forwards, gradientShift 4s linear infinite;
+      color: #fff;
+      text-align: center;
+      padding: 11px 16px;
+      font-size: 18px;
+      cursor: pointer;
+      width: 100%;
+      letter-spacing: 0.2px;
+    }
+    .top-banner:hover { opacity: 0.95; }
+    .top-banner span {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-weight: 700;
+      margin-left: 6px;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      transition: background0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .top-banner:hover span { background: rgba(255, 255, 255, 0.32); }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1.5px solid #ece7df;
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      box-shadow: 0 2px 24px rgba(75, 15, 7, 0.07);
+      animation: navReveal 0.5s ease 0.2s both;
+      overflow: visible;
+    }
+
+    .navbar-inner {
+      width: 100%;
+      padding: 0 clamp(20px, 4vw, 72px);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0;
+      overflow: visible;
+    }
+    .navbar-inner > * { overflow: visible; }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      justify-content: flex-end;
+      margin-left: auto;
+    }
+
+    /* ===== LOGO IMAGE ===== */
+    .logo-img {
+      height: 58px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .logo-img:hover { opacity: 0.82; }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    .logo {
+      font-size: clamp(20px, 1.5vw, 22px);
+      font-weight: 800;
+      color: #1a0a06;
+      white-space: nowrap;
+      letter-spacing: -0.5px;
+      transition: color0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-right: 10px;
+    }
+    .logo:hover { color: #b85e3a; }
+    .logo span { color: #b85e3a; }
+
+    .nav-divider {
+      width: 1px;
+      height: 28px;
+      background: #ddd;
+      margin: 0 14px 0 8px;
+      flex-shrink: 0;
+    }
+
+    .nav-links { display: flex; gap: 4px; align-items: center; }
+    .nav-links a {
+      font-size: 18px;
+      color: #444;
+      white-space: nowrap;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      position: relative;
+      transition: color0.3s cubic-bezier(0.4, 0, 0.2, 1), background0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.1px;
+    }
+    .nav-links a:hover {
+      color: #b85e3a;
+      background: rgba(184, 94, 58, 0.07);
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    .login-btn {
+      border: 1.5px solid #d5cdc4;
+      background: white;
+      padding: 9px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      border-radius: 8px;
+      font-size: 18px;
+      font-family: inherit;
+      color: #333;
+      letter-spacing: 0.1px;
+      transition: border-color0.3s cubic-bezier(0.4, 0, 0.2, 1), color0.3s cubic-bezier(0.4, 0, 0.2, 1), background0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .login-btn:hover {
+      border-color: #b85e3a;
+      color: #b85e3a;
+      background: rgba(184, 94, 58, 0.04);
+    }
+
+    .signup-btn {
+      background: linear-gradient(135deg, #d4623e 0%, #b85e3a 100%);
+      color: white;
+      border: none;
+      padding: 9px 22px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      border-radius: 8px;
+      font-size: 18px;
+      font-family: inherit;
+      letter-spacing: 0.2px;
+      transition: opacity0.3s cubic-bezier(0.4, 0, 0.2, 1), transform0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 3px 10px rgba(184, 94, 58, 0.3);
+    }
+    .signup-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(184, 94, 58, 0.4);
+    }
+
+    /* ===== DROPDOWN ===== */
+    .dropdown {
+      position: relative;
+      z-index: 1002;
+    }
+    .dropbtn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 9px 14px;
+      border-radius: 8px;
+      color: #2a0e08;
+      font-family: inherit;
+      letter-spacing: 0.1px;
+      transition: background0.3s cubic-bezier(0.4, 0, 0.2, 1), color0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .dropbtn::after {
+      content: '▾';
+      font-size: 18px;
+      color: #b85e3a;
+      opacity: 0.8;
+    }
+    .dropbtn:hover {
+      background: rgba(184, 94, 58, 0.07);
+      color: #b85e3a;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      border: 1px solid #e0dbd1;
+      min-width: 220px;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      z-index: 1003;
+      overflow: visible;
+      animation: scaleIn 0.2s ease;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+    .dropdown:hover .dropdown-content, .dropdown-content:hover { display: block; }
+    .dropdown::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 18px;
+      background: transparent;
+      z-index: 1002;
+      pointer-events: none;
+    }
+    .dropdown:hover::after { pointer-events: auto; }
+
+    /* Events dropdown direct links (no submenu) */
+    .dropdown-content .dropdown-link {
+      display: block;
+      padding: 10px 16px;
+      color: #444;
+      font-size: 16px;
+      transition: background0.3s cubic-bezier(0.4, 0, 0.2, 1), color0.3s cubic-bezier(0.4, 0, 0.2, 1), padding-left0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dropdown-content .dropdown-link:hover {
+      background: #f7f4f0;
+      color: #b85e3a;
+      padding-left: 22px;
+    }
+
+    .submenu { position: relative; z-index: 1004; }
+    .submenu-title {
+      padding: 10px 16px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      transition: background0.3s cubic-bezier(0.4, 0, 0.2, 1), color0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .submenu-title:hover { background: #f7f4f0; color: #b85e3a; }
+
+    .submenu-content {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      background: #fff;
+      border: 1px solid #e0dbd1;
+      min-width: 220px;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      z-index: 1005;
+      overflow: visible;
+      margin-left: 1px;
+    }
+    .submenu:hover .submenu-content, .submenu-content:hover { display: block; }
+    .submenu-content a {
+      display: block;
+      padding: 10px 16px;
+      color: #444;
+      font-size: 16px;
+      transition: background0.3s cubic-bezier(0.4, 0, 0.2, 1), color0.3s cubic-bezier(0.4, 0, 0.2, 1), padding-left0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .submenu-content a:hover { background: #f7f4f0; color: #b85e3a; padding-left: 22px; }
+
+    /* ===== MOBILE NAV TOGGLE ===== */
+    #nav-toggle { display: none; }
+
+    .mobile-menu-btn {
+      display: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: none;
+    }
+    .mobile-menu-btn:hover { background: #f7f4f0; }
+    .mobile-menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #333;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1100;
+    }
+    #nav-toggle:checked ~ .mobile-drawer { display: block; }
+
+    .mobile-drawer-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: min(320px, 85vw);
+      height: 100%;
+      background: #fff;
+      padding: 24px;
+      overflow-y: auto;
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+      animation: slideInDrawer 0.3s ease;
+    }
+
+    .drawer-logo {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e0dbd1;
+    }
+    .drawer-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .drawer-logo span { color: #b85e3a; }
+
+    .drawer-close-label {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      color: #555;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      transition: background0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-close-label:hover { background: #f7f4f0; }
+
+    .drawer-nav-group { margin-bottom: 4px; }
+    .drawer-nav-group summary {
+      list-style: none;
+      padding: 12px 0;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 1px solid #e0dbd1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .drawer-nav-group summary::after { content: '+'; color: #b85e3a; font-size: 18px; }
+    .drawer-nav-group[open] summary::after { content: '−'; }
+    .drawer-nav-group a {
+      display: block;
+      padding: 10px 12px;
+      font-size: 16px;
+      color: #555;
+      border-radius: 8px;
+      transition: background0.3s cubic-bezier(0.4, 0, 0.2, 1), color0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-nav-group a:hover { background: #f7f4f0; color: #b85e3a; }
+
+    .drawer-link {
+      display: block;
+      padding: 12px 0;
+      font-size: 17px;
+      font-weight: 600;
+      color: #444;
+      border-bottom: 1px solid #e0dbd1;
+    }
+
+    .drawer-actions {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .drawer-actions a {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      display: block;
+    }
+    .drawer-login { border: 1.5px solid #ccc; background: white; color: #333 !important; }
+    .drawer-signup { background: #b85e3a; color: white !important; }
+
+   
+    /* ===== FOOTER ===== */
+    footer.footer, .footer { background-color: #4b0f07 !important; color: #f5e6d3 !important; width: 100%; }
+    .footer * { color: inherit; }
+    .footer-top { padding: clamp(36px, 5vw, 56px) clamp(16px, 5vw, 80px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); text-align: center; background-color: #4b0f07 !important; }
+    .footer-top h3 { font-family: 'DM Serif Display', serif; font-size: clamp(20px, 2.5vw, 30px); margin-bottom: 12px; color: #f5e6d3 !important; }
+    .footer-top p { margin-bottom: 8px; font-size: 17px; color: rgba(245, 230, 211, 0.85) !important; }
+    .footer-top > a, .footer-top p > a { color: #f8c27a !important; font-weight: 600; text-decoration: none !important; transition: opacity 0.3s; }
+    .footer-top > a:hover, .footer-top p > a:hover { opacity: 0.8; }
+    .footer-social { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 22px; }
+    .footer-social a { width: 42px !important; height: 42px !important; border: 1.5px solid rgba(248, 194, 122, 0.5) !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 50% !important; color: #f8c27a !important; font-size: 16px; text-decoration: none !important; transition: background 0.3s, border-color 0.3s, transform 0.3s; background-color: transparent !important; }
+    .footer-social a:hover { background-color: #f8c27a !important; color: #4b0f07 !important; border-color: #f8c27a !important; transform: translateY(-3px); }
+    .footer-social a i { color: inherit !important; }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: clamp(14px, 3vw, 28px); margin: 22px 0 8px; font-size: 17px; }
+    .footer-links a { color: #f8c27a !important; font-weight: 500; text-decoration: none !important; transition: color 0.3s; }
+    .footer-links a:hover { color: #ffffff !important; }
+    .footer-bottom { padding: 18px clamp(16px, 5vw, 60px); border-top: 1px solid rgba(255, 255, 255, 0.07); background-color: #4b0f07 !important; }
+    .footer-bottom-inner { max-width: 1350px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-brand img {
+      height: 44px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+      /* SVG is dark bg — invert won't work well, use filter to make it light */
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .footer-copy { font-size: 15px; color: rgba(245, 230, 211, 0.6) !important; }
+
+ 
+    /* ===== PRIVACY POLICY SPECIFIC STYLES ===== */
+    .privacy-page {
+      background-color: #faf7f2;
+      padding: 60px 20px;
+      width: 100%;
+    }
+    
+    .privacy-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+      padding: 48px 56px;
+    }
+    
+    .privacy-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      color: #2d2d2d;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    
+    .privacy-effective {
+      font-size: 14px;
+      color: #8b8b8b;
+      border-bottom: 2px solid #f0eae2;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .privacy-section {
+      margin-bottom: 34px;
+    }
+    
+    .privacy-section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #4b0f07;
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+    
+    .privacy-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .privacy-section li {
+      margin-bottom: 12px;
+      padding-left: 28px;
+      position: relative;
+      font-size: 16px;
+      color: #3e3e3e;
+      line-height: 1.6;
+    }
+    
+    .privacy-section li::before {
+      content: "●";
+      color: #b85e3a;
+      font-weight: bold;
+      position: absolute;
+      left: 8px;
+      font-size: 14px;
+    }
+    
+    .privacy-section p {
+      font-size: 16px;
+      color: #3e3e3e;
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+    
+    .privacy-highlight {
+      background: #fcf6f0;
+      padding: 20px 28px;
+      border-radius: 20px;
+      margin-top: 20px;
+      border-left: 5px solid #b85e3a;
+    }
+    
+    .privacy-highlight p {
+      margin-bottom: 0;
+      font-style: italic;
+    }
+    
+    hr {
+      border: none;
+      border-top: 1px solid #e2d9cf;
+      margin: 32px 0;
+    }
+
+       /* ===== RESPONSIVE BREAKPOINTS ===== */
+    @media (min-width: 1400px) {
+      .hero-left {
+        padding-left: clamp(40px, 5vw, 100px);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .search-box {
+        display: none;
+      }
+
+      .navbar-inner {
+        display: flex;
+        padding: 0 16px;
+        gap: 10px;
+      }
+
+      .auth-buttons {
+        display: none;
+      }
+
+      .dropdown {
+        display: none !important;
+      }
+      
+      .nav-divider {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex !important;
+        flex-direction: column;
+      }
+
+      .footer-bottom-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-brand {
+        color: #f5e6d3 !important;
+      }
+
+      .footer-copy {
+        color: rgba(245, 230, 211, 0.6) !important;
+      }
+
+      .terms-container {
+        padding: 32px 24px;
+      }
+
+      .terms-title {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+      }
+
+      .stat-col {
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .hero-title {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="#courses" class="top-banner">
+    <strong>Skills on sale</strong> | Courses now as low as <strong>₹999</strong> through limited time.
+    <span>Enroll Now!</span>
+  </a>
+
+  <input type="checkbox" id="nav-toggle">
+
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="nav-left">
+      <a href="https://astrovastugurukull.com/" class="logo-link">
+        <img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg"
+          alt="AstroVastu Gurukull" class="logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="logo" style="display:none;">Astro<span>Vastu</span> Gurukull</span>
+      </a>
+      <div class="nav-divider"></div>
+      <div class="nav-item dropdown">
+        <button class="dropbtn">Courses</button>
+        <div class="dropdown-content">
+          <div class="submenu">
+            <div class="submenu-title">Astrology &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a>
+              <a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a>
+              <a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a>
+            </div>
+          </div>
+          <div class="submenu">
+            <div class="submenu-title">Numerology &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a>
+              <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a>
+            </div>
+          </div>
+          <div class="submenu">
+            <div class="submenu-title">Vastu &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a>
+              <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
+              <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
+            </div>
+          </div>
+          <div class="submenu">
+            <div class="submenu-title">Combo Course &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course-batch-7">करोड़पति Combo {Batch-7}</a>
+              <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
+            </div>
+          </div>
+          <div class="submenu">
+            <div class="submenu-title">Rudraksha &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item dropdown">
+        <button class="dropbtn">Events &amp; Webinar</button>
+        <div class="dropdown-content">
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Live Sessions</a>
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Workshops</a>
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Free Events</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="auth-buttons">
+        <a href="https://academy.astrovastugurukull.com/web/dashboard/getstarted" class="login-btn">Log in</a>
+      </div>
+      <label for="nav-toggle" class="mobile-menu-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+  </div>
+</nav>
+<div class="mobile-drawer">
+  <div class="mobile-drawer-inner">
+    <label for="nav-toggle" class="drawer-close-label">&#10005;</label>
+    <div class="drawer-logo">
+      <img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg" alt="AstroVastu Gurukull">
+    </div>
+    <details class="drawer-nav-group">
+      <summary>Astrology</summary>
+      <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a>
+      <a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a>
+      <a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a>
+    </details>
+    <details class="drawer-nav-group">
+      <summary>Numerology</summary>
+      <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a>
+      <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a>
+    </details>
+    <details class="drawer-nav-group">
+      <summary>Vastu &amp; Combo</summary>
+      <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a>
+      <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
+      <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course-batch-7">करोड़पति Combo {Batch-7}</a>
+      <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
+      <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
+    </details>
+    <details class="drawer-nav-group">
+      <summary>Events &amp; Webinar</summary>
+      <a href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
+      <a href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
+      <a href="https://astrovastugurukull.com/trfu">Live Sessions</a>
+      <a href="https://astrovastugurukull.com/trfu">Workshops</a>
+      <a href="https://astrovastugurukull.com/trfu">Free Events</a>
+    </details>
+    <div class="drawer-actions">
+      <a class="drawer-login" href="https://academy.astrovastugurukull.com/web/dashboard/getstarted">Log in</a>
+      <a class="drawer-signup" href="#courses">Explore Courses</a>
+    </div>
+  </div>
+</div>
+
+  <!-- ========== PRIVACY POLICY CONTENT ========== -->
+  <section class="privacy-page">
+    <div class="privacy-container">
+      <h1 class="privacy-title">Privacy Policy</h1>
+      <div class="privacy-effective">Effective Date: 27 FEB 2025</div>
+      <p style="margin-bottom: 30px; font-size: 17px;">Astro Vastu Gurukull is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, store, and safeguard your data when you visit our website or enroll in our courses.</p>
+
+      <!-- 1. Information We Collect -->
+      <div class="privacy-section">
+        <h2>1. Information We Collect</h2>
+        <p>When you interact with our website or enroll in a course, we may collect:</p>
+        <ul>
+          <li>Full Name</li>
+          <li>Email Address</li>
+          <li>Contact Number</li>
+          <li>Billing Information</li>
+          <li>Course Preferences</li>
+          <li>Payment Details (processed securely via third-party payment gateways)</li>
+        </ul>
+      </div>
+
+      <!-- 2. Use of Information -->
+      <div class="privacy-section">
+        <h2>2. Use of Information</h2>
+        <ul>
+          <li>Process enrollments and payments</li>
+          <li>Provide access to courses and study materials</li>
+          <li>Send important updates related to batches, sessions, and certifications</li>
+          <li>Respond to queries and provide student support</li>
+          <li>Share relevant announcements and promotional offers (you may opt out anytime)</li>
+        </ul>
+      </div>
+
+      <!-- 3. Data Protection & Security -->
+      <div class="privacy-section">
+        <h2>3. Data Protection & Security</h2>
+        <ul>
+          <li>We implement reasonable administrative and technical safeguards to protect your personal information.</li>
+          <li>Payment transactions are handled through secure and trusted third-party payment processors.</li>
+          <li>We do not sell, rent, or trade your personal data to any third party.</li>
+        </ul>
+      </div>
+
+      <!-- 4. Cookies -->
+      <div class="privacy-section">
+        <h2>4. Cookies</h2>
+        <ul>
+          <li>Our website may use cookies to improve user experience and analyze website performance.</li>
+          <li>You may choose to disable cookies through your browser settings.</li>
+        </ul>
+      </div>
+
+      <!-- 5. Third-Party Links -->
+      <div class="privacy-section">
+        <h2>5. Third-Party Links</h2>
+        <ul>
+          <li>Our website may contain links to external websites. We are not responsible for the privacy practices of those third-party platforms.</li>
+        </ul>
+      </div>
+
+      <!-- 6. Policy Updates -->
+      <div class="privacy-section">
+        <h2>6. Policy Updates</h2>
+        <ul>
+          <li>Astro Vastu Gurukull reserves the right to update this Privacy Policy at any time. Continued use of the website indicates your acceptance of any revised terms.</li>
+        </ul>
+      </div>
+
+      <!-- 7. Contact Information -->
+      <div class="privacy-section">
+        <h2>7. Contact Information</h2>
+        <ul>
+          <li>For any privacy-related concerns, please contact us at:<br>
+          Email: <a href="mailto:support@astrovastugurukull.com" style="color:#b85e3a;">support@astrovastugurukull.com</a><br>
+          Phone: +91 98765 43210</li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <div class="privacy-highlight">
+        <p>We value your trust and are dedicated to keeping your personal information confidential and secure. If you have any questions about this Privacy Policy, feel free to reach out to our support team.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <h3>Got questions? We&#8217;re here to help.</h3>
+      <p>Email us at: <a href="mailto:support@astrovastugurukull.com">support@astrovastugurukull.com</a></p>
+      <p>Follow us on social media for updates, tips &amp; free knowledge from Acharya ji</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/Astro-Vastu-Gurukul-61574634191304/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/ALavbhushan" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/astrovastugurukull/" target="_blank" aria-label="Instagram"><i
+            class="fab fa-instagram"></i></a>
+        <a href="http://www.youtube.com/@AstroVastuGurukull-01" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="https://astrovastugurukull.com/about-us" >About Us</a>
+        <a href="https://astrovastugurukull.com/terms-and-conditions" >Terms &amp; Conditions</a>
+        <a href="https://astrovastugurukull.com/privacy-policyy" style="color: #ffffff !important;">Privacy Policy</a>
+        <a href="https://astrovastugurukull.com/refund-and-cancellation-policy">Refund Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span class="footer-brand">Astro Vastu Gurukull</span>
+        <span class="footer-copy">© 2025 AstroVastu Gurukull. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

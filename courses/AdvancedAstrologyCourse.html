@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌟 Advanced Astrology Course</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', Arial, sans-serif; font-size: 15px; background-color: #faf7f2; color: #2d2d2d; line-height: 1.5; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes scaleIn { from { opacity:0; transform:scale(0.92); } to { opacity:1; transform:scale(1); } }
+    @keyframes bannerSlide { from { opacity:0; transform:translateY(-100%); } to { opacity:1; transform:translateY(0); } }
+    @keyframes navReveal { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes gradientShift { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+    @keyframes slideInDrawer { from { transform:translateX(-100%); } to { transform:translateX(0); } }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.6;} }
+    /* ===== TOP BANNER ===== */
+    .top-banner {
+      display:block; background:linear-gradient(90deg,#b85e3a,#d4724a,#b85e3a);
+      background-size:200% auto; animation:bannerSlide 0.6s ease forwards, gradientShift 4s linear infinite;
+      color:#fff; text-align:center; padding:11px 16px; font-size:14px; cursor:pointer; width:100%; letter-spacing:.2px;
+    }
+    .top-banner span { display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.4); border-radius:20px; padding:2px 10px; font-weight:700; margin-left:6px; font-size:13px; }
+    /* ===== NAVBAR ===== */
+    .navbar { background:#ffffff; border-bottom:1.5px solid #ece7df; position:sticky; top:0; z-index:1001; height:72px; display:flex; align-items:center; width:100%; box-shadow:0 2px 24px rgba(75,15,7,.07); animation:navReveal 0.5s ease 0.2s both; overflow:visible; }
+    .navbar-inner { width:100%; padding:0 clamp(20px,4vw,72px); display:flex; align-items:center; justify-content:flex-start; gap:0; overflow:visible; }
+    .navbar-inner>* { overflow:visible; }
+    .nav-left { display:flex; align-items:center; gap:6px; flex-shrink:0; }
+    .nav-right { display:flex; align-items:center; gap:6px; flex-shrink:0; justify-content:flex-end; margin-left:auto; }
+    .logo-img { height:58px; width:auto; display:block; object-fit:contain; }
+    .logo-link { display:flex; align-items:center; margin-right:10px; }
+    .logo { font-size:clamp(20px,1.5vw,22px); font-weight:800; color:#1a0a06; white-space:nowrap; letter-spacing:-.5px; margin-right:10px; }
+    .logo span { color:#b85e3a; }
+    .nav-divider { width:1px; height:28px; background:#ddd; margin:0 14px 0 8px; flex-shrink:0; }
+    .dropbtn { background:none; border:none; font-size:15px; font-weight:600; cursor:pointer; padding:9px 14px; border-radius:8px; color:#2a0e08; font-family:inherit; display:flex; align-items:center; gap:5px; }
+    .dropbtn::after { content:'▾'; font-size:14px; color:#b85e3a; }
+    .dropbtn:hover { background:rgba(184,94,58,.07); color:#b85e3a; }
+    .dropdown { position:relative; z-index:1002; }
+    .dropdown-content { display:none; position:absolute; top:100%; left:0; background:#fff; border:1px solid #e0dbd1; min-width:220px; border-radius:12px; box-shadow:0 16px 40px rgba(0,0,0,.12); z-index:1003; padding:8px 0; animation:scaleIn 0.2s ease; }
+    .dropdown:hover .dropdown-content { display:block; }
+    .dropdown-content .dropdown-link { display:block; padding:10px 16px; color:#444; font-size:14px; }
+    .dropdown-content .dropdown-link:hover { background:#f7f4f0; color:#b85e3a; }
+    .submenu { position:relative; z-index:1004; }
+    .submenu-title { padding:10px 16px; font-size:14px; font-weight:500; cursor:pointer; display:flex; justify-content:space-between; }
+    .submenu-title:hover { background:#f7f4f0; color:#b85e3a; }
+    .submenu-content { display:none; position:absolute; top:0; left:100%; background:#fff; border:1px solid #e0dbd1; min-width:220px; border-radius:12px; box-shadow:0 16px 40px rgba(0,0,0,.12); z-index:1005; margin-left:1px; }
+    .submenu:hover .submenu-content { display:block; }
+    .submenu-content a { display:block; padding:10px 16px; color:#444; font-size:14px; }
+    .submenu-content a:hover { background:#f7f4f0; color:#b85e3a; }
+    .auth-buttons { display:flex; gap:8px; flex-shrink:0; margin-left:8px; }
+    .login-btn { border:1.5px solid #d5cdc4; background:white; padding:9px 20px; font-weight:600; cursor:pointer; border-radius:8px; font-size:14px; font-family:inherit; color:#333; }
+    .login-btn:hover { border-color:#b85e3a; color:#b85e3a; }
+    #nav-toggle { display:none; }
+    .mobile-menu-btn { display:none; cursor:pointer; padding:8px; flex-direction:column; justify-content:center; align-items:center; gap:5px; background:none; border:none; }
+    .mobile-menu-btn span { display:block; width:22px; height:2px; background:#333; border-radius:2px; }
+    /* Mobile Drawer */
+    .mobile-drawer { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.5); z-index:1100; }
+    #nav-toggle:checked~.mobile-drawer { display:block; }
+    .mobile-drawer-inner { position:absolute; top:0; left:0; width:min(320px,85vw); height:100%; background:#fff; padding:24px; overflow-y:auto; box-shadow:4px 0 24px rgba(0,0,0,.15); animation:slideInDrawer 0.3s ease; }
+    .drawer-logo { margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid #e0dbd1; }
+    .drawer-logo img { height:48px; width:auto; }
+    .drawer-close-label { position:absolute; top:16px; right:16px; font-size:24px; cursor:pointer; color:#555; width:32px; height:32px; display:flex; align-items:center; justify-content:center; border-radius:6px; }
+    .drawer-nav-group { margin-bottom:4px; }
+    .drawer-nav-group summary { list-style:none; padding:12px 0; font-size:15px; font-weight:600; cursor:pointer; border-bottom:1px solid #e0dbd1; display:flex; justify-content:space-between; align-items:center; }
+    .drawer-nav-group summary::after { content:'+'; color:#b85e3a; font-size:18px; }
+    .drawer-nav-group[open] summary::after { content:'−'; }
+    .drawer-nav-group a { display:block; padding:10px 12px; font-size:14px; color:#555; border-radius:8px; }
+    .drawer-nav-group a:hover { background:#f7f4f0; color:#b85e3a; }
+    .drawer-actions { margin-top:20px; display:flex; flex-direction:column; gap:10px; }
+    .drawer-actions a { width:100%; padding:12px; border-radius:10px; font-size:15px; font-weight:600; text-align:center; display:block; }
+    .drawer-login { border:1.5px solid #ccc; background:white; color:#333!important; }
+    .drawer-signup { background:#b85e3a; color:white!important; }
+    /* ===== HERO ===== */
+    .hero-dark { background:#1c1d1f; color:white; padding:36px 0; }
+    .container { max-width:1400px; margin:0 auto; padding:0 clamp(16px,3vw,24px); }
+    .hero-layout { display:flex; gap:40px; align-items:center; }
+    .hero-content { flex:1; min-width:0; }
+    .breadcrumb { display:flex; align-items:center; gap:8px; font-size:12px; margin-bottom:14px; color:#c0c4fc; flex-wrap:wrap; }
+    .breadcrumb a { color:#c0c4fc; }
+    .breadcrumb .sep { color:#6a6f73; font-size:10px; }
+    .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(24px,4vw,42px); font-weight:700; line-height:1.2; margin-bottom:12px; }
+    .hero-subtitle { font-size:clamp(12px,1.2vw,15px); color:#d1d7dc; margin-bottom:16px; }
+    .rating-row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:12px; }
+    .bestseller { background:#eceb98; color:#3d3c0a; font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; }
+    .rating-number { color:#f5d79e; font-weight:700; }
+    .stars { display:flex; gap:2px; }
+    .star-f,.star-h { color:#f5d79e; }
+    .rating-link { color:#c0c4fc; font-size:12px; text-decoration:underline; }
+    .students-count { font-size:12px; color:#d1d7dc; }
+    .instructor-link { color:#c0c4fc; text-decoration:underline; font-size:13px; margin-bottom:10px; display:inline-block; }
+    .course-meta { display:flex; flex-wrap:wrap; gap:14px; font-size:12px; color:#d1d7dc; }
+    .meta-item { display:flex; align-items:center; gap:5px; }
+    .social-badges { display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+    .social-badge { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:20px; padding:5px 12px; font-size:12px; font-weight:600; }
+    .social-badge i { font-size:14px; }
+    .social-badge.yt { color:#ff6060; }
+    .social-badge.ig { color:#f48fb1; }
+    .hero-video { width:440px; flex-shrink:0; border-radius:10px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.5); }
+    .hero-video iframe { width:100%; height:248px; border:none; }
+    /* ===== MAIN LAYOUT — KEY CHANGE: left ~55%, right ~45% ===== */
+    .main-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px clamp(16px, 3vw, 24px);
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 32px;
+      align-items: start;
+    }
+    .left-col { min-width: 0; }
+    .right-col { min-width: 0; }
+    /* ===== LEFT COLUMN ===== */
+    .section-block { margin-bottom: 32px; }
+    .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(18px,2vw,22px); font-weight:700; margin-bottom:14px; }
+    .learning-box { border:1px solid #e0dbd1; padding:20px; border-radius:12px; background:white; margin-bottom:32px; }
+    .learning-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+    .learning-item { display:flex; gap:10px; font-size:13px; align-items:flex-start; }
+    .learning-item i { color:#b85e3a; flex-shrink:0; margin-top:2px; font-size:11px; }
+    .why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:32px; }
+    .why-card { border:1px solid #e0dbd1; border-radius:12px; padding:16px; background:white; display:flex; flex-direction:column; gap:6px; transition:box-shadow .3s,transform .3s; }
+    .why-card:hover { box-shadow:0 4px 12px rgba(0,0,0,.06); transform:translateY(-2px); }
+    .why-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .why-card i { font-size:20px; color:#b85e3a; flex-shrink: 0; }
+    .why-card-title { font-weight:700; font-size:13px; flex: 1; }
+    .why-card-desc { font-size:12px; color:#6f6b66; line-height:1.6; }
+    .req-list,.who-list { list-style:disc; padding-left:20px; }
+    .req-list li,.who-list li { font-size:13px; margin-bottom:5px; }
+    .desc-text { font-size:13px; line-height:1.7; }
+    .desc-text p { margin-bottom:12px; }
+    .show-more-toggle { display:none; }
+    .show-more-label { color:#b85e3a; font-size:13px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:4px; }
+    .extra-desc { display:none; }
+    .show-more-toggle:checked~.extra-desc { display:block; }
+    .show-more-toggle:checked~.show-more-label .more-text { display:none; }
+    .show-more-toggle:checked~.show-more-label .less-text { display:inline; }
+    .less-text { display:none; }
+    .cert-section { background:linear-gradient(135deg,#1c1d1f 60%,#4b0f07 100%); color:white; border-radius:16px; padding:24px 28px; display:flex; gap:20px; align-items:center; margin-bottom:32px; }
+    .cert-icon { font-size:48px; color:#f5d79e; flex-shrink:0; }
+    .cert-title { font-family:'Cormorant Garamond',serif; font-size:clamp(16px,2vw,20px); font-weight:700; margin-bottom:6px; }
+    .cert-features { display:flex; flex-direction:column; gap:5px; margin-top:8px; }
+    .cert-feature { display:flex; align-items:center; gap:8px; font-size:12px; color:#d1d7dc; }
+    .cert-feature i { color:#f5d79e; }
+    .instructor-name-link { color:#b85e3a; font-size:clamp(15px,1.5vw,18px); font-weight:700; text-decoration:underline; display:inline-block; margin-bottom:4px; font-family:'Cormorant Garamond',serif; }
+    .instructor-title-sub { font-size:12px; color:#6f6b66; margin-bottom:14px; }
+    .instructor-details { display:flex; gap:18px; margin-bottom:14px; flex-wrap:wrap; }
+    .instructor-avatar { width:80px; height:80px; border-radius:50%; background:#b85e3a; display:flex; align-items:center; justify-content:center; color:white; font-size:24px; font-weight:700; flex-shrink:0; }
+    .instructor-stats { display:flex; flex-direction:column; gap:5px; }
+    .stat-item { display:flex; align-items:center; gap:8px; font-size:13px; }
+    .stat-item i { color:#f5d79e; }
+    .instructor-bio { font-size:13px; line-height:1.7; }
+    /* Reviews */
+    .rating-breakdown { display:flex; align-items:center; gap:16px; margin-bottom:24px; padding:18px; background:#faf7f2; border:1px solid #e0dbd1; border-radius:12px; flex-wrap:wrap; }
+    .rating-big { text-align:center; flex-shrink:0; }
+    .rating-big-num { font-size:clamp(36px,4vw,48px); font-weight:700; color:#b85e3a; line-height:1; }
+    .rating-big-stars { display:flex; gap:2px; margin:4px 0; justify-content:center; }
+    .rating-big-stars i { color:#f5d79e; font-size:13px; }
+    .rating-big-label { font-size:10px; color:#6f6b66; }
+    .rating-bars { flex:1; display:flex; flex-direction:column; gap:5px; min-width:140px; }
+    .rating-bar-row { display:flex; align-items:center; gap:8px; font-size:11px; }
+    .rating-bar-fill-wrap { flex:1; background:#e0e0e0; height:7px; border-radius:4px; overflow:hidden; }
+    .rating-bar-fill { height:100%; background:#f5d79e; border-radius:4px; }
+    .rating-bar-count { color:#6f6b66; min-width:24px; text-align:right; }
+    .review-item { border-top:1px solid #e0dbd1; padding:18px 0; }
+    .reviewer-info { display:flex; gap:12px; margin-bottom:8px; }
+    .reviewer-avatar { width:38px; height:38px; border-radius:50%; background:#b85e3a; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:12px; flex-shrink:0; }
+    .reviewer-name { font-weight:700; font-size:13px; }
+    .review-meta { display:flex; align-items:center; gap:8px; margin-top:3px; }
+    .review-date { font-size:11px; color:#6f6b66; }
+    .review-comment { font-size:13px; margin-bottom:8px; }
+    .stars-sm { display:flex; gap:1px; }
+    .stars-sm i { color:#f5d79e; font-size:10px; }
+    /* FAQ */
+    details.faq-item { border:1px solid #e0dbd1; border-radius:12px; margin-bottom:8px; overflow:hidden; }
+    details.faq-item>summary { list-style:none; padding:14px 18px; font-weight:700; font-size:13px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; background:#faf7f2; }
+    details.faq-item>summary::-webkit-details-marker { display:none; }
+    details.faq-item>summary:hover { background:#f7f4f0; }
+    details.faq-item>summary::after { content:"+"; font-size:18px; color:#b85e3a; font-weight:300; }
+    details.faq-item[open]>summary::after { content:"−"; }
+    .faq-answer { padding:12px 18px 16px; font-size:13px; line-height:1.7; color:#333; border-top:1px solid #e0dbd1; background:#fff; }
+    /* ===== RIGHT COLUMN — RICH SIDEBAR ===== */
+    .right-sticky { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 18px; }
+    /* Course Card */
+    .course-card { border:1px solid #e0dbd1; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,.1); background:white; overflow:hidden; }
+    .course-thumb { position:relative; }
+    .course-thumb img { width:100%; height:240px; object-fit:cover; display:block; }
+    .thumb-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(28,29,31,.7) 0%,transparent 50%); display:flex; align-items:flex-end; padding:16px; }
+    .thumb-badge { background:#b85e3a; color:white; font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; letter-spacing:.3px; }
+    .card-body { padding:20px; }
+    .price-big { font-size:28px; font-weight:800; color:#b85e3a; display:block; margin-bottom:4px; }
+    .price-note { font-size:11px; color:#6f6b66; margin-bottom:14px; display:flex; align-items:center; gap:6px; }
+    .price-note i { color:#b32d2d; animation:pulse 2s infinite; }
+    .enroll-btn { display:block; width:100%; padding:15px; background:#b85e3a; color:#fff; border:none; border-radius:10px; font-weight:800; font-family:'Montserrat',sans-serif; font-size:15px; cursor:pointer; text-align:center; letter-spacing:.3px; margin-bottom:10px; transition:all .2s; }
+    .enroll-btn:hover { background:#8a3f22; transform:translateY(-2px); box-shadow:0 6px 24px rgba(184,94,58,.4); }
+    .guarantee { text-align:center; font-size:11px; color:#6f6b66; margin-bottom:16px; display:flex; align-items:center; justify-content:center; gap:5px; }
+    .guarantee i { color:#2e7d32; }
+    /* Includes list inside card */
+    .includes-title { font-weight:700; font-size:13px; margin-bottom:10px; color:#1c1d1f; }
+    .includes-list { display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
+    .include-item { display:flex; align-items:center; gap:10px; font-size:12px; }
+    .include-item i { color:#b85e3a; width:14px; font-size:12px; flex-shrink:0; }
+    .card-divider { border:none; border-top:1px solid #e0dbd1; margin:14px 0; }
+    .action-links { display:flex; justify-content:center; gap:20px; }
+    .action-link { display:flex; align-items:center; gap:4px; font-size:12px; font-weight:700; color:#4b0f07; text-decoration:underline; cursor:pointer; }
+    /* Stats widget */
+    .stats-widget { background:white; border:1px solid #e0dbd1; border-radius:16px; padding:18px; }
+    .stats-widget-title { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:700; margin-bottom:14px; color:#1c1d1f; }
+    .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .stat-box { background:#faf7f2; border:1px solid #e0dbd1; border-radius:10px; padding:12px; text-align:center; }
+    .stat-box-num { font-size:22px; font-weight:800; color:#b85e3a; display:block; line-height:1.1; }
+    .stat-box-label { font-size:10px; color:#6f6b66; margin-top:3px; display:block; }
+    /* Related courses widget */
+    .related-widget { background:white; border:1px solid #e0dbd1; border-radius:16px; overflow:hidden; }
+    .related-widget-header { background:linear-gradient(135deg,#1c1d1f,#4b0f07); color:white; padding:14px 18px; }
+    .related-widget-header h3 { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:700; }
+    .related-widget-header p { font-size:11px; color:#d1d7dc; margin-top:2px; }
+    .related-list { padding:12px; display:flex; flex-direction:column; gap:4px; }
+    .related-item { display:flex; align-items:center; justify-content:space-between; padding:10px 10px; border-radius:8px; transition:background .2s; cursor:pointer; gap:10px; }
+    .related-item:hover { background:#faf7f2; }
+    .related-item-left { display:flex; align-items:center; gap:10px; min-width:0; }
+    .related-icon { width:34px; height:34px; border-radius:8px; background:linear-gradient(135deg,#b85e3a,#d4724a); display:flex; align-items:center; justify-content:center; color:white; font-size:13px; flex-shrink:0; }
+    .related-name { font-size:12px; font-weight:600; color:#2d2d2d; line-height:1.3; }
+    .related-arrow { color:#b85e3a; font-size:11px; flex-shrink:0; }
+    /* Instructor mini-card */
+    .instructor-widget { background:white; border:1px solid #e0dbd1; border-radius:16px; padding:18px; }
+    .instructor-widget-top { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+    .instructor-avatar-sm { width:54px; height:54px; border-radius:50%; background:linear-gradient(135deg,#b85e3a,#d4724a); display:flex; align-items:center; justify-content:center; color:white; font-size:18px; font-weight:700; flex-shrink:0; }
+    .instructor-widget-name { font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:700; color:#b85e3a; }
+    .instructor-widget-sub { font-size:11px; color:#6f6b66; margin-top:2px; }
+    .instructor-mini-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+    .mini-stat { display:flex; align-items:center; gap:7px; font-size:11px; background:#faf7f2; border-radius:8px; padding:7px 8px; }
+    .mini-stat i { color:#b85e3a; font-size:11px; width:12px; }
+    /* Social widget */
+    .social-widget { background:linear-gradient(135deg,#1c1d1f 0%,#4b0f07 100%); border-radius:16px; padding:18px; color:white; }
+    .social-widget h3 { font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:700; margin-bottom:4px; }
+    .social-widget p { font-size:11px; color:#d1d7dc; margin-bottom:14px; }
+    .social-btns { display:flex; flex-direction:column; gap:8px; }
+    .social-btn { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; font-size:12px; font-weight:700; cursor:pointer; border:none; font-family:'Montserrat',sans-serif; }
+    .social-btn.yt { background:#ff4444; color:white; }
+    .social-btn.ig { background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); color:white; }
+    .social-btn i { font-size:15px; }
+    .social-btn-count { margin-left:auto; font-size:10px; opacity:.85; }
+    /* Mobile sticky bar */
+    .mobile-enroll-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:2px solid #e0dbd1; padding:10px 16px 12px; z-index:2000; box-shadow:0 -6px 24px rgba(0,0,0,.13); }
+    .mobile-enroll-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:560px; margin:0 auto; }
+    .m-price { font-size:20px; font-weight:800; color:#b85e3a; }
+    .mobile-enroll-btn { flex:1; max-width:220px; padding:13px 18px; background:#b85e3a; color:#fff; border:none; border-radius:10px; font-weight:800; font-family:'Montserrat',sans-serif; font-size:14px; cursor:pointer; text-align:center; display:block; }
+    /* ===== FOOTER ===== */
+    footer.footer { background-color:#4b0f07!important; color:#f5e6d3!important; width:100%; }
+    .footer-top { padding:clamp(36px,5vw,56px) clamp(16px,5vw,80px); border-bottom:1px solid rgba(255,255,255,.08); text-align:center; background-color:#4b0f07!important; }
+    .footer-top h3 { font-family:'DM Serif Display',serif; font-size:clamp(18px,2.5vw,28px); margin-bottom:12px; color:#f5e6d3!important; }
+    .footer-top p { margin-bottom:8px; font-size:14px; color:rgba(245,230,211,.85)!important; }
+    .footer-top a { color:#f8c27a!important; font-weight:600; }
+    .footer-social { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:22px; }
+    .footer-social a { width:42px!important; height:42px!important; border:1.5px solid rgba(248,194,122,.5)!important; display:flex!important; align-items:center!important; justify-content:center!important; border-radius:50%!important; color:#f8c27a!important; font-size:16px; transition:background .3s,transform .3s; background-color:transparent!important; }
+    .footer-social a:hover { background-color:#f8c27a!important; color:#4b0f07!important; transform:translateY(-3px); }
+    .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:clamp(14px,3vw,28px); margin:22px 0 8px; font-size:14px; }
+    .footer-links a { color:#f8c27a!important; font-weight:500; }
+    .footer-bottom { padding:18px clamp(16px,5vw,60px); border-top:1px solid rgba(255,255,255,.07); background-color:#4b0f07!important; }
+    .footer-bottom-inner { max-width:1350px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+    .footer-copy { font-size:13px; color:rgba(245,230,211,.6)!important; }
+    /* ===== RESPONSIVE ===== */
+    @media (max-width:1100px) {
+      .main-wrapper { grid-template-columns:1fr 380px; }
+    }
+    @media (max-width:900px) {
+      .main-wrapper { grid-template-columns:1fr; padding-bottom:90px; }
+      .right-col { display:none; }
+      .hero-layout { flex-direction:column; gap:20px; }
+      .hero-video { width:100%; max-width:560px; margin:0 auto; }
+      .hero-video iframe { height:min(315px,52vw); }
+      .mobile-enroll-bar { display:block; }
+      .dropdown { display:none!important; }
+      .auth-buttons { display:none; }
+      .nav-divider { display:none; }
+      .mobile-menu-btn { display:flex; flex-direction:column; }
+    }
+    @media (max-width:600px) {
+      .why-grid { grid-template-columns:1fr; }
+      .learning-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<a href="#courses" class="top-banner">
+  <strong>Skills on sale</strong> | Courses now as low as <strong>₹999</strong> through limited time.
+  <span>Enroll Now!</span>
+</a>
+<input type="checkbox" id="nav-toggle">
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="nav-left">
+      <a href="https://astrovastugurukull.com/" class="logo-link">
+        <img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg"
+          alt="AstroVastu Gurukull" class="logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="logo" style="display:none;">Astro<span>Vastu</span> Gurukull</span>
+      </a>
+      <div class="nav-divider"></div>
+      <div class="nav-item dropdown">
+        <button class="dropbtn">Courses</button>
+        <div class="dropdown-content">
+          <div class="submenu">
+            <div class="submenu-title">Astrology &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a>
+              <a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a>
+              <a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a>
+            </div>
+          </div>
+          <div class="submenu">
+            <div class="submenu-title">Numerology &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a>
+              <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a>
+            </div>
+          </div>
+          <div class="submenu">
+            <div class="submenu-title">Vastu &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a>
+              <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
+              <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
+              <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
+            </div>
+          </div>
+          <div class="submenu">
+            <div class="submenu-title">Combo Course &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course-batch-7">करोड़पति Combo {Batch-7}</a>
+              <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
+            </div>
+          </div>
+          <div class="submenu">
+            <div class="submenu-title">Rudraksha &#9658;</div>
+            <div class="submenu-content">
+              <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item dropdown">
+        <button class="dropbtn">Events &amp; Webinar</button>
+        <div class="dropdown-content">
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Live Sessions</a>
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Workshops</a>
+          <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Free Events</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="auth-buttons">
+        <a href="https://academy.astrovastugurukull.com/web/dashboard/getstarted" class="login-btn">Log in</a>
+      </div>
+      <label for="nav-toggle" class="mobile-menu-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+  </div>
+</nav>
+<div class="mobile-drawer">
+  <div class="mobile-drawer-inner">
+    <label for="nav-toggle" class="drawer-close-label">&#10005;</label>
+    <div class="drawer-logo">
+      <img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg" alt="AstroVastu Gurukull">
+    </div>
+    <details class="drawer-nav-group">
+      <summary>Astrology</summary>
+      <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a>
+      <a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a>
+      <a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a>
+    </details>
+    <details class="drawer-nav-group">
+      <summary>Numerology</summary>
+      <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a>
+      <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a>
+    </details>
+    <details class="drawer-nav-group">
+      <summary>Vastu &amp; Combo</summary>
+      <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a>
+      <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
+      <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
+      <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course-batch-7">करोड़पति Combo {Batch-7}</a>
+      <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
+      <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
+    </details>
+    <details class="drawer-nav-group">
+      <summary>Events &amp; Webinar</summary>
+      <a href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
+      <a href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
+      <a href="https://astrovastugurukull.com/trfu">Live Sessions</a>
+      <a href="https://astrovastugurukull.com/trfu">Workshops</a>
+      <a href="https://astrovastugurukull.com/trfu">Free Events</a>
+    </details>
+    <div class="drawer-actions">
+      <a class="drawer-login" href="https://academy.astrovastugurukull.com/web/dashboard/getstarted">Log in</a>
+      <a class="drawer-signup" href="#courses">Explore Courses</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero-dark">
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-content">
+        <div class="breadcrumb">
+          <a href="#">Home</a><span class="sep">›</span>
+          <a href="#">Courses</a><span class="sep">›</span>
+          <span>Advanced Astrology Course</span>
+        </div>
+        <h1 class="hero-title">Advanced Astrology Course</h1>
+        <p class="hero-subtitle">Master advanced Vedic Astrology techniques and develop the expertise to deliver accurate, confident, and professional-level predictions.</p>
+        <div class="rating-row">
+          <span class="bestseller">Advanced Level</span>
+          <span class="rating-number">4.8</span>
+          <div class="stars">
+            <i class="fas fa-star star-f"></i><i class="fas fa-star star-f"></i>
+            <i class="fas fa-star star-f"></i><i class="fas fa-star star-f"></i>
+            <i class="fas fa-star star-f"></i>
+          </div>
+          <a href="#reviews" class="rating-link">(4,500+ ratings)</a>
+          <span class="students-count">25,000+ students</span>
+        </div>
+        <p><a href="#instructor" class="instructor-link">Created by Acharya LavBhushan</a></p>
+        <div class="social-badges">
+          <span class="social-badge yt"><i class="fab fa-youtube"></i> 1.3M+ Subscribers</span>
+          <span class="social-badge ig"><i class="fab fa-instagram"></i> 267k+ Followers</span>
+        </div>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-info-circle"></i> Last updated March 2025</span>
+          <span class="meta-item"><i class="fas fa-globe"></i> Hindi / English</span>
+          <span class="meta-item"><i class="fas fa-star"></i> Professional-Level Predictive Framework</span>
+        </div>
+      </div>
+      <div class="hero-video">
+        <iframe src="https://www.youtube.com/embed/sbdWOFaAw10" allowfullscreen title="Course Preview"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-wrapper">
+  <div class="left-col">
+    <!-- What You'll Learn -->
+    <div class="learning-box">
+      <h2 class="section-title">What You Will Learn?</h2>
+      <div class="learning-grid">
+        <div class="learning-item"><i class="fas fa-check"></i><span>Advanced horoscope analysis</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>Dasha & Antardasha interpretation</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>Divisional charts (Vargas)</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>Yogas in depth</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>Transit (Gochar) analysis</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>Marriage & career predictions</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>Wealth & business indicators</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>Advanced prediction techniques</span></div>
+      </div>
+    </div>
+
+    <!-- Why Choose -->
+    <div class="section-block">
+      <h2 class="section-title">Why Choose This Course?</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-header">
+            <i class="fas fa-bullseye"></i>
+            <div class="why-card-title">Advanced Predictive Mastery</div>
+          </div>
+          <div class="why-card-desc">Sharpen your forecasting accuracy.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-header">
+            <i class="fas fa-search-depth"></i>
+            <div class="why-card-title">Deep Chart Interpretation</div>
+          </div>
+          <div class="why-card-desc">Understand complex combinations clearly.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-header">
+            <i class="fas fa-user-tie"></i>
+            <div class="why-card-title">Professional Consultation Skills</div>
+          </div>
+          <div class="why-card-desc">Handle real clients confidently.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-header">
+            <i class="fas fa-chart-line"></i>
+            <div class="why-card-title">Practical Case Analysis</div>
+          </div>
+          <div class="why-card-desc">Work on real horoscope examples.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-header">
+            <i class="fas fa-clock"></i>
+            <div class="why-card-title">Dasha System Clarity</div>
+          </div>
+          <div class="why-card-desc">Time events accurately.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-header">
+            <i class="fas fa-star"></i>
+            <div class="why-card-title">Advanced Yogas Understanding</div>
+          </div>
+          <div class="why-card-desc">Decode powerful planetary combinations.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-header">
+            <i class="fas fa-briefcase"></i>
+            <div class="why-card-title">Career-Focused Training</div>
+          </div>
+          <div class="why-card-desc">Build professional authority.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-header">
+            <i class="fas fa-certificate"></i>
+            <div class="why-card-title">Globally Recognized Certification</div>
+          </div>
+          <div class="why-card-desc">Enhance your credibility worldwide.</div>
+        </div>
+      </div>
+    </div>
+
+        <div class="section-block">
+      <h2 class="section-title">Requirements</h2>
+      <ul class="req-list">
+        <li>No prior astrological knowledge required</li>
+        <li>Basic understanding of English or Hindi</li>
+        <li>A notebook for taking notes</li>
+        <li>Curiosity and willingness to learn</li>
+        <li>Computer or smartphone with internet connection</li>
+      </ul>
+    </div>
+
+    <!-- Description -->
+    <div class="section-block">
+      <h2 class="section-title">Description</h2>
+      <div class="desc-text">
+        <p>The Advanced Astrology Course is designed for students who already understand the basics and want to elevate their predictive abilities to a professional level. This program covers advanced horoscope analysis, divisional charts, dashas, yogas, and transit interpretation in depth.</p>
+        <p>You will learn how to accurately predict career growth, marriage timing, financial stability, and major life events. With real case studies and practical chart discussions, the course strengthens analytical thinking and consultation confidence.</p>
+      </div>
+    </div>
+
+    <!-- Instructor (same as beginner course) -->
+    <div class="section-block" id="instructor">
+      <h2 class="section-title">Instructor</h2>
+      <a href="https://www.youtube.com/@acharyalavbhushan" target="_blank" class="instructor-name-link">Acharya LavBhushan</a>
+      <p class="instructor-title-sub">Celebrity Astrologer, Numerologist & Vastu Expert</p>
+      <div class="instructor-details">
+        <div class="instructor-avatar">AL</div>
+        <div class="instructor-stats">
+          <div class="stat-item"><i class="fas fa-star"></i> 4.8 Instructor Rating</div>
+          <div class="stat-item"><i class="fas fa-award"></i> 10,000+ Reviews</div>
+          <div class="stat-item"><i class="fas fa-users"></i> 1,00,000+ Students Trained</div>
+          <div class="stat-item"><i class="fab fa-youtube"></i> 1.3M+ YouTube Subscribers</div>
+          <div class="stat-item"><i class="fab fa-instagram"></i> 267k+ Instagram Followers</div>
+        </div>
+      </div>
+      <p class="instructor-bio">Acharya (Dr.) LavBhushan is a celebrity and world-renowned Astrologer practicing since 2003. He studied the intricacies of Astrology, Vastu & Numbers from renowned institutes in Hyderabad, Mumbai, and Ahmedabad, and internationally from Bangkok, China & Indonesia. He has trained more than 10,000 students through various workshops, webinars, and masterclasses, making ancient sciences simple and accessible to the modern generation.</p>
+    </div>
+
+    <!-- Reviews -->
+    <div class="section-block" id="reviews">
+      <h2 class="section-title">Student Reviews</h2>
+      <div class="review-item">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">RM</div>
+          <div>
+            <div class="reviewer-name">Dr. Rajesh Mishra</div>
+            <div class="review-meta">
+              <div class="stars-sm">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="review-date">· Allahabad, Uttar Pradesh</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-comment">This Advance Astrology Course took my understanding to a completely different level. Topics like Ashtakvarga, Jaimini, and predictive techniques are covered with a depth I have never encountered in any other program. Truly a masterclass.</p>
+      </div>
+      <div class="review-item">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">AD</div>
+          <div>
+            <div class="reviewer-name">Archana Dixit</div>
+            <div class="review-meta">
+              <div class="stars-sm">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="review-date">· Gwalior, Madhya Pradesh</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-comment">The advanced course is worth every single paisa. I have already started doing chart readings for clients after completing this course, and the feedback has been wonderful. This course changed my professional life.</p>
+      </div>
+      <div class="review-item">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">SN</div>
+          <div>
+            <div class="reviewer-name">Suresh Nair</div>
+            <div class="review-meta">
+              <div class="stars-sm">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="review-date">· Kochi, Kerala</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-comment">Exceptional quality, exceptional faculty, and exceptional content. If you are serious about becoming a professional astrologer, this is the course that will define your practice.</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-block">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <details class="faq-item">
+        <summary>What level of prior knowledge is required to enroll in the Advance Astrology Course?</summary>
+        <div class="faq-answer">You should have a solid understanding of the basics — Rashis, planets, and houses. Ideally, completing our Beginner's Astrology Course or equivalent knowledge is recommended. This program picks up where the basics leave off and goes into professional-level depth.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Does this course cover predictive techniques like Dasha systems and transits?</summary>
+        <div class="faq-answer">Yes, predictive astrology is a major focus. The course covers the Vimshottari Dasha system in detail, Ashtottari Dasha, planetary transits, Yogas, and their combined application for accurate life event prediction.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Will I learn about divisional charts (Vargas) in this course?</summary>
+        <div class="faq-answer">Absolutely. Divisional charts are a key component of advanced Vedic astrology and are covered extensively — including the Navamsa, Dashamsa, Saptamsa, and others, along with how to integrate them with the main birth chart for deeper analysis.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can this course prepare me to offer professional astrology consultations?</summary>
+        <div class="faq-answer">Yes, this course is designed to bring you to a consultation-ready standard. You will learn structured chart reading methodology, client communication frameworks, and how to give clear, ethical, and actionable astrological guidance.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is there mentorship or personal feedback available during this advanced program?</summary>
+        <div class="faq-answer">Yes, the Advance Astrology Course includes mentorship sessions where faculty review student chart readings and provide personalised feedback. This guided practice is invaluable for developing real-world consultation skills.</div>
+      </details>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="right-col">
+    <div class="right-sticky">
+      <div class="course-card">
+        <div class="course-thumb">
+          <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-02-28-at-12-9f3ac2aec912e777970272eafe295e02.jpeg" alt="Advanced Astrology Course">
+        </div>
+        <div class="card-body">
+          <a href="https://academy.astrovastugurukull.com/l/45ed9b9f45" target="_blank" class="enroll-btn">🎓 Enroll Now ₹24,999</a>
+          <hr class="card-divider">
+          <div class="includes-title">This course includes:</div>
+          <div class="includes-list">
+            <div class="include-item"><i class="fas fa-play-circle"></i> On-demand video lectures</div>
+            <div class="include-item"><i class="fas fa-infinity"></i> Lifetime access</div>
+            <div class="include-item"><i class="fas fa-mobile-alt"></i> Access on mobile & desktop</div>
+            <div class="include-item"><i class="fas fa-file-pdf"></i> Downloadable PDF notes & worksheets</div>
+            <div class="include-item"><i class="fas fa-trophy"></i> Professional certification</div>
+            <div class="include-item"><i class="fas fa-users"></i> Advanced community access</div>
+            <div class="include-item"><i class="fas fa-headset"></i> Mentorship & doubt clearing</div>
+            <div class="include-item"><i class="fas fa-chart-bar"></i> Real client case studies</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats widget (adjusted for advanced course) -->
+      <div class="stats-widget">
+        <div class="stats-widget-title">Course At a Glance</div>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-box-num">25K+</span>
+            <span class="stat-box-label">Students Enrolled</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-box-num">4.8★</span>
+            <span class="stat-box-label">Average Rating</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-box-num">4.5K+</span>
+            <span class="stat-box-label">Reviews</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-box-num">∞</span>
+            <span class="stat-box-label">Lifetime Access</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-box-num">Hindi</span>
+            <span class="stat-box-label">Primary Language</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-box-num">12+</span>
+            <span class="stat-box-label">Advanced Modules</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related courses -->
+      <div class="related-widget">
+        <div class="related-widget-header">
+          <h3>Explore Related Courses</h3>
+          <p>Continue your learning journey</p>
+        </div>
+        <div class="related-list">
+          <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course" class="related-item">
+            <div class="related-item-left">
+              <div class="related-icon"><i class="fas fa-book-open"></i></div>
+              <div class="related-name">Beginner's Astrology Course</div>
+            </div>
+            <i class="fas fa-chevron-right related-arrow"></i>
+          </a>
+          <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course" class="related-item">
+            <div class="related-item-left">
+              <div class="related-icon"><i class="fas fa-user-edit"></i></div>
+              <div class="related-name">Personal Details Correction</div>
+            </div>
+            <i class="fas fa-chevron-right related-arrow"></i>
+          </a>
+          <a href="https://academy.astrovastugurukull.com/services/all-about-rashis" class="related-item">
+            <div class="related-item-left">
+              <div class="related-icon"><i class="fas fa-star-and-crescent"></i></div>
+              <div class="related-name">All About Rashis</div>
+            </div>
+            <i class="fas fa-chevron-right related-arrow"></i>
+          </a>
+          <a href="https://academy.astrovastugurukull.com/services/all-about-planets" class="related-item">
+            <div class="related-item-left">
+              <div class="related-icon"><i class="fas fa-globe"></i></div>
+              <div class="related-name">All About Planets</div>
+            </div>
+            <i class="fas fa-chevron-right related-arrow"></i>
+          </a>
+          <a href="https://academy.astrovastugurukull.com/services/all-about-houses" class="related-item">
+            <div class="related-item-left">
+              <div class="related-icon"><i class="fas fa-home"></i></div>
+              <div class="related-name">All About Houses</div>
+            </div>
+            <i class="fas fa-chevron-right related-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile sticky bar -->
+<div class="mobile-enroll-bar">
+  <div class="mobile-enroll-inner">
+    <span class="m-price">₹24,999</span>
+    <a href="https://academy.astrovastugurukull.com/l/45ed9b9f45" target="_blank" class="mobile-enroll-btn">🎓 Enroll Now</a>
+  </div>
+</div>
+
+<!-- FOOTER (same as before) -->
+<footer class="footer">
+  <div class="footer-top">
+    <h3>Got questions? We’re here to help.</h3>
+    <p>Email us at: <a href="mailto:support@astrovastugurukull.com">support@astrovastugurukull.com</a></p>
+    <p>Follow us on social media for updates, tips & free knowledge from Acharya ji</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/p/Astro-Vastu-Gurukul-61574634191304/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://x.com/ALavbhushan" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.instagram.com/astrovastugurukull/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="http://www.youtube.com/@AstroVastuGurukull-01" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="footer-links">
+      <a href="https://astrovastugurukull.com/about-us">About Us</a>
+      <a href="https://astrovastugurukull.com/terms-and-conditions">Terms & Conditions</a>
+      <a href="https://astrovastugurukull.com/privacy-policy">Privacy Policy</a>
+      <a href="https://astrovastugurukull.com/refund-and-cancellation-policy">Refund Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span style="color:#f5e6d3;font-weight:700;">Astro Vastu Gurukull</span>
+      <span class="footer-copy">© 2025 AstroVastu Gurukull. All Rights Reserved.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
