@@ -331,13 +331,16 @@
 
     /* Auto-play animation: page0 (0%) → page1 (50%) → back */
     /* Each page = 50% of track (2 cards + gap per page) */
-    @keyframes testiAuto {
-      0%    { transform: translateX(0); }
-      40%   { transform: translateX(0); }
-      50%   { transform: translateX(calc(-50% - 12px)); }
-      90%   { transform: translateX(calc(-50% - 12px)); }
-      100%  { transform: translateX(0); }
-    }
+@keyframes testiAuto {
+  0% { transform: translateX(0); }
+  40% { transform: translateX(0); }
+
+  /* Move exactly 2 cards */
+  50% { transform: translateX(calc(-100% - 24px)); }
+  90% { transform: translateX(calc(-100% - 24px)); }
+
+  100% { transform: translateX(0); }
+}
 
     /* When a radio is checked, override animation and snap to that page */
     #testi0:checked ~ .testimonials-inner .testi-track {
@@ -347,7 +350,7 @@
     }
     #testi1:checked ~ .testimonials-inner .testi-track {
       animation: none;
-      transform: translateX(calc(-50% - 12px));
+       transform: translateX(calc(-100% - 24px));
       transition: transform .6s cubic-bezier(.4,0,.2,1);
     }
 
@@ -355,7 +358,9 @@
     .testi-dots { display:flex; justify-content:center; gap:8px; margin-top:28px; }
     /* Hide dots 2 & 3 on desktop (only 2 pages when showing 2 cards) */
 .testi-dot-label[for="testi2"],
-.testi-dot-label[for="testi3"] ,
+.testi-dot-label[for="testi3"] {
+  display: none;
+}
 
     .testi-dot-label {
       width:8px; height:8px; border-radius:50%; background:#d5cdc4;
