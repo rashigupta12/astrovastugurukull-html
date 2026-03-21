@@ -23,27 +23,21 @@
     @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     @keyframes slideInDrawer { from{transform:translateX(-100%)} to{transform:translateX(0)} }
 
+    /* ── STICKY HEADER ── */
+    .sticky-header { position:sticky; top:0; z-index:1001; width:100%; box-shadow:0 2px 24px rgba(75,15,7,.07); }
+
     /* ── BANNER ── */
-    /* FIX #2: Removed "₹1,499" starting price from banner */
     .top-banner {
       display:block; background:linear-gradient(90deg,#b85e3a,#d4724a,#b85e3a); background-size:200% auto;
       animation:bannerSlide .6s ease forwards, gradientShift 4s linear infinite;
       color:#fff; text-align:center; padding:11px 16px; font-size:18px; cursor:pointer; width:100%; letter-spacing:.2px;
     }
     .top-banner:hover { opacity:.95; }
-    .top-banner span {
-      display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.4);
-      border-radius:20px; padding:2px 10px; font-weight:700; margin-left:6px; font-size:18px; letter-spacing:.5px;
-      transition:background .3s;
-    }
+    .top-banner span { display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.4); border-radius:20px; padding:2px 10px; font-weight:700; margin-left:6px; font-size:18px; letter-spacing:.5px; transition:background .3s; }
     .top-banner:hover span { background:rgba(255,255,255,.32); }
 
     /* ── NAVBAR ── */
-    .navbar {
-      background:#fff; border-bottom:1.5px solid #ece7df; position:sticky; top:0; z-index:1001;
-      height:72px; display:flex; align-items:center; width:100%;
-      box-shadow:0 2px 24px rgba(75,15,7,.07); animation:navReveal .5s ease .2s both; overflow:visible;
-    }
+    .navbar { background:#fff; border-bottom:1.5px solid #ece7df; position:relative; top:0; z-index:1001; height:72px; display:flex; align-items:center; width:100%; box-shadow:none; animation:navReveal .5s ease .2s both; overflow:visible; }
     .navbar-inner { width:100%; padding:0 clamp(20px,4vw,72px); display:flex; align-items:center; justify-content:flex-start; overflow:visible; }
     .navbar-inner > * { overflow:visible; }
     .nav-left { display:flex; align-items:center; gap:6px; flex-shrink:0; }
@@ -61,8 +55,6 @@
     .auth-buttons { display:flex; gap:8px; flex-shrink:0; margin-left:8px; }
     .login-btn { border:1.5px solid #d5cdc4; background:white; padding:9px 20px; font-weight:600; cursor:pointer; white-space:nowrap; border-radius:8px; font-size:18px; font-family:inherit; color:#333; transition:border-color .3s,color .3s,background .3s; }
     .login-btn:hover { border-color:#b85e3a; color:#b85e3a; background:rgba(184,94,58,.04); }
-    .signup-btn { background:linear-gradient(135deg,#d4623e,#b85e3a); color:white; border:none; padding:9px 22px; font-weight:700; cursor:pointer; white-space:nowrap; border-radius:8px; font-size:18px; font-family:inherit; transition:opacity .3s,transform .3s,box-shadow .3s; box-shadow:0 3px 10px rgba(184,94,58,.3); }
-    .signup-btn:hover { opacity:.92; transform:translateY(-1px); box-shadow:0 6px 16px rgba(184,94,58,.4); }
 
     /* DROPDOWN */
     .dropdown { position:relative; z-index:1002; }
@@ -111,29 +103,14 @@
     .slides { position:relative; width:100%; height:100%; }
     .carousel-input { display:none; }
     .slide { position:absolute; inset:0; width:100%; height:100%; background-size:cover; background-position:75% center; display:flex; align-items:center; opacity:0; transition:opacity .8s ease-in-out; }
-
     @keyframes autoS1 { 0%{opacity:1} 42%{opacity:1} 50%{opacity:0} 92%{opacity:0} 100%{opacity:1} }
     @keyframes autoS2 { 0%{opacity:0} 42%{opacity:0} 50%{opacity:1} 92%{opacity:1} 100%{opacity:0} }
-    @keyframes dotS1 {
-      0%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-      42%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-      50%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-      92%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-      100%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-    }
-    @keyframes dotS2 {
-      0%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-      42%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-      50%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-      92%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-      100%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-    }
-
+    @keyframes dotS1 { 0%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} 42%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} 50%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} 92%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} 100%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} }
+    @keyframes dotS2 { 0%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} 42%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} 50%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} 92%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} 100%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} }
     .slide1 { animation:autoS1 8s ease-in-out infinite; }
     .slide2 { animation:autoS2 8s ease-in-out infinite; }
     .dot[data-index="0"] { animation:dotS1 8s ease-in-out infinite; }
     .dot[data-index="1"] { animation:dotS2 8s ease-in-out infinite; }
-
     #slide1-btn:checked ~ .slides .slide1 { animation:none; opacity:1; }
     #slide1-btn:checked ~ .slides .slide2 { animation:none; opacity:0; }
     #slide1-btn:checked ~ .carousel-dots .dot[data-index="0"] { animation:none; transform:scale(1.3); background:#f5d79e; border-color:#f5d79e; }
@@ -142,20 +119,10 @@
     #slide2-btn:checked ~ .slides .slide2 { animation:none; opacity:1; }
     #slide2-btn:checked ~ .carousel-dots .dot[data-index="0"] { animation:none; transform:scale(1); background:rgba(255,255,255,.45); border-color:rgba(255,255,255,.7); }
     #slide2-btn:checked ~ .carousel-dots .dot[data-index="1"] { animation:none; transform:scale(1.3); background:#f5d79e; border-color:#f5d79e; }
-
     .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_xl-4d81f03585af197a44a52a5416263125.png'); }
     .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-4-dbc22bcf6f6dcfcb22c096849e502838.jpeg'); }
-
-    @media (max-width:1199px) {
-      .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_tablet-85209723e146491aa403ffefc79bbd2e.png'); }
-      .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-5-3a43f4d584b5123cd662d51f7757a9a4.jpeg'); }
-    }
-
-    @media (max-width:767px) {
-      .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_mobile-2efa9dd703892bdb8d43a3f8e668a4a0.png'); }
-      .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-5-406cd46b7e5d87c6cbff71a92c4cee62.jpeg'); }
-    }
-
+    @media (max-width:1199px) { .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_tablet-85209723e146491aa403ffefc79bbd2e.png'); } .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-5-3a43f4d584b5123cd662d51f7757a9a4.jpeg'); } }
+    @media (max-width:767px) { .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_mobile-2efa9dd703892bdb8d43a3f8e668a4a0.png'); } .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-5-406cd46b7e5d87c6cbff71a92c4cee62.jpeg'); } }
     .slide-content { position:relative; z-index:2; width:50%; max-width:600px; padding-left:clamp(20px,6vw,100px); padding-right:20px; display:flex; flex-direction:column; gap:clamp(18px,2.2vw,28px); }
     .slide-eyebrow { background:rgba(245,215,158,.18); border:1px solid rgba(245,215,158,.4); border-radius:30px; padding:6px 16px; width:fit-content; color:#f5d79e; font-size:18px; font-weight:600; letter-spacing:1.5px; }
     .slide-title { color:#fff; font-size:clamp(26px,4vw,56px); font-weight:800; line-height:1.1; }
@@ -165,59 +132,16 @@
     .slide-badge { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); border-radius:20px; padding:5px 14px; color:#fff; font-size:15px; }
     .slide-cta { background:linear-gradient(135deg,#e05230,#b85e3a); border-radius:50px; color:#fff; font-size:18px; font-weight:700; padding:16px 40px; text-decoration:none; width:max-content; transition:.3s; }
     .slide-cta:hover { transform:translateY(-3px); }
-
-    /* DESKTOP: Apply Now as absolute button on slide 2 */
-    .banner-btn {
-      position:absolute; left:50%; transform:translateX(-50%); bottom:40px;
-      background:linear-gradient(145deg,#b63e00,#8b2e00); color:#fff; padding:19px 44px;
-      border-radius:40px; font-size:19px; font-weight:700; text-decoration:none;
-      box-shadow:0 10px 30px rgba(0,0,0,.35); transition:.25s;
-    }
+    .banner-btn { position:absolute; left:50%; transform:translateX(-50%); bottom:40px; background:linear-gradient(145deg,#b63e00,#8b2e00); color:#fff; padding:19px 44px; border-radius:40px; font-size:19px; font-weight:700; text-decoration:none; box-shadow:0 10px 30px rgba(0,0,0,.35); transition:.25s; }
     .banner-btn:hover { transform:translateX(-50%) translateY(-4px); }
-
     .carousel-dots { position:absolute; bottom:18px; left:50%; transform:translateX(-50%); display:flex; gap:10px; z-index:10; }
     .dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.45); border:2px solid rgba(255,255,255,.7); cursor:pointer; transition:background .3s,transform .3s,border-color .3s; display:block; }
-
-    @media (max-width:1199px) {
-      .slide { background-position:82% center; }
-      .slide-content { width:60%; }
-      .banner-btn { left:50%; transform:translateX(-50%); bottom:40px; }
-    }
-
-    /* ── FIX #1: Apply Now in-flow on mobile ── */
-    @media (max-width:767px) {
-      .hero-carousel { height:auto; aspect-ratio:9/16; min-height:530px; }
-      .slide { align-items:flex-start; background-position:top center !important; background-size:cover; }
-      .slide-content { width:100%; padding:36px 20px 0 20px; justify-content:flex-start; gap:12px; }
-      .slide-title { font-size:28px; line-height:1.2; }
-      .slide-subtitle { font-size:14px; max-width:95%; }
-      .slide-cta { padding:14px 28px; font-size:16px; }
-
-      /* Reset absolute position; render in normal flow inside slide2 */
-      .banner-btn {
-                left: auto;
-                right: 18px;
-                top: 56%;
-                bottom: auto;
-                transform: none !important;
-                padding: 14px 28px;
-                font-size: 15px;
-            }
-
-      /* Slide 2 centered column layout so btn is naturally placed */
-      .slide2 { flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; gap:0; }
-      .carousel-dots { bottom:12px; }
-    }
-
-    @media (max-width:480px) {
-      .hero-carousel { height:480px; }
-      .slide-title { font-size:22px; }
-    }
+    @media (max-width:1199px) { .slide { background-position:82% center; } .slide-content { width:60%; } .banner-btn { left:50%; transform:translateX(-50%); bottom:40px; } }
+    @media (max-width:767px) { .hero-carousel { height:auto; aspect-ratio:9/16; min-height:530px; } .slide { align-items:flex-start; background-position:top center !important; background-size:cover; } .slide-content { width:100%; padding:36px 20px 0 20px; justify-content:flex-start; gap:12px; } .slide-title { font-size:28px; line-height:1.2; } .slide-subtitle { font-size:14px; max-width:95%; } .slide-cta { padding:14px 28px; font-size:16px; } .banner-btn { left:auto; right:18px; top:56%; bottom:auto; transform:none !important; padding:14px 28px; font-size:15px; } .slide2 { flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; gap:0; } .carousel-dots { bottom:12px; } }
+    @media (max-width:480px) { .hero-carousel { height:480px; } .slide-title { font-size:22px; } }
 
     /* ── STATS ── */
-    .stats-section {
-      background:linear-gradient(135deg,#3d0c05,#4b0f07 50%,#5a1309); padding:clamp(30px,5vw,50px) 0; width:100%; position:relative; overflow:hidden;
-    }
+    .stats-section { background:linear-gradient(135deg,#3d0c05,#4b0f07 50%,#5a1309); padding:clamp(40px,5vw,30px) 0; width:100%; position:relative; overflow:hidden; }
     .stats-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(245,215,158,.06),transparent 70%); pointer-events:none; }
     .stats-inner { max-width:1400px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; gap:clamp(24px,4vw,48px); position:relative; z-index:1; padding:0 clamp(16px,4vw,80px); }
     .stat-item { display:flex; align-items:center; gap:16px; color:white; min-width:180px; }
@@ -230,7 +154,7 @@
     .stat-item:nth-child(4) .stat-icon { animation-delay:1s; }
 
     /* ── INSTRUCTOR ── */
-    .instructor-section { background:linear-gradient(135deg,#f7f4f0,#ede5da); padding:clamp(50px,7vw,90px) clamp(16px,4vw,40px); width:100%; }
+    .instructor-section { background:linear-gradient(135deg,#f7f4f0,#ede5da); padding:clamp(40px,7vw,40px) clamp(16px,4vw,40px); width:100%; }
     .instructor-grid { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:35% 65%; background:white; border-radius:20px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.12); }
     .instructor-img { width:100%; min-height:550px; overflow:hidden; }
     .instructor-img img { width:100%; height:100%; object-fit:cover; object-position:center top; transition:transform .6s ease; display:block; }
@@ -238,10 +162,10 @@
     .instructor-content { padding:clamp(40px,6vw,70px); }
     .instructor-content h2 { font-family:'DM Serif Display',serif; font-size:clamp(30px,3.5vw,44px); margin:10px 0; color:#2d2d2d; }
     .instructor-content h4 { font-size:clamp(16px,1.2vw,19px); font-weight:600; color:#555; margin-bottom:20px; }
-    .instructor-content p { font-size:20px; color:#555; line-height:1.75; margin-bottom:16px; }
+    .instructor-content p { font-size:20px; color:#555; line-height:1.75; margin-bottom:16px; text-align:justify; }
     .instructor-badge { color:#b85e3a; font-weight:700; text-transform:uppercase; font-size:20px; letter-spacing:2px; }
     .instructor-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0; }
-    .i-stat { background:#f7f4f0; border-radius:12px; padding:14px; text-align:center; }
+    .i-stat { min-width:0; overflow:hidden; background:#f7f4f0; border-radius:12px; padding:14px; text-align:center; }
     .i-stat strong { display:block; font-size:22px; font-weight:800; color:#b85e3a; }
     .i-stat span { font-size:14px; color:#777; }
     .instructor-footer { margin-top:24px; }
@@ -250,29 +174,77 @@
     .instructor-footer a:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(184,94,58,.45); }
     .instructor-footer span { display:block; margin-top:10px; font-size:18px; color:#999; }
 
-    /* ── COURSES ── */
+    /* ── COURSES — :target hash-based tab system ── */
     .courses-section { padding:clamp(40px,6vw,70px) clamp(16px,5vw,80px); width:100%; }
     .section-title { font-family:'DM Serif Display',serif; font-size:clamp(26px,3vw,40px); margin-bottom:10px; }
     .section-desc { color:#6f6b66; margin-bottom:28px; font-size:20px; }
-    input[name="tabs"] { display:none; }
+
+    /* Hash anchor divs — invisible, sit just above courses section */
+    .tab-anchor { display:block; height:0; overflow:hidden; }
+
     .tab-bar { display:flex; border-bottom:2px solid #e0dbd1; margin-bottom:30px; flex-wrap:wrap; gap:4px; }
-    .tab-btn { padding:clamp(10px,1.5vw,14px) clamp(14px,2vw,22px); cursor:pointer; font-size:20px; color:#6f6b66; font-weight:500; border-radius:8px 8px 0 0; transition:color .3s,background .3s; }
+    .tab-btn { padding:clamp(10px,1.5vw,14px) clamp(14px,2vw,22px); cursor:pointer; font-size:20px; color:#6f6b66; font-weight:500; border-radius:8px 8px 0 0; transition:color .3s,background .3s; display:block; text-decoration:none; }
     .tab-btn:hover { color:#2d2d2d; background:rgba(0,0,0,.03); }
-    #astrology:checked ~ .tab-bar label[for="astrology"],
-    #numerology:checked ~ .tab-bar label[for="numerology"],
-    #vastu:checked ~ .tab-bar label[for="vastu"],
-    #combo:checked ~ .tab-bar label[for="combo"],
-    #rudraksha:checked ~ .tab-bar label[for="rudraksha"] { border-bottom:3px solid #2d2d2d; font-weight:700; color:#2d2d2d; background:rgba(0,0,0,.04); }
+
+    /* ── DEFAULT: show astrology tab, hide others ── */
     .tab-content { display:none; animation:scaleIn .35s ease; }
-    #astrology:checked ~ .astrology-content,
-    #numerology:checked ~ .numerology-content,
-    #vastu:checked ~ .vastu-content,
-    #combo:checked ~ .combo-content,
-    #rudraksha:checked ~ .rudraksha-content { display:block; }
+    .astrology-content { display:block; }
+
+    /* ── HASH TAB SYSTEM — :target on anchor divs switches tabs ── */
+    /* When #astrology-tab is targeted */
+    #astrology-tab:target ~ .courses-section .astrology-content  { display:block; }
+    #astrology-tab:target ~ .courses-section .numerology-content,
+    #astrology-tab:target ~ .courses-section .vastu-content,
+    #astrology-tab:target ~ .courses-section .combo-content,
+    #astrology-tab:target ~ .courses-section .rudraksha-content  { display:none; }
+
+    /* When #numerology-tab is targeted */
+    #numerology-tab:target ~ .courses-section .numerology-content { display:block; }
+    #numerology-tab:target ~ .courses-section .astrology-content,
+    #numerology-tab:target ~ .courses-section .vastu-content,
+    #numerology-tab:target ~ .courses-section .combo-content,
+    #numerology-tab:target ~ .courses-section .rudraksha-content  { display:none; }
+
+    /* When #vastu-tab is targeted */
+    #vastu-tab:target ~ .courses-section .vastu-content      { display:block; }
+    #vastu-tab:target ~ .courses-section .astrology-content,
+    #vastu-tab:target ~ .courses-section .numerology-content,
+    #vastu-tab:target ~ .courses-section .combo-content,
+    #vastu-tab:target ~ .courses-section .rudraksha-content   { display:none; }
+
+    /* When #combo-tab is targeted */
+    #combo-tab:target ~ .courses-section .combo-content       { display:block; }
+    #combo-tab:target ~ .courses-section .astrology-content,
+    #combo-tab:target ~ .courses-section .numerology-content,
+    #combo-tab:target ~ .courses-section .vastu-content,
+    #combo-tab:target ~ .courses-section .rudraksha-content   { display:none; }
+
+    /* When #rudraksha-tab is targeted */
+    #rudraksha-tab:target ~ .courses-section .rudraksha-content { display:block; }
+    #rudraksha-tab:target ~ .courses-section .astrology-content,
+    #rudraksha-tab:target ~ .courses-section .numerology-content,
+    #rudraksha-tab:target ~ .courses-section .vastu-content,
+    #rudraksha-tab:target ~ .courses-section .combo-content    { display:none; }
+
+    /* Active tab highlight using :target */
+    #astrology-tab:target  ~ .courses-section .tab-btn[href="#astrology-tab"],
+    #numerology-tab:target ~ .courses-section .tab-btn[href="#numerology-tab"],
+    #vastu-tab:target      ~ .courses-section .tab-btn[href="#vastu-tab"],
+    #combo-tab:target      ~ .courses-section .tab-btn[href="#combo-tab"],
+    #rudraksha-tab:target  ~ .courses-section .tab-btn[href="#rudraksha-tab"] {
+      border-bottom:3px solid #2d2d2d; font-weight:700; color:#2d2d2d; background:rgba(0,0,0,.04);
+    }
+    /* Default active (astrology) when no hash */
+    .tab-btn[href="#astrology-tab"] { border-bottom:3px solid #2d2d2d; font-weight:700; color:#2d2d2d; background:rgba(0,0,0,.04); }
+    /* Remove default when another tab is targeted */
+    #numerology-tab:target ~ .courses-section .tab-btn[href="#astrology-tab"],
+    #vastu-tab:target      ~ .courses-section .tab-btn[href="#astrology-tab"],
+    #combo-tab:target      ~ .courses-section .tab-btn[href="#astrology-tab"],
+    #rudraksha-tab:target  ~ .courses-section .tab-btn[href="#astrology-tab"] {
+      border-bottom:none; font-weight:500; color:#6f6b66; background:none;
+    }
 
     .course-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; align-items:stretch; }
-
-    /* FIX #5: Equal height cards */
     .course-link { display:flex; flex-direction:column; height:100%; text-decoration:none; color:inherit; }
     .course-card { border:1px solid #e0dbd1; border-radius:14px; overflow:hidden; background:white; transition:transform .3s,box-shadow .3s,border-color .3s; display:flex; flex-direction:column; height:100%; }
     .course-card:hover { transform:translateY(-8px); box-shadow:0 20px 40px rgba(0,0,0,.10); border-color:rgba(184,94,58,.25); }
@@ -280,38 +252,34 @@
     .course-card-img-wrap img { width:100%; height:100%; object-fit:contain; object-position:center; transition:transform .5s ease; display:block; }
     .course-card:hover .course-card-img-wrap img { transform:scale(1.04); }
     .card-body { padding:18px; display:flex; flex-direction:column; flex:1; }
-    .card-body h3 {
-      font-size:20px; font-weight:700; margin-bottom:6px; line-height:1.3;
-      /* Clamp title to 2 lines for equal height */
-      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.6em;
-    }
-    .badge { background:#f59e0b; color:white; font-size:13px; padding:3px 8px; border-radius:6px; display:inline-block; margin-bottom:8px; }
+    .card-body h3 { font-size:20px; font-weight:700; margin-bottom:6px; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.6em; }
     .instructor { font-size:18px; color:#777; margin-bottom:4px; }
-    .rating { font-size:15px; margin:4px 0; }
-    .rating span { font-size:14px; color:#999; }
-    .meta { font-size:15px; color:#777; margin-bottom:8px; }
-    /* FIX #5: Price always at bottom */
-    .price-row { display:flex; gap:10px; align-items:baseline; margin-top:auto; padding-top:12px; border-top:1px solid #f0ece6; }
-    .price { font-size:21px; font-weight:800; color:#b85e3a; }
-    .old-price { font-size:15px; text-decoration:line-through; color:#aaa; }
-    .discount-badge { background:#dcfce7; color:#16a34a; font-size:13px; font-weight:700; padding:2px 7px; border-radius:6px; margin-left:auto; }
+    .rating { font-size:13px; font-weight:600; color:#555; margin:0; white-space:nowrap; }
+    .price-row { display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:10px; border-top:1px solid #f0ece6; }
+    .price { font-size:20px; font-weight:800; color:#b85e3a; }
 
     /* ── TESTIMONIALS ── */
-    .testimonials-section { background:#f7f4f0; padding:clamp(60px,8vw,100px) clamp(16px,5vw,80px); width:100%; }
+    .testimonials-section { background:#f7f4f0; padding:clamp(60px,8vw,40px) clamp(16px,5vw,40px); width:100%; }
     .testimonials-inner { max-width:1350px; margin:auto; }
     .testi-section-header { text-align:center; margin-bottom:clamp(40px,6vw,56px); }
     .testi-section-label { display:inline-block; color:#b85e3a; font-size:18px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
     .testi-title { font-family:'DM Serif Display',serif; font-size:clamp(28px,4vw,46px); line-height:1.15; color:#1a0a06; margin-bottom:12px; }
     .testi-title em { font-style:italic; color:#b85e3a; }
     .testi-subtitle { font-size:18px; color:#6f6b66; max-width:540px; margin:0 auto; line-height:1.6; }
-
-    /* FIX #4: Auto-slider */
+    .testi-radio { display:none; }
     .testi-slider-outer { position:relative; overflow:hidden; }
-    .testi-grid { display:flex; gap:24px; flex-wrap:nowrap; transition:transform .6s cubic-bezier(.4,0,.2,1); cursor:grab; user-select:none; }
-    .testi-grid.is-dragging { cursor:grabbing; }
-    /* 2 cards visible on desktop, 1 on mobile (set via JS) */
+    .testi-track { display:flex; gap:24px; flex-wrap:nowrap; animation:testiAuto 10s ease-in-out infinite; will-change:transform; }
     .testi-card { background:white; border-radius:16px; border:1px solid #e0dbd1; padding:28px; transition:box-shadow .3s,transform .3s; flex:0 0 calc(50% - 12px); min-width:0; }
     .testi-card:hover { box-shadow:0 8px 32px rgba(0,0,0,.09); transform:translateY(-4px); }
+    @keyframes testiAuto { 0%{transform:translateX(0)} 40%{transform:translateX(0)} 50%{transform:translateX(calc(-100% - 24px))} 90%{transform:translateX(calc(-100% - 24px))} 100%{transform:translateX(0)} }
+    #testi0:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(0); transition:transform .6s cubic-bezier(.4,0,.2,1); }
+    #testi1:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(calc(-100% - 24px)); transition:transform .6s cubic-bezier(.4,0,.2,1); }
+    .testi-dots { display:flex; justify-content:center; gap:8px; margin-top:28px; }
+    .testi-dot-label[for="testi2"], .testi-dot-label[for="testi3"] { display:none; }
+    .testi-dot-label { width:8px; height:8px; border-radius:50%; background:#d5cdc4; display:block; cursor:pointer; transition:background .3s,transform .3s; }
+    #testi0:checked ~ .testimonials-inner .testi-dots label[for="testi0"], #testi1:checked ~ .testimonials-inner .testi-dots label[for="testi1"] { background:#b85e3a; transform:scale(1.35); }
+    .testi-dot-label[for="testi0"] { background:#b85e3a; transform:scale(1.35); }
+    #testi1:checked ~ .testimonials-inner .testi-dots label[for="testi0"] { background:#d5cdc4; transform:scale(1); }
     .testi-top { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
     .testi-avatar-wrap { width:56px; height:56px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #e0dbd1; }
     .testi-avatar-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
@@ -321,9 +289,6 @@
     .testi-stars { display:flex; gap:3px; }
     .testi-stars i { color:#f59e0b; font-size:13px; }
     .testi-card p { font-size:18px; line-height:1.7; color:#555; margin:0; }
-    .testi-dots { display:flex; justify-content:center; gap:8px; margin-top:28px; }
-    .testi-dot { width:8px; height:8px; border-radius:50%; background:#d5cdc4; border:none; cursor:pointer; transition:background .3s,transform .3s; padding:0; }
-    .testi-dot.active { background:#b85e3a; transform:scale(1.35); }
 
     /* ── VIDEO ── */
     .video-title { font-family:'DM Serif Display',serif; font-size:clamp(24px,3vw,36px); margin:clamp(50px,7vw,90px) 0 clamp(28px,4vw,44px); text-align:center; }
@@ -332,21 +297,25 @@
     .video-wrap video { width:100%; height:100%; object-fit:cover; display:block; border:none; pointer-events:auto; }
 
     /* ── CERT ── */
-    .cert-section { background:#f7f4f0; padding:clamp(20px,3vw,40px) clamp(16px,5vw,80px) clamp(40px,6vw,70px); width:100%; }
+    .cert-section { background:#f7f4f0; padding:clamp(20px,3vw,40px) clamp(16px,5vw,40px) clamp(40px,6vw,70px); width:100%; }
     .cert-inner { max-width:1350px; margin:0 auto; }
     .cert-inner h2 { font-family:'DM Serif Display',serif; font-size:clamp(24px,3vw,38px); margin-bottom:10px; color:#1c1d1f; }
     .cert-inner > p { color:#6a6f73; font-size:18px; margin-bottom:10px; }
     .cert-inner > a { display:inline-block; color:#5624d0; font-weight:600; margin-bottom:24px; font-size:17px; transition:opacity .3s; }
     .cert-inner > a:hover { opacity:.75; }
-    .cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:20px; margin-top:20px; }
-    .cert-card { display:flex; align-items:center; gap:18px; background:white; border:1px solid #d1d7dc; padding:18px; cursor:pointer; border-radius:12px; transition:transform .3s,box-shadow .3s,border-color .3s; }
-    .cert-card:hover { transform:translateY(-4px); box-shadow:0 4px 12px rgba(0,0,0,.06); border-color:#b85e3a; }
-    .cert-card img { width:160px; height:120px; object-fit:contain; border-radius:8px; flex-shrink:0; }
-    .cert-card-text h3 { font-size:22px; font-weight:700; margin-bottom:6px; color:#1c1d1f; }
-    .cert-card-text p { font-size:17px; color:#6a6f73; margin:0; line-height:1.5; }
+    .cert-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:30px; }
+    .cert-card {
+      display:flex; flex-direction:column; background:white; border-radius:16px;
+      overflow:hidden; border:1px solid #e6e1d8; transition:all .35s ease; text-decoration:none;
+    }
+    .cert-card:hover { transform:translateY(-8px); box-shadow:0 20px 50px rgba(0,0,0,.08); border-color:#b85e3a; }
+    .cert-card img { width:100%; height:auto; aspect-ratio:400/260; object-fit:cover; display:block; }
+    .cert-card-text { padding:22px; }
+    .cert-card-text h3 { font-size:22px; font-weight:700; margin-bottom:8px; }
+    .cert-card-text p { font-size:17px; color:#6f6b66; }
 
     /* ── FAQ ── */
-    .faq-section { background:white; padding:clamp(50px,7vw,90px) clamp(16px,5vw,80px); width:100%; }
+    .faq-section { background:white; padding:clamp(50px,7vw,40px) clamp(16px,5vw,80px); width:100%; }
     .faq-inner { max-width:820px; margin:0 auto; }
     .faq-inner h2 { text-align:center; font-family:'DM Serif Display',serif; font-size:clamp(28px,4vw,42px); margin-bottom:clamp(36px,5vw,56px); color:#4b0f07; }
     .faq-item { border-bottom:1px solid #e0dbd1; }
@@ -384,12 +353,7 @@
 
     /* ═══════════ RESPONSIVE ═══════════ */
     @media (min-width:1400px) { .course-grid { grid-template-columns:repeat(4,1fr); } }
-
-    @media (max-width:1199px) and (min-width:769px) {
-      .course-grid { grid-template-columns:repeat(2,1fr); }
-      .video-grid { grid-template-columns:repeat(2,1fr); }
-    }
-
+    @media (max-width:1199px) and (min-width:769px) { .course-grid { grid-template-columns:repeat(2,1fr); } .video-grid { grid-template-columns:repeat(2,1fr); } }
     @media (max-width:992px) {
       .nav-links { display:none; }
       .instructor-grid { grid-template-columns:1fr; }
@@ -400,204 +364,140 @@
       .testi-card { flex:0 0 calc(50% - 12px); }
     }
 
+    /* ═══════════ MOBILE ═══════════ */
     @media (max-width:768px) {
+      body { font-size:14px; }
+      .top-banner { font-size:12px; padding:8px 14px; }
+      .top-banner span { font-size:12px; }
+      .section-title { font-size:22px; }
+      .section-desc { font-size:13px; margin-bottom:16px; }
+      .faq-item summary { font-size:14px; padding:14px 4px; }
+      .faq-answer { font-size:13px; }
+      .testi-section-label { font-size:12px; }
+      .testi-subtitle { font-size:13px; }
+      .testi-card p { font-size:13px; }
+      .testi-info h4 { font-size:14px; }
+      .testi-info span { font-size:12px; }
+      .video-title { font-size:20px; }
+      .cert-inner > p { font-size:13px; }
+      .cert-inner > a { font-size:14px; }
+      .cert-card-text h3 { font-size:15px; }
+      .cert-card-text p { font-size:12px; }
+      .footer-top p { font-size:13px; }
+      .footer-links { font-size:12px; }
+      .footer-copy { font-size:12px; }
       .dropdown { display:none !important; }
       .navbar-inner { padding:0 16px; }
       .auth-buttons { display:none; }
       .nav-links { display:none; }
       .nav-divider { display:none; }
       .mobile-menu-btn { display:flex; flex-direction:column; }
-
-      /* FIX #3: Stats — 2x2 grid, NO horizontal scroll */
-      .stats-section { padding:0; overflow:visible; }
-      .stats-inner {
-        display:grid !important;
-        grid-template-columns:1fr 1fr !important;
-        gap:0 !important;
-        padding:0 !important;
-        width:100% !important;
-        min-width:unset !important;
-        justify-content:unset !important;
-        flex-wrap:unset !important;
-      }
-      .stat-item {
-        min-width:unset !important; flex-shrink:unset !important;
-        justify-content:center; padding:10px 1px;
-        flex-direction:column !important; align-items:center; text-align:center;
-        border-bottom:1px solid rgba(255,255,255,.1);
-      }
+      .stats-section { padding:10px 10px; overflow:visible; }
+      .stats-inner { display:grid !important; grid-template-columns:1fr 1fr !important; gap:0 !important; padding:0 !important; width:100% !important; min-width:unset !important; justify-content:unset !important; flex-wrap:unset !important; }
+      .stat-item { min-width:unset !important; flex-shrink:unset !important; justify-content:center; padding:10px 15px; flex-direction:column !important; align-items:center; text-align:center; border-bottom:1px solid rgba(255,255,255,.1); }
       .stat-item:nth-child(odd) { border-right:1px solid rgba(255,255,255,.1); }
       .stat-col { align-items:center !important; }
       .stat-divider { display:none !important; }
-      .stat-num { font-size:36px; }
-      .stat-label { font-size:14px; margin-top:2px; }
-
-      /* Courses scroll */
-      .tab-content .course-grid { display:flex; flex-wrap:nowrap; overflow-x:auto; gap:16px; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; padding-bottom:12px; scrollbar-width:none; align-items:stretch; }
+      .stat-num { font-size:30px; }
+      .stat-label { font-size:12px; margin-top:1px; }
+      .tab-bar { flex-wrap:nowrap !important; overflow-x:auto !important; -webkit-overflow-scrolling:touch; scrollbar-width:none; gap:0 !important; border-bottom:2px solid #e0dbd1; margin-bottom:16px; padding-bottom:0; }
+      .tab-bar::-webkit-scrollbar { display:none; }
+      .tab-btn { flex-shrink:0 !important; white-space:nowrap !important; font-size:13px !important; padding:9px 14px !important; border-radius:8px 8px 0 0; }
+      .tab-content .course-grid { display:flex !important; flex-wrap:nowrap !important; overflow-x:auto !important; gap:14px !important; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; padding-bottom:12px; scrollbar-width:none; align-items:stretch; }
       .tab-content .course-grid::-webkit-scrollbar { display:none; }
-      .course-link { flex:0 0 calc(100vw - 48px); scroll-snap-align:start; max-width:340px; }
-
-      /* FIX #4: 1 card per view on mobile */
+      .course-link { flex:0 0 72vw !important; max-width:280px; scroll-snap-align:start; height:auto; }
+      .card-body h3 { font-size:14px; min-height:2.4em; }
+      .instructor { font-size:12px; }
+      .rating { font-size:12px; }
+      .price { font-size:14px; }
+      .instructor-content p { text-align:justify; font-size:14px; }
+      .instructor-content h2 { font-size:24px; }
+      .instructor-content h4 { font-size:13px; }
+      .instructor-badge { font-size:13px; letter-spacing:1px; }
+      .instructor-footer a { font-size:15px; padding:11px 20px; }
+      .instructor-footer span { font-size:13px; }
+      .instructor-stats { display:flex !important; flex-direction:row !important; gap:6px !important; margin:16px 0 !important; }
+      .i-stat { flex:1 1 0 !important; min-width:0 !important; padding:8px 4px !important; }
+      .i-stat strong { font-size:14px; }
+      .i-stat span { font-size:10px; }
+      .cert-grid { display:flex; overflow-x:auto; gap:16px; scroll-snap-type:x mandatory; }
+      .cert-grid::-webkit-scrollbar { display:none; }
+      .cert-card { flex:0 0 78vw; max-width:280px; flex-shrink:0; scroll-snap-align:start; min-width:240px; border-radius:12px; }
+      .cert-card img { border-radius:8px 8px 0 0; }
       .testi-card { flex:0 0 calc(100vw - 48px); }
-
+      .testi-dot-label[for="testi2"], .testi-dot-label[for="testi3"] { display:block; }
+      @keyframes testiAuto { 0%{transform:translateX(0)} 20%{transform:translateX(0)} 25%{transform:translateX(calc(-1 * (100vw - 48px + 24px)))} 45%{transform:translateX(calc(-1 * (100vw - 48px + 24px)))} 50%{transform:translateX(calc(-2 * (100vw - 48px + 24px)))} 70%{transform:translateX(calc(-2 * (100vw - 48px + 24px)))} 75%{transform:translateX(calc(-3 * (100vw - 48px + 24px)))} 95%{transform:translateX(calc(-3 * (100vw - 48px + 24px)))} 100%{transform:translateX(0)} }
+      #testi0:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(0); }
+      #testi1:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(calc(-1 * (100vw - 48px + 24px))); }
+      #testi2:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(calc(-2 * (100vw - 48px + 24px))); }
+      #testi3:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(calc(-3 * (100vw - 48px + 24px))); }
+      #testi2:checked ~ .testimonials-inner .testi-dots label[for="testi2"], #testi3:checked ~ .testimonials-inner .testi-dots label[for="testi3"] { background:#b85e3a; transform:scale(1.35); }
+      #testi2:checked ~ .testimonials-inner .testi-dots label[for="testi0"], #testi3:checked ~ .testimonials-inner .testi-dots label[for="testi0"] { background:#d5cdc4; transform:scale(1); }
       .video-grid { display:flex; flex-wrap:nowrap; overflow-x:auto; gap:16px; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; padding-bottom:12px; scrollbar-width:none; }
       .video-grid::-webkit-scrollbar { display:none; }
       .video-wrap { flex:0 0 56vw; scroll-snap-align:start; }
-
-      .instructor-stats { grid-template-columns:repeat(3,1fr); gap:10px; }
-      .i-stat strong { font-size:18px; }
-      .cert-grid { grid-template-columns:1fr; }
-      .cert-card img { width:120px; height:90px; }
       .footer-bottom-inner { flex-direction:column; text-align:center; }
       .footer-copy { color:rgba(245,230,211,.6) !important; }
     }
-
-    @media (max-width:480px) {
-      .instructor-stats { grid-template-columns:repeat(3,1fr); gap:8px; }
-      .i-stat { padding:10px 6px; }
-      .i-stat strong { font-size:15px; }
-      .i-stat span { font-size:11px; }
-      .tab-bar { gap:2px; }
-      .tab-btn { padding:9px 12px; font-size:15px; }
-      .testi-info h4 { font-size:16px; }
-      .testi-info span { font-size:13px; }
-    }
-
-    @media (max-width:360px) {
-      .instructor-stats { grid-template-columns:1fr 1fr; }
-    }
+    @media (max-width:480px) { .instructor-stats { grid-template-columns:repeat(3,1fr); gap:8px; } .i-stat { padding:10px 6px; } .i-stat strong { font-size:15px; } .i-stat span { font-size:11px; } .tab-btn { padding:8px 11px !important; font-size:12px !important; } .testi-info h4 { font-size:13px; } .testi-info span { font-size:11px; } }
+    @media (max-width:360px) { .instructor-stats { display:flex !important; flex-direction:row !important; gap:4px !important; } .i-stat strong { font-size:12px; } .i-stat span { font-size:9px; } }
   </style>
 </head>
 
 <body>
 
-  <!-- FIX #2: "₹1,499" starting price removed from banner -->
-  <a href="#courses" class="top-banner">
-    <strong>Skills on sale</strong> | Courses now as low as <strong>₹1,499</strong> through limited time.
-    <span>Enroll Now!</span>
-  </a>
-
   <input type="checkbox" id="nav-toggle">
 
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <div class="nav-left">
-        <a href="https://astrovastugurukull.com/" class="logo-link">
-          <img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg"
-            alt="AstroVastu Gurukull" class="logo-img"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-          <span class="logo" style="display:none;">Astro<span>Vastu</span> Gurukull</span>
-        </a>
-        <div class="nav-divider"></div>
-        <div class="nav-item dropdown">
-          <button class="dropbtn">Courses</button>
-          <div class="dropdown-content">
-            <div class="submenu">
-              <div class="submenu-title">Astrology &#9658;</div>
-              <div class="submenu-content">
-                <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a>
-                <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a>
-                <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a>
-                <a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a>
-                <a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a>
-                <a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a>
-              </div>
+  <div class="sticky-header">
+    <a href="#courses" class="top-banner">
+      <strong>Skills on sale</strong> | Courses now as low as <strong>₹1,499</strong> through limited time.
+      <span>Enroll Now!</span>
+    </a>
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <div class="nav-left">
+          <a href="https://astrovastugurukull.com/" class="logo-link">
+            <img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg" alt="AstroVastu Gurukull" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+            <span class="logo" style="display:none;">Astro<span>Vastu</span> Gurukull</span>
+          </a>
+          <div class="nav-divider"></div>
+          <div class="nav-item dropdown">
+            <button class="dropbtn">Courses</button>
+            <div class="dropdown-content">
+              <div class="submenu"><div class="submenu-title">Astrology &#9658;</div><div class="submenu-content"><a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a><a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a><a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a><a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a><a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a><a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a></div></div>
+              <div class="submenu"><div class="submenu-title">Numerology &#9658;</div><div class="submenu-content"><a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a><a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a><a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a><a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a></div></div>
+              <div class="submenu"><div class="submenu-title">Vastu &#9658;</div><div class="submenu-content"><a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a><a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a><a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a><a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a></div></div>
+              <div class="submenu"><div class="submenu-title">Combo Course &#9658;</div><div class="submenu-content"><a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a></div></div>
+              <div class="submenu"><div class="submenu-title">Rudraksha &#9658;</div><div class="submenu-content"><a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a></div></div>
             </div>
-            <div class="submenu">
-              <div class="submenu-title">Numerology &#9658;</div>
-              <div class="submenu-content">
-                <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a>
-                <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a>
-                <a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a>
-                <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a>
-              </div>
-            </div>
-            <div class="submenu">
-              <div class="submenu-title">Vastu &#9658;</div>
-              <div class="submenu-content">
-                <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a>
-                <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
-                <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
-                <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
-              </div>
-            </div>
-            <!-- FIX #2: Batch-7 removed -->
-            <div class="submenu">
-              <div class="submenu-title">Combo Course &#9658;</div>
-              <div class="submenu-content">
-                <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
-              </div>
-            </div>
-            <div class="submenu">
-              <div class="submenu-title">Rudraksha &#9658;</div>
-              <div class="submenu-content">
-                <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
-              </div>
+          </div>
+          <div class="nav-item dropdown">
+            <button class="dropbtn">Events &amp; Webinar</button>
+            <div class="dropdown-content">
+              <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
+              <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
+              <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Live Sessions</a>
+              <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Workshops</a>
+              <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Free Events</a>
             </div>
           </div>
         </div>
-        <div class="nav-item dropdown">
-          <button class="dropbtn">Events &amp; Webinar</button>
-          <div class="dropdown-content">
-            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
-            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
-            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Live Sessions</a>
-            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Workshops</a>
-            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Free Events</a>
-          </div>
+        <div class="nav-right">
+          <div class="auth-buttons"><a href="https://academy.astrovastugurukull.com/web/dashboard/getstarted" class="login-btn">Log in</a></div>
+          <label for="nav-toggle" class="mobile-menu-btn" aria-label="Open menu"><span></span><span></span><span></span></label>
         </div>
       </div>
-      <div class="nav-right">
-        <div class="auth-buttons">
-          <a href="https://academy.astrovastugurukull.com/web/dashboard/getstarted" class="login-btn">Log in</a>
-        </div>
-        <label for="nav-toggle" class="mobile-menu-btn" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </label>
-      </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 
   <div class="mobile-drawer">
     <div class="mobile-drawer-inner">
       <label for="nav-toggle" class="drawer-close-label">&#10005;</label>
-      <div class="drawer-logo">
-        <img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg" alt="AstroVastu Gurukull">
-      </div>
-      <details class="drawer-nav-group">
-        <summary>Astrology</summary>
-        <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a>
-        <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a>
-        <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a>
-        <a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a>
-        <a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a>
-        <a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a>
-      </details>
-      <details class="drawer-nav-group">
-        <summary>Numerology</summary>
-        <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a>
-        <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a>
-        <a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a>
-        <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a>
-      </details>
-      <!-- FIX #2: Batch-7 removed from mobile drawer -->
-      <details class="drawer-nav-group">
-        <summary>Vastu &amp; Combo</summary>
-        <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a>
-        <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
-        <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
-        <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
-        <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
-        <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
-      </details>
-      <details class="drawer-nav-group">
-        <summary>Events &amp; Webinar</summary>
-        <a href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
-        <a href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
-        <a href="https://astrovastugurukull.com/trfu">Live Sessions</a>
-        <a href="https://astrovastugurukull.com/trfu">Workshops</a>
-        <a href="https://astrovastugurukull.com/trfu">Free Events</a>
-      </details>
+      <div class="drawer-logo"><img src="https://tagmango.com/staticassets/-mvg-dark-bg-logo-1-9b4e538a50e158c6f3e39ed674bcb9d3.svg" alt="AstroVastu Gurukull"></div>
+      <details class="drawer-nav-group"><summary>Astrology</summary><a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course">Beginner Astrology Course</a><a href="https://academy.astrovastugurukull.com/services/advance-astrology-course">Advanced Astrology Course</a><a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course">Personal Details Correction Course</a><a href="https://academy.astrovastugurukull.com/services/all-about-rashis">All About Rashis</a><a href="https://academy.astrovastugurukull.com/services/all-about-planets">All About Planets</a><a href="https://academy.astrovastugurukull.com/services/all-about-houses">All About Houses</a></details>
+      <details class="drawer-nav-group"><summary>Numerology</summary><a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners">Numerology Course For Beginners</a><a href="https://academy.astrovastugurukull.com/services/advance-numerology-course">Advance Numerology Course</a><a href="https://academy.astrovastugurukull.com/services/name-correction-course">Name Correction Course</a><a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course">Mobile No. Correction Course</a></details>
+      <details class="drawer-nav-group"><summary>Vastu &amp; Combo</summary><a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course">Basic Vastu Course By Acharya Lav Bhushan JI</a><a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a><a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a><a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a><a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a><a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a></details>
+      <details class="drawer-nav-group"><summary>Events &amp; Webinar</summary><a href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a><a href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a><a href="https://astrovastugurukull.com/trfu">Live Sessions</a><a href="https://astrovastugurukull.com/trfu">Workshops</a><a href="https://astrovastugurukull.com/trfu">Free Events</a></details>
       <div class="drawer-actions">
         <a class="drawer-login" href="https://academy.astrovastugurukull.com/web/dashboard/getstarted">Log in</a>
         <a class="drawer-signup" href="#courses">Explore Courses</a>
@@ -623,7 +523,6 @@
           <a href="#courses" class="slide-cta">Explore all Courses</a>
         </div>
       </div>
-      <!-- FIX #1: banner-btn on mobile renders in-flow (static) via CSS; desktop keeps absolute -->
       <div class="slide slide2">
         <a href="https://astrovastugurukull.com/getdiplomainoccultsciences" class="banner-btn">Apply Now</a>
       </div>
@@ -634,89 +533,80 @@
     </div>
   </section>
 
-  <!-- STATS — FIX #3: 2x2 grid on mobile -->
+  <!-- STATS -->
   <section class="stats-section">
     <div class="stats-inner">
-      <div class="stat-item stat-col">
-        <div class="stat-num">2.5L+</div>
-        <div class="stat-label">Students Trained</div>
-      </div>
+      <div class="stat-item stat-col"><div class="stat-num">2.5L+</div><div class="stat-label">Students Trained</div></div>
       <div class="stat-divider"></div>
-      <div class="stat-item">
-        <img src="https://tagmango.com/staticassets/-certified_svgrepo-774df431b76da51f4ae923fda77d2390.svg" alt="" class="stat-icon">
-        <div class="stat-label">Certified in Vedic Sciences</div>
-      </div>
+      <div class="stat-item"><img src="https://tagmango.com/staticassets/-certified_svgrepo-774df431b76da51f4ae923fda77d2390.svg" alt="" class="stat-icon"><div class="stat-label">Certified in Vedic Sciences</div></div>
       <div class="stat-divider"></div>
-      <div class="stat-item">
-        <img src="https://tagmango.com/staticassets/-student-head_svgrepo-c3285d54b768d2559e492331b2acf561.svg" alt="" class="stat-icon">
-        <div class="stat-label">India &amp; Abroad</div>
-      </div>
+      <div class="stat-item"><img src="https://tagmango.com/staticassets/-student-head_svgrepo-c3285d54b768d2559e492331b2acf561.svg" alt="" class="stat-icon"><div class="stat-label">India &amp; Abroad</div></div>
       <div class="stat-divider"></div>
-      <div class="stat-item">
-        <img src="https://tagmango.com/staticassets/-user-expert_svgrepo-8cf3e58a859bc99c6162d1c2b1571738.svg" alt="" class="stat-icon">
-        <div class="stat-label">Courses by Experts</div>
-      </div>
+      <div class="stat-item"><img src="https://tagmango.com/staticassets/-user-expert_svgrepo-8cf3e58a859bc99c6162d1c2b1571738.svg" alt="" class="stat-icon"><div class="stat-label">Courses by Experts</div></div>
     </div>
   </section>
 
-  <!-- COURSES — FIX #2: Batch-7 removed; FIX #5: equal-height cards -->
+  <!-- ═══ HASH TAB ANCHORS — placed just before courses section ═══
+       CSS :target selector reads these to switch the correct tab.
+       href="#astrology-tab" on any link anywhere on page will target this div
+       and the CSS ~ sibling selector will show the right tab content. -->
+  <div id="astrology-tab" class="tab-anchor"></div>
+  <div id="numerology-tab" class="tab-anchor"></div>
+  <div id="vastu-tab" class="tab-anchor"></div>
+  <div id="combo-tab" class="tab-anchor"></div>
+  <div id="rudraksha-tab" class="tab-anchor"></div>
+
+  <!-- COURSES -->
   <section class="courses-section" id="courses">
     <h2 class="section-title">Learn <em>ancient</em> sciences and <strong>transform</strong> your life</h2>
     <p class="section-desc">Astrovastu Gurukull helps you master Vedic Astrology, Numerology and Vastu with expert mentorship.</p>
 
-    <input type="radio" name="tabs" id="astrology" checked>
-    <input type="radio" name="tabs" id="numerology">
-    <input type="radio" name="tabs" id="vastu">
-    <input type="radio" name="tabs" id="combo">
-    <input type="radio" name="tabs" id="rudraksha">
-
     <div class="tab-bar">
-      <label for="astrology" class="tab-btn">Astrology</label>
-      <label for="numerology" class="tab-btn">Numerology</label>
-      <label for="vastu" class="tab-btn">Vastu Shastra</label>
-      <label for="combo" class="tab-btn">Combo Course</label>
-      <label for="rudraksha" class="tab-btn">Rudraksha</label>
+      <a href="#astrology-tab" class="tab-btn">Astrology</a>
+      <a href="#numerology-tab" class="tab-btn">Numerology</a>
+      <a href="#vastu-tab" class="tab-btn">Vastu Shastra</a>
+      <a href="#combo-tab" class="tab-btn">Combo Course</a>
+      <a href="#rudraksha-tab" class="tab-btn">Rudraksha</a>
     </div>
 
     <div class="tab-content astrology-content">
       <div class="course-grid">
-        <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-2-6-9aa29f98ad88b599eace54cfa1863fb7.png" alt="Basic Astrology"></div><div class="card-body"><h3>Beginner's Astrology Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.8 <span>(12k reviews)</span></div><div class="price-row"><span class="price">&#8377;4,999</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-whatsapp-image-2026-02-28-at-12-9f3ac2aec912e777970272eafe295e02.jpeg" alt="Advanced Astrology"></div><div class="card-body"><h3>Advanced Astrology Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.9 <span>(8k reviews)</span></div><div class="price-row"><span class="price">&#8377;24,999</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-3-4-fd0b9cf3037400198aeb9263fcb9c922.png" alt="Personal Details"></div><div class="card-body"><h3>Personal Details Correction</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.7 <span>(5k reviews)</span></div><div class="price-row"><span class="price">&#8377;15,000</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/all-about-rashis" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-4-3-bed7f21a168145a8b4fc239a842b7a7c.png" alt="All About Rashis"></div><div class="card-body"><h3>All About Rashis</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.6 <span>(4k reviews)</span></div><div class="price-row"><span class="price">&#8377;1,499</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/all-about-planets" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-course-5-cd25f87a914e9ba8902e6b036becb18e.png" alt="All About Planets"></div><div class="card-body"><h3>All About Planets</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.8 <span>(6k reviews)</span></div><div class="price-row"><span class="price">&#8377;1,499</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/all-about-houses" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-6-4-9a7b609525990e8da887dab8f3965c3c.png" alt="All About Houses"></div><div class="card-body"><h3>All About Houses</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.8 <span>(4.5k reviews)</span></div><div class="price-row"><span class="price">&#8377;1,499</span></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-2-6-9aa29f98ad88b599eace54cfa1863fb7.png" alt="Basic Astrology"></div><div class="card-body"><h3>Beginner's Astrology Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;4,999</span><div class="rating">&#11088; 4.8</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-whatsapp-image-2026-02-28-at-12-9f3ac2aec912e777970272eafe295e02.jpeg" alt="Advanced Astrology"></div><div class="card-body"><h3>Advanced Astrology Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;24,999</span><div class="rating">&#11088; 4.9</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-3-4-fd0b9cf3037400198aeb9263fcb9c922.png" alt="Personal Details"></div><div class="card-body"><h3>Personal Details Correction</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;15,000</span><div class="rating">&#11088; 4.7</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/all-about-rashis" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-4-3-bed7f21a168145a8b4fc239a842b7a7c.png" alt="All About Rashis"></div><div class="card-body"><h3>All About Rashis</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;1,499</span><div class="rating">&#11088; 4.6</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/all-about-planets" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-course-5-cd25f87a914e9ba8902e6b036becb18e.png" alt="All About Planets"></div><div class="card-body"><h3>All About Planets</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;1,499</span><div class="rating">&#11088; 4.8</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/all-about-houses" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-6-4-9a7b609525990e8da887dab8f3965c3c.png" alt="All About Houses"></div><div class="card-body"><h3>All About Houses</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;1,499</span><div class="rating">&#11088; 4.8</div></div></div></div></a>
       </div>
     </div>
 
     <div class="tab-content numerology-content">
       <div class="course-grid">
-        <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-7-4-e7a239694d8fbed15e88d8d36f444696.png" alt=""></div><div class="card-body"><h3>Numerology Course For Beginners</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.7 <span>(7k)</span></div><div class="price-row"><span class="price">&#8377;1,499</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-8-2-de9b2b6975c6747293813af1c9274ee5.png" alt=""></div><div class="card-body"><h3>Advance Numerology Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.8 <span>(4k)</span></div><div class="price-row"><span class="price">&#8377;24,999</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/name-correction-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-9-2-771d60ca75fd4d01af6fbcc9f49079ee.png" alt=""></div><div class="card-body"><h3>Name Correction Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.9 <span>(9k)</span></div><div class="price-row"><span class="price">&#8377;4,999</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-10-2-8fe44610e8e7aa7191421199678213cb.png" alt=""></div><div class="card-body"><h3>Mobile No. Correction Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.6 <span>(3.2k)</span></div><div class="price-row"><span class="price">&#8377;4,999</span></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/numerology-course-for-beginners" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-7-4-e7a239694d8fbed15e88d8d36f444696.png" alt=""></div><div class="card-body"><h3>Numerology Course For Beginners</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;1,499</span><div class="rating">&#11088; 4.7</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/advance-numerology-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-8-2-de9b2b6975c6747293813af1c9274ee5.png" alt=""></div><div class="card-body"><h3>Advance Numerology Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;24,999</span><div class="rating">&#11088; 4.8</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/name-correction-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-9-2-771d60ca75fd4d01af6fbcc9f49079ee.png" alt=""></div><div class="card-body"><h3>Name Correction Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;4,999</span><div class="rating">&#11088; 4.9</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/mobile-number-correction-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-10-2-8fe44610e8e7aa7191421199678213cb.png" alt=""></div><div class="card-body"><h3>Mobile No. Correction Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;4,999</span><div class="rating">&#11088; 4.6</div></div></div></div></a>
       </div>
     </div>
 
     <div class="tab-content vastu-content">
       <div class="course-grid">
-        <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-11-c67cf8019e04e94ca1cb6854ee7d2b12.png" alt=""></div><div class="card-body"><h3>Basic Vastu Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.7 <span>(7.6k)</span></div><div class="price-row"><span class="price">&#8377;2,100</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/devta-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-15-1-1ee6389e3e53ff95855f711ad2b2240a.png" alt=""></div><div class="card-body"><h3>45 Devta Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.9 <span>(7.6k)</span></div><div class="price-row"><span class="price">Coming Soon</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-16-493b6507478c9ddf14a933606717df9c.png" alt=""></div><div class="card-body"><h3>Commercial &amp; Industrial Vastu Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.5 <span>(7.6k)</span></div><div class="price-row"><span class="price">Coming Soon</span></div></div></div></a>
-        <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-17-1-ed24830566531034f82318735c93ee03.png" alt=""></div><div class="card-body"><h3>Residential Advance Vastu Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.7 <span>(7.6k)</span></div><div class="price-row"><span class="price">Coming Soon</span></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/basic-vastu-shastra-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-11-c67cf8019e04e94ca1cb6854ee7d2b12.png" alt=""></div><div class="card-body"><h3>Basic Vastu Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;2,100</span><div class="rating">&#11088; 4.7</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/devta-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-15-1-1ee6389e3e53ff95855f711ad2b2240a.png" alt=""></div><div class="card-body"><h3>45 Devta Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">Coming Soon</span><div class="rating">&#11088; 4.9</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-16-493b6507478c9ddf14a933606717df9c.png" alt=""></div><div class="card-body"><h3>Commercial &amp; Industrial Vastu Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">Coming Soon</span><div class="rating">&#11088; 4.5</div></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-17-1-ed24830566531034f82318735c93ee03.png" alt=""></div><div class="card-body"><h3>Residential Advance Vastu Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">Coming Soon</span><div class="rating">&#11088; 4.7</div></div></div></div></a>
       </div>
     </div>
 
-    <!-- FIX #2: Only Batch-8 shown -->
     <div class="tab-content combo-content">
       <div class="course-grid">
-        <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-14-77185ba1ab57f253acf52aaf3bc7e7fb.png" alt=""></div><div class="card-body"><h3>&#2325;&#2352;&#2379;&#2397;&#2346;&#2340;&#2367; Combo {Batch-8}</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.8 <span>(3.8k)</span></div><div class="price-row"><span class="price">&#8377;72,000</span></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-14-77185ba1ab57f253acf52aaf3bc7e7fb.png" alt=""></div><div class="card-body"><h3>करोड़पति Combo {Batch-8}</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;72,000</span><div class="rating">&#11088; 4.8</div></div></div></div></a>
       </div>
     </div>
 
     <div class="tab-content rudraksha-content">
       <div class="course-grid">
-        <a href="https://academy.astrovastugurukull.com/services/rudraksha-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-course-4-595fcfc8d45f8bd6503e93cbbe6605f4.png" alt=""></div><div class="card-body"><h3>Rudraksha Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="rating">&#11088; 4.7 <span>(3.2k)</span></div><div class="price-row"><span class="price">&#8377;1,999</span></div></div></div></a>
+        <a href="https://academy.astrovastugurukull.com/services/rudraksha-course" class="course-link" target="_blank"><div class="course-card"><div class="course-card-img-wrap"><img src="https://tagmango.com/staticassets/-course-4-595fcfc8d45f8bd6503e93cbbe6605f4.png" alt=""></div><div class="card-body"><h3>Rudraksha Course</h3><p class="instructor">by Acharya Lavbhushan</p><div class="price-row"><span class="price">&#8377;1,999</span><div class="rating">&#11088; 4.7</div></div></div></div></a>
       </div>
     </div>
   </section>
@@ -724,9 +614,7 @@
   <!-- INSTRUCTOR -->
   <section class="instructor-section">
     <div class="instructor-grid">
-      <div class="instructor-img">
-        <img src="https://tagmango.com/staticassets/-1772188739911-05359e56ff9540c804b9aa73633701d9.png" alt="Acharya LavBhushan">
-      </div>
+      <div class="instructor-img"><img src="https://tagmango.com/staticassets/-1772188739911-05359e56ff9540c804b9aa73633701d9.png" alt="Acharya LavBhushan"></div>
       <div class="instructor-content">
         <span class="instructor-badge">&#10022; Meet The Instructor</span>
         <h2>Acharya LavBhushan</h2>
@@ -739,33 +627,37 @@
         <p>Acharya LavBhushan Ji is a respected and globally recognized Astrologer with over 10+ years of experience. He has learned the deep secrets of Astrology, Vastu &amp; Numerology from top institutes in India (Hyderabad, Mumbai, Ahmedabad) and internationally from Bangkok, China, and Indonesia.</p>
         <p>He holds a Doctorate in Astrology from the International Astrology Federation (USA &amp; Thailand) and is known for accurate predictions and practical guidance. He is India's only expert who beautifully combines Vastu, Astrology, and Numbers to help people find the right direction in life.</p>
         <p>His simple and effective style of teaching makes him <strong>"People's Favourite"</strong> &#8211; both as a mentor and as a guide.</p>
-        <div class="instructor-footer">
-          <a href="#courses">Explore All Courses</a>
-          <span>Start learning from the best!</span>
-        </div>
+        <div class="instructor-footer"><a href="#courses">Explore All Courses</a><span>Start learning from the best!</span></div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS — FIX #4: Auto-moving slider with touch/drag support -->
+  <!-- TESTIMONIALS -->
   <section class="testimonials-section">
+    <input type="radio" class="testi-radio" name="testi" id="testi0">
+    <input type="radio" class="testi-radio" name="testi" id="testi1">
+    <input type="radio" class="testi-radio" name="testi" id="testi2">
+    <input type="radio" class="testi-radio" name="testi" id="testi3">
     <div class="testimonials-inner">
       <div class="testi-section-header">
         <div class="testi-section-label">&#10022; Student Stories</div>
         <h2 class="testi-title">Join others <em>transforming</em> their lives<br>through learning</h2>
         <p class="testi-subtitle">Over 2.5 lakh students have changed their careers, businesses &amp; relationships with Acharya ji's guidance.</p>
       </div>
-
       <div class="testi-slider-outer">
-        <div class="testi-grid" id="testiSlider">
+        <div class="testi-track">
           <div class="testi-card"><div class="testi-top"><div class="testi-avatar-wrap"><img src="https://tagmango.com/staticassets/-himanshu-thareja-fa77c1d86b30cc953944c2dba9eee473.png" alt="Himanshu Thareja"></div><div class="testi-info"><h4>Himanshu Thareja</h4><span>Student, Astrology Course</span><div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><p>The astrology course was <strong>simple and helpful</strong>. Now I give small advices to people and I feel appreciated.</p></div>
           <div class="testi-card"><div class="testi-top"><div class="testi-avatar-wrap"><img src="https://tagmango.com/staticassets/-mithoon-goel-529a66f3f09a694665f0864540c00201.png" alt="Mithoon Goel"></div><div class="testi-info"><h4>Mithoon Goel</h4><span>Business Owner</span><div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><p>Mujhe business mai bhot loss hogya tha fir maine acharya ji se advice li or dheere dheere <strong>sab theeek hone lga</strong>.</p></div>
           <div class="testi-card"><div class="testi-top"><div class="testi-avatar-wrap"><img src="https://tagmango.com/staticassets/-acharya-atanuu-sastri-e245c5f2fcb29f543735b5b8bf888142.png" alt="Acharya Atanuu"></div><div class="testi-info"><h4>Acharya Atanuu Sastri</h4><span>Student, Advanced Astrology</span><div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><p>My married life was going very toxic but after consulting with Acharya ji we are <strong>living a happy married life</strong>.</p></div>
           <div class="testi-card"><div class="testi-top"><div class="testi-avatar-wrap"><img src="https://tagmango.com/staticassets/-ankit-gupta-8847cbf00cab740cf2973f5ce455839c.png" alt="Ankit Gupta"></div><div class="testi-info"><h4>Ankit Gupta</h4><span>Professional Astrologer</span><div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><p>I started learning this course as my only option for income. Now I am <strong>teaching and guiding a lot of people</strong>.</p></div>
         </div>
       </div>
-      <div class="testi-dots" id="testiDots"></div>
-
+      <div class="testi-dots">
+        <label class="testi-dot-label" for="testi0" title="Page 1"></label>
+        <label class="testi-dot-label" for="testi1" title="Page 2"></label>
+        <label class="testi-dot-label" for="testi2" title="Page 3"></label>
+        <label class="testi-dot-label" for="testi3" title="Page 4"></label>
+      </div>
       <h2 class="video-title">Praise from our audience</h2>
       <div class="video-grid">
         <div class="video-wrap"><video src="https://cdn.shopify.com/videos/c/o/v/eb3c101a924f4ea69242df95232b93b7.mp4#t=0.1" controls playsinline preload="auto"></video></div>
@@ -776,16 +668,39 @@
     </div>
   </section>
 
-  <!-- CERTIFICATION -->
+  <!-- CERTIFICATION — cert cards link to hash anchors above courses section -->
   <section class="cert-section">
     <div class="cert-inner">
       <h2>Get certified and get ahead in your career</h2>
       <p>Prep for certifications with comprehensive courses, practice tests, and special offers on exam vouchers.</p>
       <a href="https://astrovastugurukull.com/">Explore certifications and vouchers &#8594;</a>
       <div class="cert-grid">
-        <div class="cert-card"><img src="https://tagmango.com/staticassets/-compressed-image-591a3b9e0076dc2b0f3970fc75ae8df6.webp" alt=""><div class="cert-card-text"><h3>Certified Vedic Astrologer</h3><p>Professional Certification in Jyotish Shastra</p></div></div>
-        <div class="cert-card"><img src="https://tagmango.com/staticassets/-compressed-image-a3ef41033a416fee25e127e81ba3256d.webp" alt=""><div class="cert-card-text"><h3>Certified Numerology Expert</h3><p>Master Chaldean &amp; Pythagorean Systems</p></div></div>
-        <div class="cert-card"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?crop=entropy&cs=srgb&fm=jpg&w=400&h=260&fit=crop" alt=""><div class="cert-card-text"><h3>Certified Vastu Consultant</h3><p>Residential &amp; Commercial Vastu Expertise</p></div></div>
+
+        <!-- href="#astrology-tab" targets the div above courses → CSS shows astrology tab -->
+        <a href="#astrology-tab" class="cert-card">
+          <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-03-20-at-4-4734c259280ef314adb2af804f737aeb.jpeg" alt="Certified Vedic Astrologer">
+          <div class="cert-card-text">
+            <h3>Certified Vedic Astrologer</h3>
+            <p>Professional Certification in Jyotish Shastra</p>
+          </div>
+        </a>
+
+        <a href="#numerology-tab" class="cert-card">
+          <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-03-20-at-4-84f6b49800187e7b65265819f9963e60.jpeg" alt="Certified Numerology Expert">
+          <div class="cert-card-text">
+            <h3>Certified Numerology Expert</h3>
+            <p>Master Chaldean &amp; Pythagorean Systems</p>
+          </div>
+        </a>
+
+        <a href="#vastu-tab" class="cert-card">
+          <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-03-20-at-4-c08686a6a305addabd8f5ddf617e8ac8.jpeg" alt="Certified Vastu Consultant">
+          <div class="cert-card-text">
+            <h3>Certified Vastu Consultant</h3>
+            <p>Residential &amp; Commercial Vastu Expertise</p>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
@@ -832,77 +747,6 @@
   <a href="https://wa.aisensy.com/+919119349066" target="_blank" class="whatsapp-sticky" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
-
-  <!-- FIX #4: Testimonial auto-slider — lightweight JS, no heavy deps -->
-  <script>
-  (function(){
-    var slider = document.getElementById('testiSlider');
-    var dotsEl = document.getElementById('testiDots');
-    if(!slider) return;
-    var cards = slider.querySelectorAll('.testi-card');
-    var total = cards.length;
-    var cur = 0, perView = 2, autoTimer = null;
-    var dragStartX = 0, dragCurX = 0, dragging = false;
-
-    function pv(){ return window.innerWidth <= 767 ? 1 : 2; }
-
-    function buildDots(){
-      dotsEl.innerHTML='';
-      var pages = Math.ceil(total / pv());
-      for(var i=0;i<pages;i++){
-        (function(idx){
-          var b=document.createElement('button');
-          b.className='testi-dot'+(idx===0?' active':'');
-          b.setAttribute('aria-label','Slide '+(idx+1));
-          b.addEventListener('click',function(){ goTo(idx*pv()); });
-          dotsEl.appendChild(b);
-        })(i);
-      }
-    }
-
-    function updateDots(){
-      var dots=dotsEl.querySelectorAll('.testi-dot');
-      var pg=Math.round(cur/pv());
-      dots.forEach(function(d,i){ d.classList.toggle('active',i===pg); });
-    }
-
-    function goTo(idx, smooth){
-      perView=pv();
-      var max=total-perView;
-      cur=Math.max(0,Math.min(idx,max));
-      var w=cards[0].offsetWidth+24;
-      slider.style.transition=(smooth===false)?'none':'transform .6s cubic-bezier(.4,0,.2,1)';
-      slider.style.transform='translateX(-'+(cur*w)+'px)';
-      updateDots();
-    }
-
-    function next(){
-      perView=pv();
-      var max=total-perView;
-      goTo(cur>=max?0:cur+perView);
-    }
-
-    function startAuto(){ stopAuto(); autoTimer=setInterval(next,3500); }
-    function stopAuto(){ if(autoTimer){clearInterval(autoTimer);autoTimer=null;} }
-
-    slider.addEventListener('mousedown',function(e){ dragging=true; dragStartX=e.clientX; dragCurX=e.clientX; slider.classList.add('is-dragging'); stopAuto(); });
-    slider.addEventListener('mousemove',function(e){ if(dragging) dragCurX=e.clientX; });
-    function endDrag(){ if(!dragging)return; dragging=false; slider.classList.remove('is-dragging'); var d=dragStartX-dragCurX; if(Math.abs(d)>50){ d>0?next():goTo(cur-perView); } startAuto(); }
-    slider.addEventListener('mouseup',endDrag);
-    slider.addEventListener('mouseleave',endDrag);
-    slider.addEventListener('touchstart',function(e){ dragging=true; dragStartX=e.touches[0].clientX; dragCurX=e.touches[0].clientX; stopAuto(); },{passive:true});
-    slider.addEventListener('touchmove',function(e){ if(dragging) dragCurX=e.touches[0].clientX; },{passive:true});
-    slider.addEventListener('touchend',endDrag);
-
-    var outer=slider.closest('.testi-slider-outer');
-    if(outer){ outer.addEventListener('mouseenter',stopAuto); outer.addEventListener('mouseleave',startAuto); }
-
-    var rt;
-    window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ buildDots(); goTo(0,false); },200); });
-
-    buildDots(); goTo(0,false); startAuto();
-  })();
-  </script>
 
 </body>
 </html>

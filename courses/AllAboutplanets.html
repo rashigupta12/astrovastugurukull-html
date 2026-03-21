@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌟 All About Planets</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-   <style>
+  
+  
+  
+  <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
     body { font-family: 'Montserrat', Arial, sans-serif; font-size: 15px; background-color: #faf7f2; color: #2d2d2d; line-height: 1.5; }
@@ -84,7 +88,36 @@
     .breadcrumb a { color:#c0c4fc; }
     .breadcrumb .sep { color:#6a6f73; font-size:10px; }
     .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(24px,4vw,42px); font-weight:700; line-height:1.2; margin-bottom:12px; }
-    .hero-subtitle { font-size:clamp(12px,1.2vw,15px); color:#d1d7dc; margin-bottom:16px; }
+    .hero-subtitle { font-size:clamp(12px,1.2vw,15px); color:#d1d7dc; margin-bottom:14px; }
+
+    /* ===== NEW: HERO BULLET POINTS ===== */
+    .hero-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+    .hero-bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 12.5px;
+      color: rgba(209,215,220,0.85);
+      line-height: 1.5;
+    }
+    .hero-bullet-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f5d79e;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .hero-bullet-item strong {
+      color: #f5d79e;
+      font-weight: 700;
+    }
+
     .rating-row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:12px; }
     .bestseller { background:#eceb98; color:#3d3c0a; font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; }
     .rating-number { color:#f5d79e; font-weight:700; }
@@ -102,7 +135,7 @@
     .social-badge.ig { color:#f48fb1; }
     .hero-video { width:440px; flex-shrink:0; border-radius:10px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.5); }
     .hero-video iframe { width:100%; height:248px; border:none; }
-    /* ===== MAIN LAYOUT — KEY CHANGE: left ~55%, right ~45% ===== */
+    /* ===== MAIN LAYOUT ===== */
     .main-wrapper {
       max-width: 1400px;
       margin: 0 auto;
@@ -153,6 +186,63 @@
     .stat-item { display:flex; align-items:center; gap:8px; font-size:13px; }
     .stat-item i { color:#f5d79e; }
     .instructor-bio { font-size:13px; line-height:1.7; }
+
+    /* ===== NEW: TESTIMONIAL VIDEO SECTION ===== */
+    .testimonial-video-section {
+      margin-bottom: 32px;
+    }
+    .testimonial-video-section .section-title {
+      margin-bottom: 6px;
+    }
+    .testimonial-video-subtitle {
+      font-size: 13px;
+      color: #6f6b66;
+      margin-bottom: 20px;
+    }
+    /* Video grid — 4-col portrait reels */
+    .testi-video-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(12px, 1.8vw, 22px);
+    }
+    .testi-video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      background: #111;
+    }
+    .testi-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border: none;
+    }
+    @media (max-width: 900px) {
+      .testi-video-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 14px;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 10px;
+        scrollbar-width: none;
+      }
+      .testi-video-grid::-webkit-scrollbar { display: none; }
+      .testi-video-wrap {
+        flex: 0 0 56vw;
+        scroll-snap-align: start;
+        border-radius: 12px;
+      }
+    }
+    @media (max-width: 600px) {
+      .testi-video-wrap { flex: 0 0 72vw; }
+    }
+
     /* Reviews */
     .rating-breakdown { display:flex; align-items:center; gap:16px; margin-bottom:24px; padding:18px; background:#faf7f2; border:1px solid #e0dbd1; border-radius:12px; flex-wrap:wrap; }
     .rating-big { text-align:center; flex-shrink:0; }
@@ -194,8 +284,61 @@
     .price-big { font-size:28px; font-weight:800; color:#b85e3a; display:block; margin-bottom:4px; }
     .price-note { font-size:11px; color:#6f6b66; margin-bottom:14px; display:flex; align-items:center; gap:6px; }
     .price-note i { color:#b32d2d; animation:pulse 2s infinite; }
-    .enroll-btn { display:block; width:100%; padding:15px; background:#b85e3a; color:#fff; border:none; border-radius:10px; font-weight:800; font-family:'Montserrat',sans-serif; font-size:15px; cursor:pointer; text-align:center; letter-spacing:.3px; margin-bottom:10px; transition:all .2s; }
+
+    /* ===== MODIFIED: Enroll Button with WhatsApp Icon ===== */
+    .enroll-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      padding: 15px;
+      background: #b85e3a;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: 800;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      cursor: pointer;
+      text-align: center;
+      letter-spacing: .3px;
+      margin-bottom: 0;
+      transition: all .2s;
+      text-decoration: none;
+    }
     .enroll-btn:hover { background:#8a3f22; transform:translateY(-2px); box-shadow:0 6px 24px rgba(184,94,58,.4); }
+
+    /* ===== NEW: Enroll CTA pointers below button ===== */
+    .enroll-value-props {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-top: 10px;
+      margin-bottom: 14px;
+    }
+    .enroll-value-prop {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: #444;
+      padding: 7px 10px;
+      background: #fdf6ef;
+      border-radius: 8px;
+      border: 1px solid #f0dece;
+    }
+    .enroll-value-prop i {
+      color: #b85e3a;
+      font-size: 12px;
+      flex-shrink: 0;
+      width: 14px;
+    }
+    .enroll-value-prop strong {
+      color: #1c1d1f;
+      font-weight: 700;
+    }
+
     .guarantee { text-align:center; font-size:11px; color:#6f6b66; margin-bottom:16px; display:flex; align-items:center; justify-content:center; gap:5px; }
     .guarantee i { color:#2e7d32; }
     /* Includes list inside card */
@@ -203,6 +346,20 @@
     .includes-list { display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
     .include-item { display:flex; align-items:center; gap:10px; font-size:12px; }
     .include-item i { color:#b85e3a; width:14px; font-size:12px; flex-shrink:0; }
+    /* WhatsApp include row */
+    .include-wa-link {
+      margin-top: 4px;
+      padding: 9px 12px;
+      background: #f0fdf4;
+      border: 1.5px solid #bbf7d0;
+      border-radius: 9px;
+      font-weight: 700;
+      color: #15803d;
+      text-decoration: none;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .include-wa-link:hover { background: #dcfce7; border-color: #4ade80; transform: translateX(3px); }
+    .include-wa-icon { color: #25D366 !important; font-size: 17px !important; width: 18px !important; flex-shrink: 0; }
     .card-divider { border:none; border-top:1px solid #e0dbd1; margin:14px 0; }
     .action-links { display:flex; justify-content:center; gap:20px; }
     .action-link { display:flex; align-items:center; gap:4px; font-size:12px; font-weight:700; color:#4b0f07; text-decoration:underline; cursor:pointer; }
@@ -225,25 +382,172 @@
     .related-icon { width:34px; height:34px; border-radius:8px; background:linear-gradient(135deg,#b85e3a,#d4724a); display:flex; align-items:center; justify-content:center; color:white; font-size:13px; flex-shrink:0; }
     .related-name { font-size:12px; font-weight:600; color:#2d2d2d; line-height:1.3; }
     .related-arrow { color:#b85e3a; font-size:11px; flex-shrink:0; }
-    /* Instructor mini-card */
-    .instructor-widget { background:white; border:1px solid #e0dbd1; border-radius:16px; padding:18px; }
-    .instructor-widget-top { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
-    .instructor-avatar-sm { width:54px; height:54px; border-radius:50%; background:linear-gradient(135deg,#b85e3a,#d4724a); display:flex; align-items:center; justify-content:center; color:white; font-size:18px; font-weight:700; flex-shrink:0; }
-    .instructor-widget-name { font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:700; color:#b85e3a; }
-    .instructor-widget-sub { font-size:11px; color:#6f6b66; margin-top:2px; }
-    .instructor-mini-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
-    .mini-stat { display:flex; align-items:center; gap:7px; font-size:11px; background:#faf7f2; border-radius:8px; padding:7px 8px; }
-    .mini-stat i { color:#b85e3a; font-size:11px; width:12px; }
-    /* Social widget */
-    .social-widget { background:linear-gradient(135deg,#1c1d1f 0%,#4b0f07 100%); border-radius:16px; padding:18px; color:white; }
-    .social-widget h3 { font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:700; margin-bottom:4px; }
-    .social-widget p { font-size:11px; color:#d1d7dc; margin-bottom:14px; }
-    .social-btns { display:flex; flex-direction:column; gap:8px; }
-    .social-btn { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; font-size:12px; font-weight:700; cursor:pointer; border:none; font-family:'Montserrat',sans-serif; }
-    .social-btn.yt { background:#ff4444; color:white; }
-    .social-btn.ig { background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); color:white; }
-    .social-btn i { font-size:15px; }
-    .social-btn-count { margin-left:auto; font-size:10px; opacity:.85; }
+
+    /* ===== NEW: DIPLOMA INTENT FORM (sidebar) ===== */
+    /* Bridge text above diploma form */
+    .diploma-bridge-text {
+      padding: 18px 20px 16px;
+      border-left: 4px solid #b85e3a;
+      background: linear-gradient(135deg, #fdf6ef 0%, #fff8f4 100%);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 10px rgba(184,94,58,0.07);
+    }
+    .diploma-bridge-heading {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #4b0f07;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+    .diploma-bridge-desc {
+      font-size: 12px;
+      color: #5a4a42;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .diploma-bridge-desc strong {
+      color: #b85e3a;
+      font-weight: 700;
+    }
+    /* Arrow connector between bridge text and diploma card */
+    .diploma-bridge-arrow { display: none; }
+    .diploma-intent-card {
+      background: white;
+      border: 1.5px solid #e0dbd1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(75,15,7,0.10);
+    }
+    .diploma-intent-header {
+      background: linear-gradient(135deg, #4b0f07 0%, #7a1a0f 60%, #9c2c16 100%);
+      padding: 16px 18px;
+    }
+    .diploma-intent-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+    .diploma-intent-header p {
+      font-size: 11px;
+      color: rgba(245,215,158,0.82);
+      line-height: 1.5;
+    }
+    .diploma-intent-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(245,215,158,0.15);
+      border: 1px solid rgba(245,215,158,0.3);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #f5d79e;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .diploma-intent-body {
+      padding: 18px;
+    }
+    .di-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+    .di-form-group label {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #4b0f07;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+    .di-form-group input,
+    .di-form-group select {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1.5px solid #e0d8ce;
+      border-radius: 9px;
+      font-size: 13px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #333;
+      background: #faf7f2;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .di-form-group input:focus,
+    .di-form-group select:focus {
+      border-color: #b85e3a;
+      box-shadow: 0 0 0 3px rgba(184,94,58,0.1);
+      background: #fff;
+    }
+    .di-submit-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #d4623e 0%, #b85e3a 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 16px rgba(184,94,58,0.35);
+      margin-top: 4px;
+    }
+    .di-submit-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(184,94,58,0.45);
+    }
+    .di-privacy-note {
+      font-size: 10px;
+      color: #9a9490;
+      text-align: center;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .di-privacy-note i {
+      color: #2e7d32;
+      font-size: 10px;
+    }
+
+    /* Mobile-only diploma block inside left col */
+    .mobile-diploma-block { display: none; }
+
+    /* Mobile-only WhatsApp CTA */
+    .mobile-wa-cta {
+      display: none;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%);
+      border: 1.5px solid #86efac;
+      border-radius: 14px;
+      padding: 14px 16px;
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: background .2s, transform .2s;
+    }
+    .mobile-wa-cta:hover { background: #bbf7d0; transform: translateY(-1px); }
+    .mobile-wa-icon { font-size: 30px; color: #25D366; flex-shrink: 0; }
+    .mobile-wa-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+    .mobile-wa-title { font-size: 13.5px; font-weight: 800; color: #14532d; line-height: 1.3; }
+    .mobile-wa-sub { font-size: 11.5px; color: #166534; margin-top: 2px; }
+    .mobile-wa-arrow { font-size: 11px; color: #16a34a; flex-shrink: 0; }
+
     /* Mobile sticky bar */
     .mobile-enroll-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:2px solid #e0dbd1; padding:10px 16px 12px; z-index:2000; box-shadow:0 -6px 24px rgba(0,0,0,.13); }
     .mobile-enroll-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:560px; margin:0 auto; }
@@ -268,29 +572,82 @@
       .main-wrapper { grid-template-columns:1fr 380px; }
     }
     @media (max-width:900px) {
-      .main-wrapper { grid-template-columns:1fr; padding-bottom:90px; }
-      .right-col { display:none; }
-      .hero-layout { flex-direction:column; gap:20px; }
+      /* Stack to single column, left col first then mobile sidebar */
+      .main-wrapper {
+        grid-template-columns: 1fr;
+        padding-bottom: 80px;
+        gap: 0;
+      }
+      /* Show mobile-only WhatsApp CTA */
+      .mobile-wa-cta { display: flex; }
+
+      /* Show mobile-only diploma block in left col */
+      .mobile-diploma-block {
+        display: block;
+        margin-bottom: 20px;
+      }
+      .mobile-diploma-block .diploma-intent-card {
+        border-radius: 16px;
+        border: 1.5px solid #e0dbd1;
+        border-top: 3px solid #4b0f07;
+      }
+
+      /* Hide the right-col entirely on mobile — inline block handles it */
+      .right-col { display: none !important; }
+
+      /* Hero stacks */
+      .hero-layout { flex-direction:column; gap:16px; }
       .hero-video { width:100%; max-width:560px; margin:0 auto; }
-      .hero-video iframe { height:min(315px,52vw); }
+      .hero-video iframe { height:min(200px,50vw); }
+
+      /* Mobile enroll bar */
       .mobile-enroll-bar { display:block; }
       .dropdown { display:none!important; }
       .auth-buttons { display:none; }
       .nav-divider { display:none; }
       .mobile-menu-btn { display:flex; flex-direction:column; }
+
+      /* Compact hero for mobile */
+      .hero-dark { padding:20px 0; }
+      .hero-title { margin-bottom:8px; }
+      .hero-subtitle { margin-bottom:10px; }
+      .hero-bullets { gap:5px; margin-bottom:12px; }
+      .rating-row { margin-bottom:8px; }
+      .social-badges { margin-bottom:10px; }
+
+      /* Compact sections */
+      .section-block { margin-bottom:20px; }
+      .learning-box { padding:14px; margin-bottom:20px; }
+      .why-grid { gap:10px; margin-bottom:20px; }
+      .why-card { padding:12px; }
+
+      /* Compact main wrapper */
+      .main-wrapper { padding:16px clamp(12px,3vw,20px) 80px; }
     }
     @media (max-width:600px) {
       .why-grid { grid-template-columns:1fr; }
       .learning-grid { grid-template-columns:1fr; }
+
+      /* Even more compact for small phones */
+      .hero-dark { padding:16px 0; }
+      .main-wrapper { padding:12px 12px 80px; }
+      .section-block { margin-bottom:16px; }
+
+      /* Diploma form on mobile - compact */
+      .diploma-intent-body { padding:14px; }
+      .di-form-group { margin-bottom:10px; }
+      .di-form-group input,
+      .di-form-group select { padding:10px 12px; font-size:13px; }
+      .diploma-intent-header { padding:14px 16px; }
+      .diploma-intent-header h3 { font-size:15px; }
     }
   </style>
 </head>
 <body>
-<a href="#courses" class="top-banner">
+<a href="https://astrovastugurukull.com/#courses" class="top-banner">
   <strong>Skills on sale</strong> | Courses now as low as <strong>₹1,499</strong> through limited time.
   <span>Enroll Now!</span>
 </a>
-
 <input type="checkbox" id="nav-toggle">
 <nav class="navbar">
   <div class="navbar-inner">
@@ -337,7 +694,6 @@
           <div class="submenu">
             <div class="submenu-title">Combo Course &#9658;</div>
             <div class="submenu-content">
-             
               <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
             </div>
           </div>
@@ -398,7 +754,6 @@
       <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
       <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
       <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
-     
       <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
       <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
     </details>
@@ -412,7 +767,7 @@
     </details>
     <div class="drawer-actions">
       <a class="drawer-login" href="https://academy.astrovastugurukull.com/web/dashboard/getstarted">Log in</a>
-      <a class="drawer-signup" href="#courses">Explore Courses</a>
+      <a class="drawer-signup" href="https://astrovastugurukull.com/#courses">Explore Courses</a>
     </div>
   </div>
 </div>
@@ -423,34 +778,48 @@
     <div class="hero-layout">
       <div class="hero-content">
         <div class="breadcrumb">
-          <a href="#">Home</a><span class="sep">›</span>
-          <a href="#">Courses</a><span class="sep">›</span>
+          <a href="https://astrovastugurukull.com">Home</a><span class="sep">›</span>
+          <a href="https://astrovastugurukull.com/#courses">Courses</a><span class="sep">›</span>
           <span>All About Planets</span>
         </div>
         <h1 class="hero-title">All About Planets</h1>
         <p class="hero-subtitle">Master the influence of all 9 planets and their role in shaping destiny.</p>
+
+        <div class="hero-bullets">
+          <div class="hero-bullet-item">
+            <span>🔹 <strong>Learn Planetary Influence in 4 Days</strong> & Understand Predictions with Precision</span>
+          </div>
+          <div class="hero-bullet-item">
+            <span>💰 <strong>Build a Strong Foundation</strong> — Start Applying Astrology Skills in 4 Days</span>
+          </div>
+        </div>
+
         <div class="rating-row">
-          <span class="bestseller">Core Astrology Module</span>
+          <span class="bestseller">Bestseller</span>
           <span class="rating-number">4.8</span>
           <div class="stars">
-            <i class="fas fa-star star-f"></i><i class="fas fa-star star-f"></i>
-            <i class="fas fa-star star-f"></i><i class="fas fa-star star-f"></i>
             <i class="fas fa-star star-f"></i>
+            <i class="fas fa-star star-f"></i>
+            <i class="fas fa-star star-f"></i>
+            <i class="fas fa-star star-f"></i>
+            <i class="fas fa-star-half-alt star-h"></i>
           </div>
-          <a href="#reviews" class="rating-link">(3,100+ ratings)</a>
-          <span class="students-count">16,000+ students</span>
+          <span class="students-count">94,217+ students</span>
         </div>
+
         <p><a href="#instructor" class="instructor-link">Created by Acharya LavBhushan</a></p>
+
         <div class="social-badges">
           <span class="social-badge yt"><i class="fab fa-youtube"></i> 1.3M+ Subscribers</span>
           <span class="social-badge ig"><i class="fab fa-instagram"></i> 267k+ Followers</span>
         </div>
+
         <div class="course-meta">
-          <span class="meta-item"><i class="fas fa-info-circle"></i> Last updated February 2025</span>
           <span class="meta-item"><i class="fas fa-globe"></i> Hindi / English</span>
-          <span class="meta-item"><i class="fas fa-star"></i> Planetary Mastery Essentials</span>
+          <span class="meta-item"><i class="fas fa-star"></i> Deep Planetary Mastery</span>
         </div>
       </div>
+
       <div class="hero-video">
         <iframe src="https://www.youtube.com/embed/sbdWOFaAw10" allowfullscreen title="Course Preview"></iframe>
       </div>
@@ -460,123 +829,205 @@
 
 <!-- ===== MAIN CONTENT ===== -->
 <div class="main-wrapper">
+  <!-- ========== LEFT COLUMN ========== -->
   <div class="left-col">
     <!-- What You'll Learn -->
     <div class="learning-box">
       <h2 class="section-title">What You Will Learn?</h2>
       <div class="learning-grid">
-        <div class="learning-item"><i class="fas fa-check"></i><span>Nature of 9 planets</span></div>
-        <div class="learning-item"><i class="fas fa-check"></i><span>Planetary strengths</span></div>
-        <div class="learning-item"><i class="fas fa-check"></i><span>Exaltation & debilitation</span></div>
-        <div class="learning-item"><i class="fas fa-check"></i><span>Combustion & retrograde</span></div>
-        <div class="learning-item"><i class="fas fa-check"></i><span>Planetary aspects</span></div>
-        <div class="learning-item"><i class="fas fa-check"></i><span>Dasha influence basics</span></div>
-        <div class="learning-item"><i class="fas fa-check"></i><span>Career impact analysis</span></div>
-        <div class="learning-item"><i class="fas fa-check"></i><span>Planet-based predictions</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>01. Nature of 9 planets</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>02. Planetary strengths</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>03. Exaltation & debilitation</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>04. Combustion & retrograde</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>05. Planetary aspects</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>06. Dasha influence basics</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>07. Career impact analysis</span></div>
+        <div class="learning-item"><i class="fas fa-check"></i><span>08. Planet-based predictions</span></div>
       </div>
     </div>
-
-    <!-- Why Choose -->
+    <!-- MOBILE-ONLY: WhatsApp CTA after What You'll Learn -->
+    <a href="https://wa.aisensy.com/+919119349066" target="_blank" class="mobile-wa-cta">
+      <i class="fab fa-whatsapp mobile-wa-icon"></i>
+      <div class="mobile-wa-text">
+        <span class="mobile-wa-title">Have questions? Chat with us</span>
+ 
+      </div>
+      <i class="fas fa-chevron-right mobile-wa-arrow"></i>
+    </a>
+     <!-- Why Choose -->
+      <!-- Why Choose -->
     <div class="section-block">
       <h2 class="section-title">Why Choose This Course?</h2>
       <div class="why-grid">
         <div class="why-card">
-          <div class="why-header">
-            <i class="fas fa-globe"></i>
-            <div class="why-card-title">Planetary Depth Knowledge</div>
-          </div>
+          <div class="why-header"><i class="fas fa-globe-asia"></i><div class="why-card-title">Planetary Depth Knowledge</div></div>
           <div class="why-card-desc">Understand cosmic influences clearly.</div>
         </div>
         <div class="why-card">
-          <div class="why-header">
-            <i class="fas fa-bullseye"></i>
-            <div class="why-card-title">Prediction Accuracy Boost</div>
-          </div>
+          <div class="why-header"><i class="fas fa-bullseye"></i><div class="why-card-title">Prediction Accuracy Boost</div></div>
           <div class="why-card-desc">Improve forecasting precision.</div>
         </div>
         <div class="why-card">
-          <div class="why-header">
-            <i class="fas fa-search-depth"></i>
-            <div class="why-card-title">Advanced Interpretation Skills</div>
-          </div>
+          <div class="why-header"><i class="fas fa-search"></i><div class="why-card-title">Advanced Interpretation Skills</div></div>
           <div class="why-card-desc">Detailed planetary reading.</div>
         </div>
         <div class="why-card">
-          <div class="why-header">
-            <i class="fas fa-briefcase"></i>
-            <div class="why-card-title">Career Enhancement Learning</div>
-          </div>
+          <div class="why-header"><i class="fas fa-briefcase"></i><div class="why-card-title">Career Enhancement Learning</div></div>
           <div class="why-card-desc">Stronger consultation abilities.</div>
         </div>
         <div class="why-card">
-          <div class="why-header">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <div class="why-card-title">Clear Concept Explanation</div>
-          </div>
+          <div class="why-header"><i class="fas fa-lightbulb"></i><div class="why-card-title">Clear Concept Explanation</div></div>
           <div class="why-card-desc">Simplified advanced concepts.</div>
         </div>
         <div class="why-card">
-          <div class="why-header">
-            <i class="fas fa-chart-bar"></i>
-            <div class="why-card-title">Practical Horoscope Study</div>
-          </div>
+          <div class="why-header"><i class="fas fa-chart-bar"></i><div class="why-card-title">Practical Horoscope Study</div></div>
           <div class="why-card-desc">Real chart analysis.</div>
         </div>
         <div class="why-card">
-          <div class="why-header">
-            <i class="fas fa-user-tie"></i>
-            <div class="why-card-title">Professional Guidance Skills</div>
-          </div>
+          <div class="why-header"><i class="fas fa-user-graduate"></i><div class="why-card-title">Professional Guidance Skills</div></div>
           <div class="why-card-desc">Apply in real life.</div>
         </div>
         <div class="why-card">
-          <div class="why-header">
-            <i class="fas fa-certificate"></i>
-            <div class="why-card-title">Certification Provided</div>
-          </div>
+          <div class="why-header"><i class="fas fa-certificate"></i><div class="why-card-title">Certification Provided</div></div>
           <div class="why-card-desc">Professional recognition.</div>
         </div>
       </div>
     </div>
- <div class="section-block">
+
+    <!-- Requirements -->
+    <div class="section-block">
       <h2 class="section-title">Requirements</h2>
       <ul class="req-list">
-        <li>No prior astrological knowledge required</li>
-        <li>Basic understanding of English or Hindi</li>
-        <li>A notebook for taking notes</li>
-        <li>Curiosity and willingness to learn</li>
-        <li>Computer or smartphone with internet connection</li>
+        <li>No prior astrology knowledge strictly required</li>
+        <li>Interest in understanding how planets influence life</li>
+        <li>Basic comfort with Hindi or English</li>
+        <li>Notebook or digital notes app</li>
+        <li>Curiosity about Vedic astrology principles</li>
       </ul>
     </div>
+
     <!-- Description -->
     <div class="section-block">
       <h2 class="section-title">Description</h2>
       <div class="desc-text">
-        <p>This course provides in-depth knowledge of all nine planets in Vedic Astrology. You will learn their nature, strength, aspects, and placement effects.</p>
-        <p>Understanding planetary combinations helps improve prediction accuracy. The course is ideal for astrologers seeking mastery in planetary interpretation and professional growth.</p>
+        <p>This course provides in-depth knowledge of all nine planets in Vedic Astrology. You will learn their nature, strength, aspects, and placement effects. Understanding planetary combinations helps improve prediction accuracy. The course is ideal for astrologers seeking mastery in planetary interpretation and professional growth.</p>
+        
+        <input type="checkbox" id="show-more-toggle" class="show-more-toggle">
+        <div class="extra-desc">
+          <p>Covers Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu & Ketu — including exaltation/debilitation points, combustion, retrograde motion, planetary friendships/enmities, aspects, basic dasha effects, and real-life significations across career, relationships, health and more.</p>
+          <p>A must-have module for anyone serious about accurate and confident chart readings.</p>
+        </div>
+        <label for="show-more-toggle" class="show-more-label">
+          <span class="more-text"><i class="fas fa-chevron-down"></i> Show more</span>
+          <span class="less-text"><i class="fas fa-chevron-up"></i> Show less</span>
+        </label>
       </div>
+    </div>
+    <!-- ===== MOBILE-ONLY: DIPLOMA FORM (after description) ===== -->
+    <div class="mobile-diploma-block">
+      <div class="diploma-bridge-text">
+        <p class="diploma-bridge-heading">Looking for a more recognized learning path?</p>
+        <p class="diploma-bridge-desc">Explore our Government-Certified Diploma Programs in collaboration with <strong>Nirwaan University, Jaipur</strong> for in-depth knowledge and official credentials.</p>
+      </div>
+      <div class="diploma-bridge-arrow"></div>
+      <div class="diploma-intent-card">
+        <div class="diploma-intent-header">
+          <div class="diploma-intent-badge"><i class="fas fa-university"></i> University Recognized</div>
+          <h3>Interested in a University Diploma?</h3>
+          <p>Get details on our Nirwan University collaboration — Diploma &amp; Certificate programs in Occult Science.</p>
+        </div>
+        <div class="diploma-intent-body">
+          <form action="https://script.google.com/macros/s/AKfycbzSPSdVhJc3vedcA2QR_a_vKLjn65zuoDcNhhDUpIV0j9y9qqevuFPi6bjAFcQBcwUd/exec" method="POST" target="_blank">
+            <input type="hidden" name="page" value="All About PLanets">
+            <div class="di-form-group">
+              <label for="mdi-name">Full Name *</label>
+              <input type="text" id="mdi-name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="di-form-group">
+              <label for="mdi-phone">Phone Number *</label>
+              <input type="tel" id="mdi-phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+            <div class="di-form-group">
+              <label for="mdi-email">Email Address *</label>
+              <input type="email" id="mdi-email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="di-form-group">
+              <label for="mdi-city">City / Location *</label>
+              <input type="text" id="mdi-city" name="city" placeholder="Your city" required>
+            </div>
+            <div class="di-form-group">
+              <label for="mdi-course">Program of Interest *</label>
+              <select id="mdi-course" name="course" required>
+                <option value="" disabled selected>-- Choose a program --</option>
+                <optgroup label="Diploma Courses">
+                  <option value="Diploma in Astrology">Diploma in Astrology</option>
+                  <option value="Diploma in Numerology">Diploma in Numerology</option>
+                  <option value="Diploma in Vastu Shastra">Diploma in Vastu Shastra</option>
+                </optgroup>
+                <optgroup label="Certificate Courses">
+                  <option value="Certificate Course in Astrology">Certificate in Astrology</option>
+                  <option value="Certificate Course in Numerology">Certificate in Numerology</option>
+                  <option value="Certificate Course in Vastu Shastra">Certificate in Vastu Shastra</option>
+                </optgroup>
+                <optgroup label="Combo">
+                  <option value="Combo Certificate Course">Combo (Astrology + Numerology + Vastu)</option>
+                </optgroup>
+              </select>
+            </div>
+            <button type="submit" class="di-submit-btn">
+               Apply Now for Diploma
+            </button>
+            <p class="di-privacy-note">
+              <i class="fas fa-lock"></i> Your details are safe. We'll respond within 24 hours.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- ===== END MOBILE-ONLY DIPLOMA FORM ===== -->
+  <div class="section-block">
+      <h2 class="section-title">Who This Course Is For:</h2>
+      <ul class="who-list">
+        <li>Students wanting deep understanding of the 9 planets</li>
+        <li>Beginners strengthening core astrology knowledge</li>
+        <li>Astrologers improving prediction accuracy</li>
+        <li>Anyone curious about how planets shape personality & destiny</li>
+        <li>Learners preparing for advanced astrology studies</li>
+      </ul>
     </div>
 
     <!-- Instructor -->
     <div class="section-block" id="instructor">
       <h2 class="section-title">Instructor</h2>
       <a href="https://www.youtube.com/@acharyalavbhushan" target="_blank" class="instructor-name-link">Acharya LavBhushan</a>
-      <p class="instructor-title-sub">Celebrity Astrologer, Numerologist & Vastu Expert</p>
+      <p class="instructor-title-sub">Celebrity Astrologer, Numerologist &amp; Vastu Expert</p>
       <div class="instructor-details">
         <div class="instructor-avatar">AL</div>
         <div class="instructor-stats">
-          <div class="stat-item"><i class="fas fa-star"></i> 4.8 Instructor Rating</div>
+          <div class="stat-item"><i class="fas fa-star"></i> 4.5 Instructor Rating</div>
           <div class="stat-item"><i class="fas fa-award"></i> 10,000+ Reviews</div>
-          <div class="stat-item"><i class="fas fa-users"></i> 1,00,000+ Students Trained</div>
+          <div class="stat-item"><i class="fas fa-users"></i> 99,731+ Students Trained</div>
           <div class="stat-item"><i class="fab fa-youtube"></i> 1.3M+ YouTube Subscribers</div>
           <div class="stat-item"><i class="fab fa-instagram"></i> 267k+ Instagram Followers</div>
         </div>
       </div>
-      <p class="instructor-bio">Acharya (Dr.) LavBhushan is a celebrity and world-renowned Astrologer practicing since 2003. He studied the intricacies of Astrology, Vastu & Numbers from renowned institutes in Hyderabad, Mumbai, and Ahmedabad, and internationally from Bangkok, China & Indonesia. He has trained more than 10,000 students through various workshops, webinars, and masterclasses, making ancient sciences simple and accessible to the modern generation.</p>
+      <p class="instructor-bio">Acharya (Dr.) LavBhushan is a celebrity and world-renowned Astrologer practicing since 2003. He studied the intricacies of Astrology, Vastu &amp; Numbers from renowned institutes in Hyderabad, Mumbai, and Ahmedabad, and internationally from Bangkok, China &amp; Indonesia. He has trained more than 10,000 students through various workshops, webinars, and masterclasses, making ancient sciences simple and accessible to the modern generation.</p>
     </div>
 
-    <!-- Reviews -->
-    <div class="section-block" id="reviews">
+    <!-- ===== TESTIMONIAL VIDEO SECTION ===== -->
+    <div class="section-block testimonial-video-section" id="testimonials">
+      <h2 class="section-title">Praise from Our Students</h2>
+      <p class="testimonial-video-subtitle">Hear directly from 99,731+ students who transformed their lives with this course</p>
+      <div class="testi-video-grid">
+        <div class="testi-video-wrap"><video src="https://cdn.shopify.com/videos/c/o/v/eb3c101a924f4ea69242df95232b93b7.mp4#t=0.1" controls playsinline preload="auto"></video></div>
+        <div class="testi-video-wrap"><video src="https://cdn.shopify.com/videos/c/o/v/13d9404532294e1ab0b5c254033499f9.mp4#t=0.1" controls playsinline preload="auto"></video></div>
+        <div class="testi-video-wrap"><video src="https://cdn.shopify.com/videos/c/o/v/6264a8d85021438da33d307a2353c089.mp4#t=0.1" controls playsinline preload="auto"></video></div>
+        <div class="testi-video-wrap"><video src="https://cdn.shopify.com/videos/c/o/v/bd81b612f58846d780f75de9570f4f7d.mp4#t=0.1" controls playsinline preload="auto"></video></div>
+      </div>
+    </div>
+    <!-- ===== END TESTIMONIAL VIDEO SECTION ===== -->
+
+     <div class="section-block" id="reviews">
       <h2 class="section-title">Student Reviews</h2>
       <div class="review-item">
         <div class="reviewer-info">
@@ -610,7 +1061,7 @@
           <div>
             <div class="reviewer-name">Sameer Kulkarni</div>
             <div class="review-meta">
-              <div class="stars-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star" style="color:#e0dbd1"></i></div>
+              <div class="stars-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
               <span class="review-date">· Kolhapur, Maharashtra</span>
             </div>
           </div>
@@ -643,9 +1094,9 @@
         <div class="faq-answer">No, prior chart-drawing knowledge is not needed. The course focuses on understanding planetary nature, qualities, and significations. You can take this as a standalone module or alongside other beginner courses for best results.</div>
       </details>
     </div>
-  </div>
+  </div><!-- /left-col -->
 
-  <!-- RIGHT COLUMN -->
+  <!-- ========== RIGHT COLUMN — RICH SIDEBAR ========== -->
   <div class="right-col">
     <div class="right-sticky">
       <div class="course-card">
@@ -653,54 +1104,110 @@
           <img src="https://tagmango.com/staticassets/-course-5-cd25f87a914e9ba8902e6b036becb18e.png" alt="All About Planets">
         </div>
         <div class="card-body">
-          <a href="https://academy.astrovastugurukull.com/l/cebbc89a36" target="_blank" class="enroll-btn">🎓 Enroll Now ₹1,499</a>
+          <a href="https://academy.astrovastugurukull.com/l/cebbc89a36" target="_blank" class="enroll-btn">
+            🎓 Enroll Now — ₹1,499
+          </a>
+
+          <div class="enroll-value-props">
+            <div class="enroll-value-prop">
+              <i class="fas fa-bolt"></i>
+              <span><strong>Instant Access</strong> — Master the 9 planets today</span>
+            </div>
+          </div>
+
           <hr class="card-divider">
+
           <div class="includes-title">This course includes:</div>
           <div class="includes-list">
-            <div class="include-item"><i class="fas fa-play-circle"></i> On-demand video lectures</div>
+            <div class="include-item"><i class="fas fa-play-circle"></i> In-depth planetary video lectures</div>
             <div class="include-item"><i class="fas fa-infinity"></i> Lifetime access</div>
             <div class="include-item"><i class="fas fa-mobile-alt"></i> Access on mobile & desktop</div>
-            <div class="include-item"><i class="fas fa-file-pdf"></i> Downloadable planetary reference sheets</div>
-            <div class="include-item"><i class="fas fa-trophy"></i> Completion certificate</div>
-            <div class="include-item"><i class="fas fa-users"></i> Community support</div>
-            <div class="include-item"><i class="fas fa-headset"></i> Doubt clearing sessions</div>
-            <div class="include-item"><i class="fas fa-chart-bar"></i> Real chart examples</div>
+            <div class="include-item"><i class="fas fa-file-pdf"></i> Downloadable planet reference guides</div>
+            <div class="include-item"><i class="fas fa-trophy"></i> Certificate of completion</div>
+            <div class="include-item"><i class="fas fa-users"></i> 94,217+ Students Community</div>
+            <div class="include-item"><i class="fas fa-headset"></i> Doubt clearing support</div>
+            <a href="https://wa.aisensy.com/+919119349066" target="_blank" class="include-item include-wa-link">
+              <i class="fab fa-whatsapp include-wa-icon"></i>
+              <span>Chat with us on WhatsApp</span>
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Stats widget -->
+        <!-- Stats – odd numbers only -->
       <div class="stats-widget">
         <div class="stats-widget-title">Course At a Glance</div>
         <div class="stats-grid">
-          <div class="stat-box">
-            <span class="stat-box-num">16K+</span>
-            <span class="stat-box-label">Students Enrolled</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-box-num">4.8★</span>
-            <span class="stat-box-label">Average Rating</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-box-num">3.1K+</span>
-            <span class="stat-box-label">Reviews</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-box-num">∞</span>
-            <span class="stat-box-label">Lifetime Access</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-box-num">Hindi</span>
-            <span class="stat-box-label">Primary Language</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-box-num">8</span>
-            <span class="stat-box-label">Core Modules</span>
-          </div>
+          <div class="stat-box"><span class="stat-box-num">94,217</span><span class="stat-box-label">Students Enrolled</span></div>
+          <div class="stat-box"><span class="stat-box-num">4.8★</span><span class="stat-box-label">Average Rating</span></div>
+          <div class="stat-box"><span class="stat-box-num">10,3K+</span><span class="stat-box-label">Reviews</span></div>
+          <div class="stat-box"><span class="stat-box-num">∞</span><span class="stat-box-label">Lifetime Access</span></div>
+          <div class="stat-box"><span class="stat-box-num">Hindi</span><span class="stat-box-label">Primary Language</span></div>
+          <div class="stat-box"><span class="stat-box-num">8</span><span class="stat-box-label">Core Modules</span></div>
         </div>
       </div>
+      <!-- 3. NEW: DIPLOMA INTENT FORM -->
+      <!-- Bridge text above diploma form -->
+      <div class="diploma-bridge-text">
+        <p class="diploma-bridge-heading">Looking for a more recognized learning path?</p>
+        <p class="diploma-bridge-desc">Explore our Government-Certified Diploma Programs in collaboration with <strong>Nirwaan University, Jaipur</strong> for in-depth knowledge and official credentials.</p>
+      </div>
+      <div class="diploma-bridge-arrow"></div>
+      <div class="diploma-intent-card">
+        <div class="diploma-intent-header">
+          <div class="diploma-intent-badge"><i class="fas fa-university"></i> University Recognized</div>
+          <h3>Interested in a University Diploma?</h3>
+          <p>Get details on our Nirwan University collaboration — Diploma &amp; Certificate programs in Occult Science.</p>
+        </div>
+        <div class="diploma-intent-body">
+          <form action="https://script.google.com/macros/s/AKfycbzSPSdVhJc3vedcA2QR_a_vKLjn65zuoDcNhhDUpIV0j9y9qqevuFPi6bjAFcQBcwUd/exec" method="POST" target="_blank">
+            <input type="hidden" name="page" value="All About PLanets">
+            <div class="di-form-group">
+              <label for="di-name">Full Name *</label>
+              <input type="text" id="di-name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="di-form-group">
+              <label for="di-phone">Phone Number *</label>
+              <input type="tel" id="di-phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+            <div class="di-form-group">
+              <label for="di-email">Email Address *</label>
+              <input type="email" id="di-email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="di-form-group">
+              <label for="di-city">City / Location *</label>
+              <input type="text" id="di-city" name="city" placeholder="Your city" required>
+            </div>
+            <div class="di-form-group">
+              <label for="di-course">Program of Interest *</label>
+              <select id="di-course" name="course" required>
+                <option value="" disabled selected>-- Choose a program --</option>
+                <optgroup label="Diploma Courses">
+                  <option value="Diploma in Astrology">Diploma in Astrology</option>
+                  <option value="Diploma in Numerology">Diploma in Numerology</option>
+                  <option value="Diploma in Vastu Shastra">Diploma in Vastu Shastra</option>
+                </optgroup>
+                <optgroup label="Certificate Courses">
+                  <option value="Certificate Course in Astrology">Certificate in Astrology</option>
+                  <option value="Certificate Course in Numerology">Certificate in Numerology</option>
+                  <option value="Certificate Course in Vastu Shastra">Certificate in Vastu Shastra</option>
+                </optgroup>
+                <optgroup label="Combo">
+                  <option value="Combo Certificate Course">Combo (Astrology + Numerology + Vastu)</option>
+                </optgroup>
+              </select>
+            </div>
+            <button type="submit" class="di-submit-btn">
+             Apply Now for Diploma
+            </button>
+            <p class="di-privacy-note">
+              <i class="fas fa-lock"></i> Your details are safe. We'll respond within 24 hours.
+            </p>
+          </form>
+        </div>
+      </div>
+      <!-- END DIPLOMA INTENT FORM -->
 
-      <!-- Related courses -->
       <div class="related-widget">
         <div class="related-widget-header">
           <h3>Explore Related Courses</h3>
@@ -708,47 +1215,32 @@
         </div>
         <div class="related-list">
           <a href="https://academy.astrovastugurukull.com/services/beginner-astrology-course" class="related-item">
-            <div class="related-item-left">
-              <div class="related-icon"><i class="fas fa-book-open"></i></div>
-              <div class="related-name">Beginner's Astrology Course</div>
-            </div>
+            <div class="related-item-left"><div class="related-icon"><i class="fas fa-book"></i></div><div class="related-name">Beginner's Astrology Course</div></div>
             <i class="fas fa-chevron-right related-arrow"></i>
           </a>
           <a href="https://academy.astrovastugurukull.com/services/all-about-rashis" class="related-item">
-            <div class="related-item-left">
-              <div class="related-icon"><i class="fas fa-star-and-crescent"></i></div>
-              <div class="related-name">All About Rashis</div>
-            </div>
+            <div class="related-item-left"><div class="related-icon"><i class="fas fa-star-and-crescent"></i></div><div class="related-name">All About Rashis</div></div>
             <i class="fas fa-chevron-right related-arrow"></i>
           </a>
           <a href="https://academy.astrovastugurukull.com/services/all-about-houses" class="related-item">
-            <div class="related-item-left">
-              <div class="related-icon"><i class="fas fa-home"></i></div>
-              <div class="related-name">All About Houses</div>
-            </div>
+            <div class="related-item-left"><div class="related-icon"><i class="fas fa-home"></i></div><div class="related-name">All About Houses</div></div>
             <i class="fas fa-chevron-right related-arrow"></i>
           </a>
           <a href="https://academy.astrovastugurukull.com/services/personal-details-correction-course" class="related-item">
-            <div class="related-item-left">
-              <div class="related-icon"><i class="fas fa-user-edit"></i></div>
-              <div class="related-name">Personal Details Correction</div>
-            </div>
+            <div class="related-item-left"><div class="related-icon"><i class="fas fa-user-edit"></i></div><div class="related-name">Personal Details Correction</div></div>
             <i class="fas fa-chevron-right related-arrow"></i>
           </a>
           <a href="https://academy.astrovastugurukull.com/services/advance-astrology-course" class="related-item">
-            <div class="related-item-left">
-              <div class="related-icon"><i class="fas fa-meteor"></i></div>
-              <div class="related-name">Advanced Astrology Course</div>
-            </div>
+            <div class="related-item-left"><div class="related-icon"><i class="fas fa-meteor"></i></div><div class="related-name">Advanced Astrology Course</div></div>
             <i class="fas fa-chevron-right related-arrow"></i>
           </a>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div><!-- /right-col -->
+</div><!-- /main-wrapper -->
 
-<!-- Mobile sticky bar -->
+<!-- Mobile enroll bar -->
 <div class="mobile-enroll-bar">
   <div class="mobile-enroll-inner">
     <span class="m-price">₹1,499</span>
@@ -759,9 +1251,9 @@
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-top">
-    <h3>Got questions? We’re here to help.</h3>
+    <h3>Got questions? We&#8217;re here to help.</h3>
     <p>Email us at: <a href="mailto:support@astrovastugurukull.com">support@astrovastugurukull.com</a></p>
-    <p>Follow us on social media for updates, tips & free knowledge from Acharya ji</p>
+    <p>Follow us on social media for updates, tips &amp; free knowledge from Acharya ji</p>
     <div class="footer-social">
       <a href="https://www.facebook.com/p/Astro-Vastu-Gurukul-61574634191304/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       <a href="https://x.com/ALavbhushan" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
@@ -770,17 +1262,18 @@
     </div>
     <div class="footer-links">
       <a href="https://astrovastugurukull.com/about-us">About Us</a>
-      <a href="https://astrovastugurukull.com/terms-and-conditions">Terms & Conditions</a>
+      <a href="https://astrovastugurukull.com/terms-and-conditions">Terms &amp; Conditions</a>
       <a href="https://astrovastugurukull.com/privacy-policy">Privacy Policy</a>
       <a href="https://astrovastugurukull.com/refund-and-cancellation-policy">Refund Policy</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-bottom-inner">
-      <span style="color:#f5e6d3;font-weight:700;">Astro Vastu Gurukull</span>
-      <span class="footer-copy">© 2025 AstroVastu Gurukull. All Rights Reserved.</span>
+      <div class="footer-bottom-inner">
+        <span class="footer-brand">Astro Vastu Gurukull</span>
+        <span class="footer-copy">© 2025 AstroVastu Gurukull. All Rights Reserved.</span>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+
 </body>
 </html>
