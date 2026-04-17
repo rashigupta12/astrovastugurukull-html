@@ -23,7 +23,7 @@
     @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     @keyframes slideInDrawer { from{transform:translateX(-100%)} to{transform:translateX(0)} }
 
-    /* ── STICKY HEADER (banner + navbar together) ── */
+    /* ── STICKY HEADER ── */
     .sticky-header { position:sticky; top:0; z-index:1001; width:100%; box-shadow:0 2px 24px rgba(75,15,7,.07); }
 
     /* ── BANNER ── */
@@ -33,19 +33,11 @@
       color:#fff; text-align:center; padding:11px 16px; font-size:18px; cursor:pointer; width:100%; letter-spacing:.2px;
     }
     .top-banner:hover { opacity:.95; }
-    .top-banner span {
-      display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.4);
-      border-radius:20px; padding:2px 10px; font-weight:700; margin-left:6px; font-size:18px; letter-spacing:.5px;
-      transition:background .3s;
-    }
+    .top-banner span { display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.4); border-radius:20px; padding:2px 10px; font-weight:700; margin-left:6px; font-size:18px; letter-spacing:.5px; transition:background .3s; }
     .top-banner:hover span { background:rgba(255,255,255,.32); }
 
     /* ── NAVBAR ── */
-    .navbar {
-      background:#fff; border-bottom:1.5px solid #ece7df; position:relative; top:0; z-index:1001;
-      height:72px; display:flex; align-items:center; width:100%;
-      box-shadow:none; animation:navReveal .5s ease .2s both; overflow:visible;
-    }
+    .navbar { background:#fff; border-bottom:1.5px solid #ece7df; position:relative; top:0; z-index:1001; height:72px; display:flex; align-items:center; width:100%; box-shadow:none; animation:navReveal .5s ease .2s both; overflow:visible; }
     .navbar-inner { width:100%; padding:0 clamp(20px,4vw,72px); display:flex; align-items:center; justify-content:flex-start; overflow:visible; }
     .navbar-inner > * { overflow:visible; }
     .nav-left { display:flex; align-items:center; gap:6px; flex-shrink:0; }
@@ -63,8 +55,6 @@
     .auth-buttons { display:flex; gap:8px; flex-shrink:0; margin-left:8px; }
     .login-btn { border:1.5px solid #d5cdc4; background:white; padding:9px 20px; font-weight:600; cursor:pointer; white-space:nowrap; border-radius:8px; font-size:18px; font-family:inherit; color:#333; transition:border-color .3s,color .3s,background .3s; }
     .login-btn:hover { border-color:#b85e3a; color:#b85e3a; background:rgba(184,94,58,.04); }
-    .signup-btn { background:linear-gradient(135deg,#d4623e,#b85e3a); color:white; border:none; padding:9px 22px; font-weight:700; cursor:pointer; white-space:nowrap; border-radius:8px; font-size:18px; font-family:inherit; transition:opacity .3s,transform .3s,box-shadow .3s; box-shadow:0 3px 10px rgba(184,94,58,.3); }
-    .signup-btn:hover { opacity:.92; transform:translateY(-1px); box-shadow:0 6px 16px rgba(184,94,58,.4); }
 
     /* DROPDOWN */
     .dropdown { position:relative; z-index:1002; }
@@ -113,29 +103,14 @@
     .slides { position:relative; width:100%; height:100%; }
     .carousel-input { display:none; }
     .slide { position:absolute; inset:0; width:100%; height:100%; background-size:cover; background-position:75% center; display:flex; align-items:center; opacity:0; transition:opacity .8s ease-in-out; }
-
     @keyframes autoS1 { 0%{opacity:1} 42%{opacity:1} 50%{opacity:0} 92%{opacity:0} 100%{opacity:1} }
     @keyframes autoS2 { 0%{opacity:0} 42%{opacity:0} 50%{opacity:1} 92%{opacity:1} 100%{opacity:0} }
-    @keyframes dotS1 {
-      0%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-      42%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-      50%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-      92%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-      100%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-    }
-    @keyframes dotS2 {
-      0%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-      42%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-      50%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-      92%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e}
-      100%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)}
-    }
-
+    @keyframes dotS1 { 0%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} 42%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} 50%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} 92%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} 100%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} }
+    @keyframes dotS2 { 0%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} 42%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} 50%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} 92%{transform:scale(1.3);background:#f5d79e;border-color:#f5d79e} 100%{transform:scale(1);background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.7)} }
     .slide1 { animation:autoS1 8s ease-in-out infinite; }
     .slide2 { animation:autoS2 8s ease-in-out infinite; }
     .dot[data-index="0"] { animation:dotS1 8s ease-in-out infinite; }
     .dot[data-index="1"] { animation:dotS2 8s ease-in-out infinite; }
-
     #slide1-btn:checked ~ .slides .slide1 { animation:none; opacity:1; }
     #slide1-btn:checked ~ .slides .slide2 { animation:none; opacity:0; }
     #slide1-btn:checked ~ .carousel-dots .dot[data-index="0"] { animation:none; transform:scale(1.3); background:#f5d79e; border-color:#f5d79e; }
@@ -144,20 +119,10 @@
     #slide2-btn:checked ~ .slides .slide2 { animation:none; opacity:1; }
     #slide2-btn:checked ~ .carousel-dots .dot[data-index="0"] { animation:none; transform:scale(1); background:rgba(255,255,255,.45); border-color:rgba(255,255,255,.7); }
     #slide2-btn:checked ~ .carousel-dots .dot[data-index="1"] { animation:none; transform:scale(1.3); background:#f5d79e; border-color:#f5d79e; }
-
     .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_xl-4d81f03585af197a44a52a5416263125.png'); }
     .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-4-dbc22bcf6f6dcfcb22c096849e502838.jpeg'); }
-
-    @media (max-width:1199px) {
-      .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_tablet-85209723e146491aa403ffefc79bbd2e.png'); }
-      .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-5-3a43f4d584b5123cd662d51f7757a9a4.jpeg'); }
-    }
-
-    @media (max-width:767px) {
-      .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_mobile-2efa9dd703892bdb8d43a3f8e668a4a0.png'); }
-      .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-5-406cd46b7e5d87c6cbff71a92c4cee62.jpeg'); }
-    }
-
+    @media (max-width:1199px) { .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_tablet-85209723e146491aa403ffefc79bbd2e.png'); } .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-5-3a43f4d584b5123cd662d51f7757a9a4.jpeg'); } }
+    @media (max-width:767px) { .slide1 { background-image:url('https://tagmango.com/staticassets/-banner_mobile-2efa9dd703892bdb8d43a3f8e668a4a0.png'); } .slide2 { background-image:url('https://tagmango.com/staticassets/-whatsapp-image-2026-03-11-at-5-406cd46b7e5d87c6cbff71a92c4cee62.jpeg'); } }
     .slide-content { position:relative; z-index:2; width:50%; max-width:600px; padding-left:clamp(20px,6vw,100px); padding-right:20px; display:flex; flex-direction:column; gap:clamp(18px,2.2vw,28px); }
     .slide-eyebrow { background:rgba(245,215,158,.18); border:1px solid rgba(245,215,158,.4); border-radius:30px; padding:6px 16px; width:fit-content; color:#f5d79e; font-size:18px; font-weight:600; letter-spacing:1.5px; }
     .slide-title { color:#fff; font-size:clamp(26px,4vw,56px); font-weight:800; line-height:1.1; }
@@ -167,53 +132,16 @@
     .slide-badge { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); border-radius:20px; padding:5px 14px; color:#fff; font-size:15px; }
     .slide-cta { background:linear-gradient(135deg,#e05230,#b85e3a); border-radius:50px; color:#fff; font-size:18px; font-weight:700; padding:16px 40px; text-decoration:none; width:max-content; transition:.3s; }
     .slide-cta:hover { transform:translateY(-3px); }
-
-    .banner-btn {
-      position:absolute; left:50%; transform:translateX(-50%); bottom:40px;
-      background:linear-gradient(145deg,#b63e00,#8b2e00); color:#fff; padding:19px 44px;
-      border-radius:40px; font-size:19px; font-weight:700; text-decoration:none;
-      box-shadow:0 10px 30px rgba(0,0,0,.35); transition:.25s;
-    }
+    .banner-btn { position:absolute; left:50%; transform:translateX(-50%); bottom:40px; background:linear-gradient(145deg,#b63e00,#8b2e00); color:#fff; padding:19px 44px; border-radius:40px; font-size:19px; font-weight:700; text-decoration:none; box-shadow:0 10px 30px rgba(0,0,0,.35); transition:.25s; }
     .banner-btn:hover { transform:translateX(-50%) translateY(-4px); }
-
     .carousel-dots { position:absolute; bottom:18px; left:50%; transform:translateX(-50%); display:flex; gap:10px; z-index:10; }
     .dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.45); border:2px solid rgba(255,255,255,.7); cursor:pointer; transition:background .3s,transform .3s,border-color .3s; display:block; }
-
-    @media (max-width:1199px) {
-      .slide { background-position:82% center; }
-      .slide-content { width:60%; }
-      .banner-btn { left:50%; transform:translateX(-50%); bottom:40px; }
-    }
-
-    @media (max-width:767px) {
-      .hero-carousel { height:auto; aspect-ratio:9/16; min-height:530px; }
-      .slide { align-items:flex-start; background-position:top center !important; background-size:cover; }
-      .slide-content { width:100%; padding:36px 20px 0 20px; justify-content:flex-start; gap:12px; }
-      .slide-title { font-size:28px; line-height:1.2; }
-      .slide-subtitle { font-size:14px; max-width:95%; }
-      .slide-cta { padding:14px 28px; font-size:16px; }
-      .banner-btn {
-        left: auto;
-        right: 18px;
-        top: 56%;
-        bottom: auto;
-        transform: none !important;
-        padding: 14px 28px;
-        font-size: 15px;
-      }
-      .slide2 { flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; gap:0; }
-      .carousel-dots { bottom:12px; }
-    }
-
-    @media (max-width:480px) {
-      .hero-carousel { height:480px; }
-      .slide-title { font-size:22px; }
-    }
+    @media (max-width:1199px) { .slide { background-position:82% center; } .slide-content { width:60%; } .banner-btn { left:50%; transform:translateX(-50%); bottom:40px; } }
+    @media (max-width:767px) { .hero-carousel { height:auto; aspect-ratio:9/16; min-height:530px; } .slide { align-items:flex-start; background-position:top center !important; background-size:cover; } .slide-content { width:100%; padding:36px 20px 0 20px; justify-content:flex-start; gap:12px; } .slide-title { font-size:28px; line-height:1.2; } .slide-subtitle { font-size:14px; max-width:95%; } .slide-cta { padding:14px 28px; font-size:16px; } .banner-btn { left:auto; right:18px; top:56%; bottom:auto; transform:none !important; padding:14px 28px; font-size:15px; } .slide2 { flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; gap:0; } .carousel-dots { bottom:12px; } }
+    @media (max-width:480px) { .hero-carousel { height:480px; } .slide-title { font-size:22px; } }
 
     /* ── STATS ── */
-    .stats-section {
-      background:linear-gradient(135deg,#3d0c05,#4b0f07 50%,#5a1309); padding:clamp(40px,5vw,30px) 0; width:100%; position:relative; overflow:hidden;
-    }
+    .stats-section { background:linear-gradient(135deg,#3d0c05,#4b0f07 50%,#5a1309); padding:clamp(40px,5vw,30px) 0; width:100%; position:relative; overflow:hidden; }
     .stats-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(245,215,158,.06),transparent 70%); pointer-events:none; }
     .stats-inner { max-width:1400px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; gap:clamp(24px,4vw,48px); position:relative; z-index:1; padding:0 clamp(16px,4vw,80px); }
     .stat-item { display:flex; align-items:center; gap:16px; color:white; min-width:180px; }
@@ -237,8 +165,7 @@
     .instructor-content p { font-size:20px; color:#555; line-height:1.75; margin-bottom:16px; text-align:justify; }
     .instructor-badge { color:#b85e3a; font-weight:700; text-transform:uppercase; font-size:20px; letter-spacing:2px; }
     .instructor-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0; }
-    .i-stat { min-width:0; overflow:hidden; }
-    .i-stat { background:#f7f4f0; border-radius:12px; padding:14px; text-align:center; }
+    .i-stat { min-width:0; overflow:hidden; background:#f7f4f0; border-radius:12px; padding:14px; text-align:center; }
     .i-stat strong { display:block; font-size:22px; font-weight:800; color:#b85e3a; }
     .i-stat span { font-size:14px; color:#777; }
     .instructor-footer { margin-top:24px; }
@@ -247,28 +174,77 @@
     .instructor-footer a:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(184,94,58,.45); }
     .instructor-footer span { display:block; margin-top:10px; font-size:18px; color:#999; }
 
-    /* ── COURSES ── */
+    /* ── COURSES — :target hash-based tab system ── */
     .courses-section { padding:clamp(40px,6vw,70px) clamp(16px,5vw,80px); width:100%; }
     .section-title { font-family:'DM Serif Display',serif; font-size:clamp(26px,3vw,40px); margin-bottom:10px; }
     .section-desc { color:#6f6b66; margin-bottom:28px; font-size:20px; }
-    input[name="tabs"] { display:none; }
+
+    /* Hash anchor divs — invisible, sit just above courses section */
+    .tab-anchor { display:block; height:0; overflow:hidden; }
+
     .tab-bar { display:flex; border-bottom:2px solid #e0dbd1; margin-bottom:30px; flex-wrap:wrap; gap:4px; }
-    .tab-btn { padding:clamp(10px,1.5vw,14px) clamp(14px,2vw,22px); cursor:pointer; font-size:20px; color:#6f6b66; font-weight:500; border-radius:8px 8px 0 0; transition:color .3s,background .3s; }
+    .tab-btn { padding:clamp(10px,1.5vw,14px) clamp(14px,2vw,22px); cursor:pointer; font-size:20px; color:#6f6b66; font-weight:500; border-radius:8px 8px 0 0; transition:color .3s,background .3s; display:block; text-decoration:none; }
     .tab-btn:hover { color:#2d2d2d; background:rgba(0,0,0,.03); }
-    #astrology:checked ~ .tab-bar label[for="astrology"],
-    #numerology:checked ~ .tab-bar label[for="numerology"],
-    #vastu:checked ~ .tab-bar label[for="vastu"],
-    #combo:checked ~ .tab-bar label[for="combo"],
-    #rudraksha:checked ~ .tab-bar label[for="rudraksha"] { border-bottom:3px solid #2d2d2d; font-weight:700; color:#2d2d2d; background:rgba(0,0,0,.04); }
+
+    /* ── DEFAULT: show astrology tab, hide others ── */
     .tab-content { display:none; animation:scaleIn .35s ease; }
-    #astrology:checked ~ .astrology-content,
-    #numerology:checked ~ .numerology-content,
-    #vastu:checked ~ .vastu-content,
-    #combo:checked ~ .combo-content,
-    #rudraksha:checked ~ .rudraksha-content { display:block; }
+    .astrology-content { display:block; }
+
+    /* ── HASH TAB SYSTEM — :target on anchor divs switches tabs ── */
+    /* When #astrology-tab is targeted */
+    #astrology-tab:target ~ .courses-section .astrology-content  { display:block; }
+    #astrology-tab:target ~ .courses-section .numerology-content,
+    #astrology-tab:target ~ .courses-section .vastu-content,
+    #astrology-tab:target ~ .courses-section .combo-content,
+    #astrology-tab:target ~ .courses-section .rudraksha-content  { display:none; }
+
+    /* When #numerology-tab is targeted */
+    #numerology-tab:target ~ .courses-section .numerology-content { display:block; }
+    #numerology-tab:target ~ .courses-section .astrology-content,
+    #numerology-tab:target ~ .courses-section .vastu-content,
+    #numerology-tab:target ~ .courses-section .combo-content,
+    #numerology-tab:target ~ .courses-section .rudraksha-content  { display:none; }
+
+    /* When #vastu-tab is targeted */
+    #vastu-tab:target ~ .courses-section .vastu-content      { display:block; }
+    #vastu-tab:target ~ .courses-section .astrology-content,
+    #vastu-tab:target ~ .courses-section .numerology-content,
+    #vastu-tab:target ~ .courses-section .combo-content,
+    #vastu-tab:target ~ .courses-section .rudraksha-content   { display:none; }
+
+    /* When #combo-tab is targeted */
+    #combo-tab:target ~ .courses-section .combo-content       { display:block; }
+    #combo-tab:target ~ .courses-section .astrology-content,
+    #combo-tab:target ~ .courses-section .numerology-content,
+    #combo-tab:target ~ .courses-section .vastu-content,
+    #combo-tab:target ~ .courses-section .rudraksha-content   { display:none; }
+
+    /* When #rudraksha-tab is targeted */
+    #rudraksha-tab:target ~ .courses-section .rudraksha-content { display:block; }
+    #rudraksha-tab:target ~ .courses-section .astrology-content,
+    #rudraksha-tab:target ~ .courses-section .numerology-content,
+    #rudraksha-tab:target ~ .courses-section .vastu-content,
+    #rudraksha-tab:target ~ .courses-section .combo-content    { display:none; }
+
+    /* Active tab highlight using :target */
+    #astrology-tab:target  ~ .courses-section .tab-btn[href="#astrology-tab"],
+    #numerology-tab:target ~ .courses-section .tab-btn[href="#numerology-tab"],
+    #vastu-tab:target      ~ .courses-section .tab-btn[href="#vastu-tab"],
+    #combo-tab:target      ~ .courses-section .tab-btn[href="#combo-tab"],
+    #rudraksha-tab:target  ~ .courses-section .tab-btn[href="#rudraksha-tab"] {
+      border-bottom:3px solid #2d2d2d; font-weight:700; color:#2d2d2d; background:rgba(0,0,0,.04);
+    }
+    /* Default active (astrology) when no hash */
+    .tab-btn[href="#astrology-tab"] { border-bottom:3px solid #2d2d2d; font-weight:700; color:#2d2d2d; background:rgba(0,0,0,.04); }
+    /* Remove default when another tab is targeted */
+    #numerology-tab:target ~ .courses-section .tab-btn[href="#astrology-tab"],
+    #vastu-tab:target      ~ .courses-section .tab-btn[href="#astrology-tab"],
+    #combo-tab:target      ~ .courses-section .tab-btn[href="#astrology-tab"],
+    #rudraksha-tab:target  ~ .courses-section .tab-btn[href="#astrology-tab"] {
+      border-bottom:none; font-weight:500; color:#6f6b66; background:none;
+    }
 
     .course-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; align-items:stretch; }
-
     .course-link { display:flex; flex-direction:column; height:100%; text-decoration:none; color:inherit; }
     .course-card { border:1px solid #e0dbd1; border-radius:14px; overflow:hidden; background:white; transition:transform .3s,box-shadow .3s,border-color .3s; display:flex; flex-direction:column; height:100%; }
     .course-card:hover { transform:translateY(-8px); box-shadow:0 20px 40px rgba(0,0,0,.10); border-color:rgba(184,94,58,.25); }
@@ -276,19 +252,11 @@
     .course-card-img-wrap img { width:100%; height:100%; object-fit:contain; object-position:center; transition:transform .5s ease; display:block; }
     .course-card:hover .course-card-img-wrap img { transform:scale(1.04); }
     .card-body { padding:18px; display:flex; flex-direction:column; flex:1; }
-    .card-body h3 {
-      font-size:20px; font-weight:700; margin-bottom:6px; line-height:1.3;
-      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.6em;
-    }
-    .badge { background:#f59e0b; color:white; font-size:13px; padding:3px 8px; border-radius:6px; display:inline-block; margin-bottom:8px; }
+    .card-body h3 { font-size:20px; font-weight:700; margin-bottom:6px; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.6em; }
     .instructor { font-size:18px; color:#777; margin-bottom:4px; }
     .rating { font-size:13px; font-weight:600; color:#555; margin:0; white-space:nowrap; }
-    .rating span { display:none; }
-    .meta { font-size:15px; color:#777; margin-bottom:8px; }
     .price-row { display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:10px; border-top:1px solid #f0ece6; }
     .price { font-size:20px; font-weight:800; color:#b85e3a; }
-    .old-price { font-size:14px; text-decoration:line-through; color:#aaa; }
-    .discount-badge { background:#dcfce7; color:#16a34a; font-size:12px; font-weight:700; padding:2px 7px; border-radius:6px; }
 
     /* ── TESTIMONIALS ── */
     .testimonials-section { background:#f7f4f0; padding:clamp(60px,8vw,40px) clamp(16px,5vw,40px); width:100%; }
@@ -298,47 +266,20 @@
     .testi-title { font-family:'DM Serif Display',serif; font-size:clamp(28px,4vw,46px); line-height:1.15; color:#1a0a06; margin-bottom:12px; }
     .testi-title em { font-style:italic; color:#b85e3a; }
     .testi-subtitle { font-size:18px; color:#6f6b66; max-width:540px; margin:0 auto; line-height:1.6; }
-
     .testi-radio { display:none; }
     .testi-slider-outer { position:relative; overflow:hidden; }
-    .testi-track {
-      display:flex; gap:24px; flex-wrap:nowrap;
-      animation: testiAuto 10s ease-in-out infinite;
-      will-change: transform;
-    }
-    .testi-card {
-      background:white; border-radius:16px; border:1px solid #e0dbd1; padding:28px;
-      transition:box-shadow .3s, transform .3s;
-      flex: 0 0 calc(50% - 12px); min-width:0;
-    }
+    .testi-track { display:flex; gap:24px; flex-wrap:nowrap; animation:testiAuto 10s ease-in-out infinite; will-change:transform; }
+    .testi-card { background:white; border-radius:16px; border:1px solid #e0dbd1; padding:28px; transition:box-shadow .3s,transform .3s; flex:0 0 calc(50% - 12px); min-width:0; }
     .testi-card:hover { box-shadow:0 8px 32px rgba(0,0,0,.09); transform:translateY(-4px); }
-
-    @keyframes testiAuto {
-      0% { transform: translateX(0); }
-      40% { transform: translateX(0); }
-      50% { transform: translateX(calc(-100% - 24px)); }
-      90% { transform: translateX(calc(-100% - 24px)); }
-      100% { transform: translateX(0); }
-    }
-
-    #testi0:checked ~ .testimonials-inner .testi-track {
-      animation: none; transform: translateX(0); transition: transform .6s cubic-bezier(.4,0,.2,1);
-    }
-    #testi1:checked ~ .testimonials-inner .testi-track {
-      animation: none; transform: translateX(calc(-100% - 24px)); transition: transform .6s cubic-bezier(.4,0,.2,1);
-    }
-
+    @keyframes testiAuto { 0%{transform:translateX(0)} 40%{transform:translateX(0)} 50%{transform:translateX(calc(-100% - 24px))} 90%{transform:translateX(calc(-100% - 24px))} 100%{transform:translateX(0)} }
+    #testi0:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(0); transition:transform .6s cubic-bezier(.4,0,.2,1); }
+    #testi1:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(calc(-100% - 24px)); transition:transform .6s cubic-bezier(.4,0,.2,1); }
     .testi-dots { display:flex; justify-content:center; gap:8px; margin-top:28px; }
-    .testi-dot-label[for="testi2"], .testi-dot-label[for="testi3"] { display: none; }
-    .testi-dot-label {
-      width:8px; height:8px; border-radius:50%; background:#d5cdc4;
-      display:block; cursor:pointer; transition:background .3s, transform .3s;
-    }
-    #testi0:checked ~ .testimonials-inner .testi-dots label[for="testi0"],
-    #testi1:checked ~ .testimonials-inner .testi-dots label[for="testi1"] { background:#b85e3a; transform:scale(1.35); }
+    .testi-dot-label[for="testi2"], .testi-dot-label[for="testi3"] { display:none; }
+    .testi-dot-label { width:8px; height:8px; border-radius:50%; background:#d5cdc4; display:block; cursor:pointer; transition:background .3s,transform .3s; }
+    #testi0:checked ~ .testimonials-inner .testi-dots label[for="testi0"], #testi1:checked ~ .testimonials-inner .testi-dots label[for="testi1"] { background:#b85e3a; transform:scale(1.35); }
     .testi-dot-label[for="testi0"] { background:#b85e3a; transform:scale(1.35); }
     #testi1:checked ~ .testimonials-inner .testi-dots label[for="testi0"] { background:#d5cdc4; transform:scale(1); }
-
     .testi-top { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
     .testi-avatar-wrap { width:56px; height:56px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #e0dbd1; }
     .testi-avatar-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
@@ -362,52 +303,16 @@
     .cert-inner > p { color:#6a6f73; font-size:18px; margin-bottom:10px; }
     .cert-inner > a { display:inline-block; color:#5624d0; font-weight:600; margin-bottom:24px; font-size:17px; transition:opacity .3s; }
     .cert-inner > a:hover { opacity:.75; }
-    .cert-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 30px;
-}
-
-.cert-card {
-  display: flex;
-  flex-direction: column;
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #e6e1d8;
-  transition: all .35s ease;
-  text-decoration: none;
-}
-
-.cert-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0,0,0,.08);
-  border-color: #b85e3a;
-}
-
-.cert-card img {
-  width: 100%;
-  height: auto;
- 
-  object-fit: cover;
-  display: block;
-}
-
-.cert-card-text {
-  padding: 22px;
-}
-
-.cert-card-text h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.cert-card-text p {
-  font-size: 17px;
-  color: #6f6b66;
-}
+    .cert-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:30px; }
+    .cert-card {
+      display:flex; flex-direction:column; background:white; border-radius:16px;
+      overflow:hidden; border:1px solid #e6e1d8; transition:all .35s ease; text-decoration:none;
+    }
+    .cert-card:hover { transform:translateY(-8px); box-shadow:0 20px 50px rgba(0,0,0,.08); border-color:#b85e3a; }
+    .cert-card img { width:100%; height:auto; aspect-ratio:400/260; object-fit:cover; display:block; }
+    .cert-card-text { padding:22px; }
+    .cert-card-text h3 { font-size:22px; font-weight:700; margin-bottom:8px; }
+    .cert-card-text p { font-size:17px; color:#6f6b66; }
 
     /* ── FAQ ── */
     .faq-section { background:white; padding:clamp(50px,7vw,40px) clamp(16px,5vw,80px); width:100%; }
@@ -448,12 +353,7 @@
 
     /* ═══════════ RESPONSIVE ═══════════ */
     @media (min-width:1400px) { .course-grid { grid-template-columns:repeat(4,1fr); } }
-
-    @media (max-width:1199px) and (min-width:769px) {
-      .course-grid { grid-template-columns:repeat(2,1fr); }
-      .video-grid { grid-template-columns:repeat(2,1fr); }
-    }
-
+    @media (max-width:1199px) and (min-width:769px) { .course-grid { grid-template-columns:repeat(2,1fr); } .video-grid { grid-template-columns:repeat(2,1fr); } }
     @media (max-width:992px) {
       .nav-links { display:none; }
       .instructor-grid { grid-template-columns:1fr; }
@@ -466,7 +366,6 @@
 
     /* ═══════════ MOBILE ═══════════ */
     @media (max-width:768px) {
-      /* ── Global font size reduction on mobile ── */
       body { font-size:14px; }
       .top-banner { font-size:12px; padding:8px 14px; }
       .top-banner span { font-size:12px; }
@@ -487,80 +386,30 @@
       .footer-top p { font-size:13px; }
       .footer-links { font-size:12px; }
       .footer-copy { font-size:12px; }
-
       .dropdown { display:none !important; }
       .navbar-inner { padding:0 16px; }
       .auth-buttons { display:none; }
       .nav-links { display:none; }
       .nav-divider { display:none; }
       .mobile-menu-btn { display:flex; flex-direction:column; }
-
-      /* ── Stats 2x2 grid ── */
       .stats-section { padding:10px 10px; overflow:visible; }
-      .stats-inner {
-        display:grid !important; grid-template-columns:1fr 1fr !important; gap:0 !important;
-        padding:0 !important; width:100% !important; min-width:unset !important;
-        justify-content:unset !important; flex-wrap:unset !important;
-      }
-      .stat-item {
-        min-width:unset !important; flex-shrink:unset !important;
-        justify-content:center; padding:10px 15px;
-        flex-direction:column !important; align-items:center; text-align:center;
-        border-bottom:1px solid rgba(255,255,255,.1);
-      }
+      .stats-inner { display:grid !important; grid-template-columns:1fr 1fr !important; gap:0 !important; padding:0 !important; width:100% !important; min-width:unset !important; justify-content:unset !important; flex-wrap:unset !important; }
+      .stat-item { min-width:unset !important; flex-shrink:unset !important; justify-content:center; padding:10px 15px; flex-direction:column !important; align-items:center; text-align:center; border-bottom:1px solid rgba(255,255,255,.1); }
       .stat-item:nth-child(odd) { border-right:1px solid rgba(255,255,255,.1); }
       .stat-col { align-items:center !important; }
       .stat-divider { display:none !important; }
       .stat-num { font-size:30px; }
       .stat-label { font-size:12px; margin-top:1px; }
-
-      /* ── Courses: tab bar single-line horizontal scroll ── */
-      .tab-bar {
-        flex-wrap:nowrap !important;
-        overflow-x:auto !important;
-        -webkit-overflow-scrolling:touch;
-        scrollbar-width:none;
-        gap:0 !important;
-        border-bottom:2px solid #e0dbd1;
-        margin-bottom:16px;
-        padding-bottom:0;
-      }
+      .tab-bar { flex-wrap:nowrap !important; overflow-x:auto !important; -webkit-overflow-scrolling:touch; scrollbar-width:none; gap:0 !important; border-bottom:2px solid #e0dbd1; margin-bottom:16px; padding-bottom:0; }
       .tab-bar::-webkit-scrollbar { display:none; }
-      .tab-btn {
-        flex-shrink:0 !important;
-        white-space:nowrap !important;
-        font-size:13px !important;
-        padding:9px 14px !important;
-        border-radius:8px 8px 0 0;
-      }
-
-      /* ── Courses: horizontal auto-scroll cards ── */
-      .tab-content .course-grid {
-        display:flex !important;
-        flex-wrap:nowrap !important;
-        overflow-x:auto !important;
-        gap:14px !important;
-        -webkit-overflow-scrolling:touch;
-        scroll-snap-type:x mandatory;
-        padding-bottom:12px;
-        scrollbar-width:none;
-        align-items:stretch;
-      }
+      .tab-btn { flex-shrink:0 !important; white-space:nowrap !important; font-size:13px !important; padding:9px 14px !important; border-radius:8px 8px 0 0; }
+      .tab-content .course-grid { display:flex !important; flex-wrap:nowrap !important; overflow-x:auto !important; gap:14px !important; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; padding-bottom:12px; scrollbar-width:none; align-items:stretch; }
       .tab-content .course-grid::-webkit-scrollbar { display:none; }
-      .course-link {
-        flex:0 0 72vw !important;
-        max-width:280px;
-        scroll-snap-align:start;
-        height:auto;
-      }
+      .course-link { flex:0 0 72vw !important; max-width:280px; scroll-snap-align:start; height:auto; }
       .card-body h3 { font-size:14px; min-height:2.4em; }
       .instructor { font-size:12px; }
       .rating { font-size:12px; }
       .price { font-size:14px; }
-      .old-price { font-size:11px; }
-      .price-row .rating { font-size:11px; }
-
-      /* ── Instructor: text justified ── */
       .instructor-content p { text-align:justify; font-size:14px; }
       .instructor-content h2 { font-size:24px; }
       .instructor-content h4 { font-size:13px; }
@@ -571,81 +420,31 @@
       .i-stat { flex:1 1 0 !important; min-width:0 !important; padding:8px 4px !important; }
       .i-stat strong { font-size:14px; }
       .i-stat span { font-size:10px; }
-
-      /* ── Cert: horizontal auto-scroll on mobile like testimonials ── */
-      .cert-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 16px;
-  }
+      .cert-grid { display:flex; overflow-x:auto; gap:16px; scroll-snap-type:x mandatory; }
       .cert-grid::-webkit-scrollbar { display:none; }
-      .cert-card {
-        flex:0 0 78vw !important;
-        max-width:260px;
-        flex-shrink:0 !important;
-        scroll-snap-align:start;
-        flex-direction:column;
-        align-items:flex-start;
-        border-radius:12px;
-        padding:14px;
-         min-width: 260px;
-      }
-      .cert-card img { width:100%; height:auto; object-fit:cover; border-radius:8px; margin-bottom:10px; }
-
-      /* ── Testimonials mobile overrides ── */
+      .cert-card { flex:0 0 78vw; max-width:280px; flex-shrink:0; scroll-snap-align:start; min-width:240px; border-radius:12px; }
+      .cert-card img { border-radius:8px 8px 0 0; }
       .testi-card { flex:0 0 calc(100vw - 48px); }
-      .testi-dot-label[for="testi2"], .testi-dot-label[for="testi3"] { display: block; }
-
-      @keyframes testiAuto {
-        0%    { transform: translateX(0); }
-        20%   { transform: translateX(0); }
-        25%   { transform: translateX(calc(-1 * (100vw - 48px + 24px))); }
-        45%   { transform: translateX(calc(-1 * (100vw - 48px + 24px))); }
-        50%   { transform: translateX(calc(-2 * (100vw - 48px + 24px))); }
-        70%   { transform: translateX(calc(-2 * (100vw - 48px + 24px))); }
-        75%   { transform: translateX(calc(-3 * (100vw - 48px + 24px))); }
-        95%   { transform: translateX(calc(-3 * (100vw - 48px + 24px))); }
-        100%  { transform: translateX(0); }
-      }
-
+      .testi-dot-label[for="testi2"], .testi-dot-label[for="testi3"] { display:block; }
+      @keyframes testiAuto { 0%{transform:translateX(0)} 20%{transform:translateX(0)} 25%{transform:translateX(calc(-1 * (100vw - 48px + 24px)))} 45%{transform:translateX(calc(-1 * (100vw - 48px + 24px)))} 50%{transform:translateX(calc(-2 * (100vw - 48px + 24px)))} 70%{transform:translateX(calc(-2 * (100vw - 48px + 24px)))} 75%{transform:translateX(calc(-3 * (100vw - 48px + 24px)))} 95%{transform:translateX(calc(-3 * (100vw - 48px + 24px)))} 100%{transform:translateX(0)} }
       #testi0:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(0); }
       #testi1:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(calc(-1 * (100vw - 48px + 24px))); }
       #testi2:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(calc(-2 * (100vw - 48px + 24px))); }
       #testi3:checked ~ .testimonials-inner .testi-track { animation:none; transform:translateX(calc(-3 * (100vw - 48px + 24px))); }
-      #testi2:checked ~ .testimonials-inner .testi-dots label[for="testi2"],
-      #testi3:checked ~ .testimonials-inner .testi-dots label[for="testi3"] { background:#b85e3a; transform:scale(1.35); }
-      #testi2:checked ~ .testimonials-inner .testi-dots label[for="testi0"],
-      #testi3:checked ~ .testimonials-inner .testi-dots label[for="testi0"] { background:#d5cdc4; transform:scale(1); }
-
+      #testi2:checked ~ .testimonials-inner .testi-dots label[for="testi2"], #testi3:checked ~ .testimonials-inner .testi-dots label[for="testi3"] { background:#b85e3a; transform:scale(1.35); }
+      #testi2:checked ~ .testimonials-inner .testi-dots label[for="testi0"], #testi3:checked ~ .testimonials-inner .testi-dots label[for="testi0"] { background:#d5cdc4; transform:scale(1); }
       .video-grid { display:flex; flex-wrap:nowrap; overflow-x:auto; gap:16px; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; padding-bottom:12px; scrollbar-width:none; }
       .video-grid::-webkit-scrollbar { display:none; }
       .video-wrap { flex:0 0 56vw; scroll-snap-align:start; }
-
-      .cert-grid { grid-template-columns:1fr; }
       .footer-bottom-inner { flex-direction:column; text-align:center; }
       .footer-copy { color:rgba(245,230,211,.6) !important; }
     }
-
-    @media (max-width:480px) {
-      .instructor-stats { grid-template-columns:repeat(3,1fr); gap:8px; }
-      .i-stat { padding:10px 6px; }
-      .i-stat strong { font-size:15px; }
-      .i-stat span { font-size:11px; }
-      .tab-btn { padding:8px 11px !important; font-size:12px !important; }
-      .testi-info h4 { font-size:13px; }
-      .testi-info span { font-size:11px; }
-    }
-
-    @media (max-width:360px) {
-      .instructor-stats { display:flex !important; flex-direction:row !important; gap:4px !important; }
-      .i-stat strong { font-size:12px; }
-      .i-stat span { font-size:9px; }
-    }
+    @media (max-width:480px) { .instructor-stats { grid-template-columns:repeat(3,1fr); gap:8px; } .i-stat { padding:10px 6px; } .i-stat strong { font-size:15px; } .i-stat span { font-size:11px; } .tab-btn { padding:8px 11px !important; font-size:12px !important; } .testi-info h4 { font-size:13px; } .testi-info span { font-size:11px; } }
+    @media (max-width:360px) { .instructor-stats { display:flex !important; flex-direction:row !important; gap:4px !important; } .i-stat strong { font-size:12px; } .i-stat span { font-size:9px; } }
   </style>
 </head>
 
 <body>
-
   <input type="checkbox" id="nav-toggle">
   <div class="sticky-header">
    <a href="#courses" class="top-banner">
@@ -713,8 +512,13 @@
         <div class="nav-item dropdown">
           <button class="dropbtn">Events &amp; Webinar</button>
           <div class="dropdown-content">
-            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
-            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
+            <div class="submenu">
+              <div class="submenu-title">Upcoming  &#9658;</div>
+              <div class="submenu-content">
+                <a href="https://academy.astrovastugurukull.com/services/astro-mastery-webinar">Astro Mastery Webinar</a>
+              </div>
+            </div>
+            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">All Events</a>
             <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Live Sessions</a>
             <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Workshops</a>
             <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Free Events</a>
@@ -766,8 +570,8 @@
       </details>
       <details class="drawer-nav-group">
         <summary>Events &amp; Webinar</summary>
+        <a href="https://academy.astrovastugurukull.com/services/astro-mastery-webinar">Upcoming: Astro Mastery Webinar</a>
         <a href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
-        <a href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
         <a href="https://astrovastugurukull.com/trfu">Live Sessions</a>
         <a href="https://astrovastugurukull.com/trfu">Workshops</a>
         <a href="https://astrovastugurukull.com/trfu">Free Events</a>
@@ -810,45 +614,37 @@
   <!-- STATS -->
   <section class="stats-section">
     <div class="stats-inner">
-      <div class="stat-item stat-col">
-        <div class="stat-num">2.5L+</div>
-        <div class="stat-label">Students Trained</div>
-      </div>
+      <div class="stat-item stat-col"><div class="stat-num">2.5L+</div><div class="stat-label">Students Trained</div></div>
       <div class="stat-divider"></div>
-      <div class="stat-item">
-        <img src="https://tagmango.com/staticassets/-certified_svgrepo-774df431b76da51f4ae923fda77d2390.svg" alt="" class="stat-icon">
-        <div class="stat-label">Certified in Vedic Sciences</div>
-      </div>
+      <div class="stat-item"><img src="https://tagmango.com/staticassets/-certified_svgrepo-774df431b76da51f4ae923fda77d2390.svg" alt="" class="stat-icon"><div class="stat-label">Certified in Vedic Sciences</div></div>
       <div class="stat-divider"></div>
-      <div class="stat-item">
-        <img src="https://tagmango.com/staticassets/-student-head_svgrepo-c3285d54b768d2559e492331b2acf561.svg" alt="" class="stat-icon">
-        <div class="stat-label">India &amp; Abroad</div>
-      </div>
+      <div class="stat-item"><img src="https://tagmango.com/staticassets/-student-head_svgrepo-c3285d54b768d2559e492331b2acf561.svg" alt="" class="stat-icon"><div class="stat-label">India &amp; Abroad</div></div>
       <div class="stat-divider"></div>
-      <div class="stat-item">
-        <img src="https://tagmango.com/staticassets/-user-expert_svgrepo-8cf3e58a859bc99c6162d1c2b1571738.svg" alt="" class="stat-icon">
-        <div class="stat-label">Courses by Experts</div>
-      </div>
+      <div class="stat-item"><img src="https://tagmango.com/staticassets/-user-expert_svgrepo-8cf3e58a859bc99c6162d1c2b1571738.svg" alt="" class="stat-icon"><div class="stat-label">Courses by Experts</div></div>
     </div>
   </section>
+
+  <!-- ═══ HASH TAB ANCHORS — placed just before courses section ═══
+       CSS :target selector reads these to switch the correct tab.
+       href="#astrology-tab" on any link anywhere on page will target this div
+       and the CSS ~ sibling selector will show the right tab content. -->
+  <div id="astrology-tab" class="tab-anchor"></div>
+  <div id="numerology-tab" class="tab-anchor"></div>
+  <div id="vastu-tab" class="tab-anchor"></div>
+  <div id="combo-tab" class="tab-anchor"></div>
+  <div id="rudraksha-tab" class="tab-anchor"></div>
 
   <!-- COURSES -->
   <section class="courses-section" id="courses">
     <h2 class="section-title">Learn <em>ancient</em> sciences and <strong>transform</strong> your life</h2>
     <p class="section-desc">Astrovastu Gurukull helps you master Vedic Astrology, Numerology and Vastu with expert mentorship.</p>
 
-    <input type="radio" name="tabs" id="astrology" checked>
-    <input type="radio" name="tabs" id="numerology">
-    <input type="radio" name="tabs" id="vastu">
-    <input type="radio" name="tabs" id="combo">
-    <input type="radio" name="tabs" id="rudraksha">
-
     <div class="tab-bar">
-      <label for="astrology" class="tab-btn">Astrology</label>
-      <label for="numerology" class="tab-btn">Numerology</label>
-      <label for="vastu" class="tab-btn">Vastu Shastra</label>
-      <label for="combo" class="tab-btn">Combo Course</label>
-      <label for="rudraksha" class="tab-btn">Rudraksha</label>
+      <a href="#astrology-tab" class="tab-btn">Astrology</a>
+      <a href="#numerology-tab" class="tab-btn">Numerology</a>
+      <a href="#vastu-tab" class="tab-btn">Vastu Shastra</a>
+      <a href="#combo-tab" class="tab-btn">Combo Course</a>
+      <a href="#rudraksha-tab" class="tab-btn">Rudraksha</a>
     </div>
 
     <div class="tab-content astrology-content">
@@ -896,9 +692,7 @@
   <!-- INSTRUCTOR -->
   <section class="instructor-section">
     <div class="instructor-grid">
-      <div class="instructor-img">
-        <img src="https://tagmango.com/staticassets/-1772188739911-05359e56ff9540c804b9aa73633701d9.png" alt="Acharya LavBhushan">
-      </div>
+      <div class="instructor-img"><img src="https://tagmango.com/staticassets/-1772188739911-05359e56ff9540c804b9aa73633701d9.png" alt="Acharya LavBhushan"></div>
       <div class="instructor-content">
         <span class="instructor-badge">&#10022; Meet The Instructor</span>
         <h2>Acharya LavBhushan</h2>
@@ -911,10 +705,7 @@
         <p>Acharya LavBhushan Ji is a respected and globally recognized Astrologer with over 10+ years of experience. He has learned the deep secrets of Astrology, Vastu &amp; Numerology from top institutes in India (Hyderabad, Mumbai, Ahmedabad) and internationally from Bangkok, China, and Indonesia.</p>
         <p>He holds a Doctorate in Astrology from the International Astrology Federation (USA &amp; Thailand) and is known for accurate predictions and practical guidance. He is India's only expert who beautifully combines Vastu, Astrology, and Numbers to help people find the right direction in life.</p>
         <p>His simple and effective style of teaching makes him <strong>"People's Favourite"</strong> &#8211; both as a mentor and as a guide.</p>
-        <div class="instructor-footer">
-          <a href="#courses">Explore All Courses</a>
-          <span>Start learning from the best!</span>
-        </div>
+        <div class="instructor-footer"><a href="#courses">Explore All Courses</a><span>Start learning from the best!</span></div>
       </div>
     </div>
   </section>
@@ -925,14 +716,12 @@
     <input type="radio" class="testi-radio" name="testi" id="testi1">
     <input type="radio" class="testi-radio" name="testi" id="testi2">
     <input type="radio" class="testi-radio" name="testi" id="testi3">
-
     <div class="testimonials-inner">
       <div class="testi-section-header">
         <div class="testi-section-label">&#10022; Student Stories</div>
         <h2 class="testi-title">Join others <em>transforming</em> their lives<br>through learning</h2>
         <p class="testi-subtitle">Over 2.5 lakh students have changed their careers, businesses &amp; relationships with Acharya ji's guidance.</p>
       </div>
-
       <div class="testi-slider-outer">
         <div class="testi-track">
           <div class="testi-card"><div class="testi-top"><div class="testi-avatar-wrap"><img src="https://tagmango.com/staticassets/-himanshu-thareja-fa77c1d86b30cc953944c2dba9eee473.png" alt="Himanshu Thareja"></div><div class="testi-info"><h4>Himanshu Thareja</h4><span>Student, Astrology Course</span><div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><p>The astrology course was <strong>simple and helpful</strong>. Now I give small advices to people and I feel appreciated.</p></div>
@@ -941,14 +730,12 @@
           <div class="testi-card"><div class="testi-top"><div class="testi-avatar-wrap"><img src="https://tagmango.com/staticassets/-ankit-gupta-8847cbf00cab740cf2973f5ce455839c.png" alt="Ankit Gupta"></div><div class="testi-info"><h4>Ankit Gupta</h4><span>Professional Astrologer</span><div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><p>I started learning this course as my only option for income. Now I am <strong>teaching and guiding a lot of people</strong>.</p></div>
         </div>
       </div>
-
       <div class="testi-dots">
         <label class="testi-dot-label" for="testi0" title="Page 1"></label>
         <label class="testi-dot-label" for="testi1" title="Page 2"></label>
         <label class="testi-dot-label" for="testi2" title="Page 3"></label>
         <label class="testi-dot-label" for="testi3" title="Page 4"></label>
       </div>
-
       <h2 class="video-title">Praise from our audience</h2>
       <div class="video-grid">
         <div class="video-wrap"><video src="https://cdn.shopify.com/videos/c/o/v/eb3c101a924f4ea69242df95232b93b7.mp4#t=0.1" controls playsinline preload="auto"></video></div>
@@ -959,26 +746,40 @@
     </div>
   </section>
 
-  <!-- CERTIFICATION -->
-<section class="cert-section">
+  <!-- CERTIFICATION — cert cards link to hash anchors above courses section -->
+  <section class="cert-section">
     <div class="cert-inner">
       <h2>Get certified and get ahead in your career</h2>
       <p>Prep for certifications with comprehensive courses, practice tests, and special offers on exam vouchers.</p>
       <a href="https://astrovastugurukull.com/">Explore certifications and vouchers &#8594;</a>
-<div class="cert-grid">
-  <div><a href="#courses" class="cert-card" onclick="document.getElementById('astrology').checked=true">
-    <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-03-20-at-4-4734c259280ef314adb2af804f737aeb.jpeg" alt="">
-    <div class="cert-card-text"><h3>Certified Vedic Astrologer</h3><p>Professional Certification in Jyotish Shastra</p></div>
-  </a></div>
-  <div><a href="#courses" class="cert-card" onclick="document.getElementById('numerology').checked=true">
-    <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-03-20-at-4-84f6b49800187e7b65265819f9963e60.jpeg" alt="">
-    <div class="cert-card-text"><h3>Certified Numerology Expert</h3><p>Master Chaldean &amp; Pythagorean Systems</p></div>
-  </a></div>
-  <div><a href="#courses" class="cert-card" onclick="document.getElementById('vastu').checked=true">
-    <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-03-20-at-4-c08686a6a305addabd8f5ddf617e8ac8.jpeg" alt="">
-    <div class="cert-card-text"><h3>Certified Vastu Consultant</h3><p>Residential &amp; Commercial Vastu Expertise</p></div>
-  </a></div>
-</div>
+      <div class="cert-grid">
+
+        <!-- href="#astrology-tab" targets the div above courses → CSS shows astrology tab -->
+        <a href="#astrology-tab" class="cert-card">
+          <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-03-20-at-4-4734c259280ef314adb2af804f737aeb.jpeg" alt="Certified Vedic Astrologer">
+          <div class="cert-card-text">
+            <h3>Certified Vedic Astrologer</h3>
+            <p>Professional Certification in Jyotish Shastra</p>
+          </div>
+        </a>
+
+        <a href="#numerology-tab" class="cert-card">
+          <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-03-20-at-4-84f6b49800187e7b65265819f9963e60.jpeg" alt="Certified Numerology Expert">
+          <div class="cert-card-text">
+            <h3>Certified Numerology Expert</h3>
+            <p>Master Chaldean &amp; Pythagorean Systems</p>
+          </div>
+        </a>
+
+        <a href="#vastu-tab" class="cert-card">
+          <img src="https://tagmango.com/staticassets/-whatsapp-image-2026-03-20-at-4-c08686a6a305addabd8f5ddf617e8ac8.jpeg" alt="Certified Vastu Consultant">
+          <div class="cert-card-text">
+            <h3>Certified Vastu Consultant</h3>
+            <p>Residential &amp; Commercial Vastu Expertise</p>
+          </div>
+        </a>
+
+      </div>
     </div>
   </section>
 
@@ -1024,5 +825,6 @@
   <a href="https://wa.aisensy.com/+919119349066" target="_blank" class="whatsapp-sticky" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
-  </body>
-  </html>
+
+</body>
+</html>

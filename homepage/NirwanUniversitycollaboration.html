@@ -601,12 +601,13 @@
   </style>
 </head>
 <body>
-  <a href="#courses" class="top-banner">
+  <input type="checkbox" id="nav-toggle">
+  <div class="sticky-header">
+   <a href="#courses" class="top-banner">
     <strong>Skills on sale</strong> | Courses now as low as <strong>₹1,499</strong> through limited time.
     <span>Enroll Now!</span>
   </a>
 
-  <input type="checkbox" id="nav-toggle">
 
   <nav class="navbar">
     <div class="navbar-inner">
@@ -653,7 +654,6 @@
             <div class="submenu">
               <div class="submenu-title">Combo Course &#9658;</div>
               <div class="submenu-content">
-               
                 <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
               </div>
             </div>
@@ -668,8 +668,13 @@
         <div class="nav-item dropdown">
           <button class="dropbtn">Events &amp; Webinar</button>
           <div class="dropdown-content">
-            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
-            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
+            <div class="submenu">
+              <div class="submenu-title">Upcoming  &#9658;</div>
+              <div class="submenu-content">
+                <a href="https://academy.astrovastugurukull.com/services/astro-mastery-webinar">Astro Mastery Webinar</a>
+              </div>
+            </div>
+            <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">All Events</a>
             <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Live Sessions</a>
             <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Workshops</a>
             <a class="dropdown-link" href="https://astrovastugurukull.com/trfu">Free Events</a>
@@ -686,6 +691,7 @@
       </div>
     </div>
   </nav>
+  </div><!-- /sticky-header -->
 
   <div class="mobile-drawer">
     <div class="mobile-drawer-inner">
@@ -715,14 +721,13 @@
         <a href="https://academy.astrovastugurukull.com/services/devta-course">45 devta course</a>
         <a href="https://academy.astrovastugurukull.com/services/commercial-and-industrial-vastu-course">Commercial &amp; Industrial Vastu Course</a>
         <a href="https://academy.astrovastugurukull.com/services/residential-advance-vastu-course">Residential advance Vastu Course</a>
-       
         <a href="https://academy.astrovastugurukull.com/services/crorepati-combo-course">करोड़पति Combo {Batch-8}</a>
         <a href="https://academy.astrovastugurukull.com/services/rudraksha-course">Rudraksha Course</a>
       </details>
       <details class="drawer-nav-group">
         <summary>Events &amp; Webinar</summary>
+        <a href="https://academy.astrovastugurukull.com/services/astro-mastery-webinar">Upcoming: Astro Mastery Webinar</a>
         <a href="https://astrovastugurukull.com/trfu">All Events &amp; Webinars</a>
-        <a href="https://astrovastugurukull.com/trfu">Upcoming Webinars</a>
         <a href="https://astrovastugurukull.com/trfu">Live Sessions</a>
         <a href="https://astrovastugurukull.com/trfu">Workshops</a>
         <a href="https://astrovastugurukull.com/trfu">Free Events</a>
@@ -810,7 +815,7 @@
               <span class="mou-tag outline">Occult Science</span>
               <span class="mou-tag outline">Rajasthan, India</span>
             </div>
-            <a href="https://nujadmission.nirwanuniversity.ac.in/" target="_blank" class="mou-apply-btn">
+            <a href="#enroll" target="_blank" class="mou-apply-btn">
               <i class="fas fa-arrow-right"></i> Apply Now
             </a>
           </div>
@@ -995,6 +1000,7 @@
           <h2>Enrollment Form</h2>
           <p class="enroll-sub">Start your journey into occult sciences. Fill in your details and we'll get back to you within 24 hours.</p>
           <form action="https://script.google.com/macros/s/AKfycbzSPSdVhJc3vedcA2QR_a_vKLjn65zuoDcNhhDUpIV0j9y9qqevuFPi6bjAFcQBcwUd/exec" method="POST" target="_blank">
+            <input type="hidden" name="page" value="Collaboration – Nirwan University ">
             <div class="form-grid">
               <div class="form-group">
                 <label for="f-name">Full Name *</label>
